@@ -1,0 +1,102 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package io.airlift.tpch;
+
+public enum PartSupplierColumn
+        implements TpchColumn<PartSupplier>
+{
+    @SuppressWarnings("SpellCheckingInspection")
+    PART_KEY("partkey", Long.class)
+            {
+                public long getLong(PartSupplier partSupplier)
+                {
+                    return partSupplier.getPartKey();
+                }
+            },
+
+    @SuppressWarnings("SpellCheckingInspection")
+    SUPPLIER_KEY("suppkey", Long.class)
+            {
+                public long getLong(PartSupplier partSupplier)
+                {
+                    return partSupplier.getSupplierKey();
+                }
+            },
+
+    @SuppressWarnings("SpellCheckingInspection")
+    AVAILABLE_QUANTITY("availqty", Long.class)
+            {
+                public long getLong(PartSupplier partSupplier)
+                {
+                    return partSupplier.getAvailableQuantity();
+                }
+            },
+
+    @SuppressWarnings("SpellCheckingInspection")
+    SUPPLY_COST("supplycost", Double.class)
+            {
+                public double getDouble(PartSupplier partSupplier)
+                {
+                    return partSupplier.getSupplyCost();
+                }
+            },
+
+    COMMENT("comment", String.class)
+            {
+                public String getString(PartSupplier partSupplier)
+                {
+                    return partSupplier.getComment();
+                }
+            };
+
+
+    private final String columnName;
+    private final Class<?> type;
+
+    PartSupplierColumn(String columnName, Class<?> type)
+    {
+        this.columnName = columnName;
+        this.type = type;
+    }
+
+    @Override
+    public String getColumnName()
+    {
+        return columnName;
+    }
+
+    @Override
+    public Class<?> getType()
+    {
+        return type;
+    }
+
+    @Override
+    public double getDouble(PartSupplier partSupplier)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public long getLong(PartSupplier partSupplier)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String getString(PartSupplier partSupplier)
+    {
+        throw new UnsupportedOperationException();
+    }
+}
