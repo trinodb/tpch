@@ -28,6 +28,8 @@ public class Distribution
     private final String name;
     private final List<String> values;
     private final int[] weights;
+    private final String[] map;
+    private final int maxWeight;
 
     public Distribution(String name, Map<String, Integer> distribution)
     {
@@ -47,6 +49,17 @@ public class Distribution
             index++;
         }
         this.values = values.build();
+
+        this.maxWeight = weights[weights.length - 1];
+        map = new String[maxWeight + 1];
+        for(int i = 0; i <= maxWeight; i++) {
+            int k = Arrays.binarySearch(weights, i);
+            if (k < 0) {
+                // if the value is not found in the array, (- insertion point) is returned
+                 k = (-k) - 1;
+            }
+            map[i] = this.values.get(k);
+        }
     }
 
     public String getValue(int index)
@@ -71,21 +84,8 @@ public class Distribution
 
     public String randomValue(RandomInt randomInt)
     {
-        int i = randomIndex(randomInt);
-        return values.get(i);
-    }
-
-    public int randomIndex(RandomInt randomInt)
-    {
-        int maxWeight = weights[values.size() - 1];
         int randomValue = randomInt.nextInt(1, maxWeight);
-
-        int i = Arrays.binarySearch(weights, randomValue);
-        if (i < 0) {
-            // if the value is not found in the array, (- insertion point) is returned
-            i = (-i) - 1;
-        }
-        return Math.abs(i);
+        return map[randomValue];
     }
 
     @Override

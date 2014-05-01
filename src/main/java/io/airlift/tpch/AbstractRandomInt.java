@@ -57,7 +57,9 @@ public abstract class AbstractRandomInt
 
     protected long nextRand()
     {
-        checkState(usage < expectedUsagePerRow, "Expected random to be used only %s times per row", expectedUsagePerRow);
+        if (!(usage < expectedUsagePerRow)) {
+            checkState(false, "Expected random to be used only %s times per row", expectedUsagePerRow);
+        }
         seed = (seed * MULTIPLIER) % MODULUS;
         usage++;
         return seed;
