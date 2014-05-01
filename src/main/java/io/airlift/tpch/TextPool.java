@@ -13,9 +13,6 @@
  */
 package io.airlift.tpch;
 
-import com.google.common.base.Splitter;
-
-import static com.google.common.base.CharMatcher.WHITESPACE;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TextPool
@@ -76,21 +73,22 @@ public class TextPool
     {
         String syntax = distributions.getGrammars().randomValue(random);
 
-        for (String token : Splitter.on(WHITESPACE).split(syntax)) {
-            switch (token) {
-                case "V":
+        final int maxLength = syntax.length();
+        for (int i = 0; i < maxLength; i += 2) {
+            switch (syntax.charAt(i)) {
+                case 'V':
                     generateVerbPhrase(distributions, builder, random);
                     break;
-                case "N":
+                case 'N':
                     generateNounPhrase(distributions, builder, random);
                     break;
-                case "P":
+                case 'P':
                     String preposition = distributions.getPrepositions().randomValue(random);
                     builder.append(preposition);
                     builder.append(" the ");
                     generateNounPhrase(distributions, builder, random);
                     break;
-                case "T":
+                case 'T':
                     // trim trailing space
                     // terminators should abut previous word
                     builder.setLength(builder.length() - 1);
@@ -98,7 +96,7 @@ public class TextPool
                     builder.append(terminator);
                     break;
                 default:
-                    throw new IllegalArgumentException("Unknown token '" + token + "'");
+                    throw new IllegalArgumentException("Unknown token '" + syntax.charAt(i) + "'");
             }
             if (builder.charAt(builder.length() - 1) != ' ') {
                 builder.append(' ');
@@ -109,40 +107,39 @@ public class TextPool
     private static void generateVerbPhrase(Distributions distributions, StringBuilder builder, RandomInt random)
     {
         String syntax = distributions.getVerbPhrase().randomValue(random);
-        for (String token : Splitter.on(' ').split(syntax)) {
+        final int maxLength = syntax.length();
+        for (int i = 0; i < maxLength; i += 2) {
             Distribution source;
-            switch (token) {
-                case "D":
+            switch (syntax.charAt(i)) {
+                case 'D':
                     source = distributions.getAdverbs();
                     break;
-                case "V":
+                case 'V':
                     source = distributions.getVerbs();
                     break;
-                case "X":
+                case 'X':
                     source = distributions.getAuxiliaries();
                     break;
                 default:
-                    throw new IllegalArgumentException("Unknown token '" + token + "'");
+                    throw new IllegalArgumentException("Unknown token '" + syntax.charAt(i) + "'");
             }
 
             // pick a random word
             String word = source.randomValue(random);
             builder.append(word);
 
-            // string may end with a comma or such
-            builder.append(token.substring(1));
-
             // add a space
-            builder.append(" ");
+            builder.append(' ');
         }
     }
 
     private static void generateNounPhrase(Distributions distributions, StringBuilder builder, RandomInt random)
     {
         String syntax = distributions.getNounPhrase().randomValue(random);
-        for (String token : Splitter.on(' ').split(syntax)) {
+        final int maxLength = syntax.length();
+        for (int i = 0; i < maxLength; i++) {
             Distribution source;
-            switch (token.charAt(0)) {
+            switch (syntax.charAt(i)) {
                 case 'A':
                     source = distributions.getArticles();
                     break;
@@ -155,18 +152,20 @@ public class TextPool
                 case 'N':
                     source = distributions.getNouns();
                     break;
+                case ',':
+                    builder.setLength(builder.length() - 1);
+                    builder.append(", ");
+                case ' ':
+                    continue;
                 default:
-                    throw new IllegalArgumentException("Unknown token '" + token + "'");
+                    throw new IllegalArgumentException("Unknown token '" + syntax.charAt(i) + "'");
             }
             // pick a random word
             String word = source.randomValue(random);
             builder.append(word);
 
-            // string may end with a comma or such
-            builder.append(token.substring(1));
-
             // add a space
-            builder.append(" ");
+            builder.append(' ');
         }
     }
 
