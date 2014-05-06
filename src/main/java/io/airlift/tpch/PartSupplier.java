@@ -20,19 +20,27 @@ import static java.util.Locale.ENGLISH;
 public class PartSupplier
         implements TpchEntity
 {
+    private final long rowNumber;
     private final long partKey;
     private final long supplierKey;
     private final long availableQuantity;
     private final long supplyCost;
     private final String comment;
 
-    public PartSupplier(long partKey, long supplierKey, long availableQuantity, long supplyCost, String comment)
+    public PartSupplier(long rowNumber, long partKey, long supplierKey, long availableQuantity, long supplyCost, String comment)
     {
+        this.rowNumber = rowNumber;
         this.partKey = partKey;
         this.supplierKey = supplierKey;
         this.availableQuantity = availableQuantity;
         this.supplyCost = supplyCost;
         this.comment = checkNotNull(comment, "comment is null");
+    }
+
+    @Override
+    public long getRowNumber()
+    {
+        return rowNumber;
     }
 
     public long getPartKey()
@@ -60,6 +68,7 @@ public class PartSupplier
         return comment;
     }
 
+    @Override
     public String toLine()
     {
         return String.format(ENGLISH,

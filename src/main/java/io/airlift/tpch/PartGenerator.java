@@ -141,6 +141,7 @@ public class PartGenerator
             int brand = manufacturer * 10 + brandRandom.nextValue();
 
             return new Part(partKey,
+                    partKey,
                     name,
                     String.format(ENGLISH, "Manufacturer#%d", manufacturer),
                     String.format(ENGLISH, "Brand#%d", brand),

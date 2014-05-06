@@ -127,6 +127,7 @@ public class CustomerGenerator
             long nationKey = nationKeyRandom.nextValue();
 
             return new Customer(customerKey,
+                    customerKey,
                     String.format(ENGLISH, "Customer#%09d", customerKey),
                     addressRandom.nextValue(),
                     nationKey,

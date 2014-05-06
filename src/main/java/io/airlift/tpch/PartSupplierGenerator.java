@@ -124,6 +124,7 @@ public class PartSupplierGenerator
         private PartSupplier makePartSupplier(long partKey)
         {
             return new PartSupplier(partKey,
+                    partKey,
                     selectPartSupplier(partKey, partSupplierNumber, scaleFactor),
                     availableQuantityRandom.nextValue(),
                     supplyCostRandom.nextValue(),

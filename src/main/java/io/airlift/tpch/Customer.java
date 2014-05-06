@@ -20,6 +20,7 @@ import static java.util.Locale.ENGLISH;
 public class Customer
         implements TpchEntity
 {
+    private final long rowNumber;
     private final long customerKey;
     private final String name;
     private final String address;
@@ -29,8 +30,9 @@ public class Customer
     private final String marketSegment;
     private final String comment;
 
-    public Customer(long customerKey, String name, String address, long nationKey, String phone, long accountBalance, String marketSegment, String comment)
+    public Customer(long rowNumber, long customerKey, String name, String address, long nationKey, String phone, long accountBalance, String marketSegment, String comment)
     {
+        this.rowNumber = rowNumber;
         this.customerKey = customerKey;
         this.name = checkNotNull(name, "name is null");
         this.address = checkNotNull(address, "address is null");
@@ -39,6 +41,12 @@ public class Customer
         this.accountBalance = accountBalance;
         this.marketSegment = checkNotNull(marketSegment, "marketSegment is null");
         this.comment = checkNotNull(comment, "comment is null");
+    }
+
+    @Override
+    public long getRowNumber()
+    {
+        return rowNumber;
     }
 
     public long getCustomerKey()

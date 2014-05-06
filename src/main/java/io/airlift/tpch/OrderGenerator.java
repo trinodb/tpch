@@ -220,6 +220,7 @@ public class OrderGenerator
             }
 
             return new Order(
+                    index,
                     orderKey,
                     customerKey,
                     orderStatus,

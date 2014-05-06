@@ -20,6 +20,7 @@ import static java.util.Locale.ENGLISH;
 public class LineItem
         implements TpchEntity
 {
+    private final long rowNumber;
     private final long orderKey;
     private final long partKey;
     private final long supplierKey;
@@ -37,7 +38,8 @@ public class LineItem
     private final String shipMode;
     private final String comment;
 
-    public LineItem(long orderKey,
+    public LineItem(long rowNumber,
+            long orderKey,
             long partKey,
             long supplierKey,
             long lineNumber,
@@ -54,6 +56,7 @@ public class LineItem
             String shipMode,
             String comment)
     {
+        this.rowNumber = rowNumber;
         this.orderKey = orderKey;
         this.partKey = partKey;
         this.supplierKey = supplierKey;
@@ -70,6 +73,12 @@ public class LineItem
         this.shipInstructions = checkNotNull(shipInstructions, "shipInstructions is null");
         this.shipMode = checkNotNull(shipMode, "shipMode is null");
         this.comment = checkNotNull(comment, "comment is null");
+    }
+
+    @Override
+    public long getRowNumber()
+    {
+        return rowNumber;
     }
 
     public long getOrderKey()
@@ -152,6 +161,7 @@ public class LineItem
         return comment;
     }
 
+    @Override
     public String toLine()
     {
         return String.format(ENGLISH,
