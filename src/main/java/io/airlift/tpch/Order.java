@@ -20,6 +20,7 @@ import static java.util.Locale.ENGLISH;
 public class Order
         implements TpchEntity
 {
+    private final long rowNumber;
     private final long orderKey;
     private final long customerKey;
     private final char orderStatus;
@@ -30,7 +31,8 @@ public class Order
     private final long shipPriority;
     private final String comment;
 
-    public Order(long orderKey,
+    public Order(long rowNumber,
+            long orderKey,
             long customerKey,
             char orderStatus,
             long totalPrice,
@@ -40,6 +42,7 @@ public class Order
             long shipPriority,
             String comment)
     {
+        this.rowNumber = rowNumber;
         this.orderKey = orderKey;
         this.customerKey = customerKey;
         this.orderStatus = orderStatus;
@@ -49,6 +52,12 @@ public class Order
         this.clerk = checkNotNull(clerk, "clerk is null");
         this.shipPriority = shipPriority;
         this.comment = checkNotNull(comment, "comment is null");
+    }
+
+    @Override
+    public long getRowNumber()
+    {
+        return rowNumber;
     }
 
     public long getOrderKey()
@@ -96,6 +105,7 @@ public class Order
         return comment;
     }
 
+    @Override
     public String toLine()
     {
         return String.format(ENGLISH,

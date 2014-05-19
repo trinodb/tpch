@@ -66,6 +66,7 @@ public class RegionGenerator
             }
 
             Region region = new Region(index,
+                    index,
                     regions.getValue(index),
                     commentRandom.nextValue());
 

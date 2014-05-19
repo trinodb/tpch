@@ -66,6 +66,7 @@ public class NationGenerator
             }
 
             Nation nation = new Nation(index,
+                    index,
                     nations.getValue(index),
                     nations.getWeight(index),
                     commentRandom.nextValue());

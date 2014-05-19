@@ -20,6 +20,7 @@ import static java.util.Locale.ENGLISH;
 public class Part
         implements TpchEntity
 {
+    private final long rowNumber;
     private final long partKey;
     private final String name;
     private final String manufacturer;
@@ -30,7 +31,8 @@ public class Part
     private final long retailPrice;
     private final String comment;
 
-    public Part(long partKey,
+    public Part(long rowNumber,
+            long partKey,
             String name,
             String manufacturer,
             String brand,
@@ -40,6 +42,7 @@ public class Part
             long retailPrice,
             String comment)
     {
+        this.rowNumber = rowNumber;
         this.partKey = partKey;
         this.name = checkNotNull(name, "name is null");
         this.manufacturer = checkNotNull(manufacturer, "manufacturer is null");
@@ -49,6 +52,12 @@ public class Part
         this.container = checkNotNull(container, "container is null");
         this.retailPrice = retailPrice;
         this.comment = checkNotNull(comment, "comment is null");
+    }
+
+    @Override
+    public long getRowNumber()
+    {
+        return rowNumber;
     }
 
     public long getPartKey()
@@ -96,6 +105,7 @@ public class Part
         return comment;
     }
 
+    @Override
     public String toLine()
     {
         return String.format(ENGLISH,

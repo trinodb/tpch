@@ -15,5 +15,7 @@ package io.airlift.tpch;
 
 public interface TpchEntity
 {
+    long getRowNumber();
+
     String toLine();
 }

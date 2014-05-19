@@ -248,7 +248,8 @@ public class LineItemGenerator
             String shipMode = shipModeRandom.nextValue();
             String comment = commentRandom.nextValue();
 
-            return new LineItem(orderKey,
+            return new LineItem(orderIndex,
+                    orderKey,
                     partKey,
                     supplierKey,
                     lineNumber + 1,

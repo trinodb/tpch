@@ -20,16 +20,18 @@ import static java.util.Locale.ENGLISH;
 public class Supplier
         implements TpchEntity
 {
-    public long supplierKey;
-    public String name;
-    public String address;
-    public long nationKey;
-    public String phone;
-    public long accountBalance;
-    public String comment;
+    private final long rowNumber;
+    private final long supplierKey;
+    private final String name;
+    private final String address;
+    private final long nationKey;
+    private final String phone;
+    private final long accountBalance;
+    private final String comment;
 
-    public Supplier(long supplierKey, String name, String address, long nationKey, String phone, long accountBalance, String comment)
+    public Supplier(long rowNumber, long supplierKey, String name, String address, long nationKey, String phone, long accountBalance, String comment)
     {
+        this.rowNumber = rowNumber;
         this.supplierKey = supplierKey;
         this.name = checkNotNull(name, "name is null");
         this.address = checkNotNull(address, "address is null");
@@ -37,6 +39,12 @@ public class Supplier
         this.phone = checkNotNull(phone, "phone is null");
         this.accountBalance = accountBalance;
         this.comment = checkNotNull(comment, "comment is null");
+    }
+
+    @Override
+    public long getRowNumber()
+    {
+        return rowNumber;
     }
 
     public long getSupplierKey()
@@ -74,6 +82,7 @@ public class Supplier
         return comment;
     }
 
+    @Override
     public String toLine()
     {
         return String.format(ENGLISH,

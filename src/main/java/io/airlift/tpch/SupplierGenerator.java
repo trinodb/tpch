@@ -174,6 +174,7 @@ public class SupplierGenerator
             long nationKey = nationKeyRandom.nextValue();
 
             return new Supplier(supplierKey,
+                    supplierKey,
                     String.format(ENGLISH, "Supplier#%09d", supplierKey),
                     addressRandom.nextValue(),
                     nationKey,

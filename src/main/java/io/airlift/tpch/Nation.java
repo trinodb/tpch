@@ -19,17 +19,25 @@ import static java.util.Locale.ENGLISH;
 public class Nation
         implements TpchEntity
 {
+    private final long rowNumber;
     private final long nationKey;
     private final String name;
     private final long regionKey;
     private final String comment;
 
-    public Nation(long nationKey, String name, long regionKey, String comment)
+    public Nation(long rowNumber, long nationKey, String name, long regionKey, String comment)
     {
+        this.rowNumber = rowNumber;
         this.nationKey = nationKey;
         this.name = checkNotNull(name, "name is null");
         this.regionKey = regionKey;
         this.comment = checkNotNull(comment, "comment is null");
+    }
+
+    @Override
+    public long getRowNumber()
+    {
+        return rowNumber;
     }
 
     public long getNationKey()
@@ -52,6 +60,7 @@ public class Nation
         return comment;
     }
 
+    @Override
     public String toLine()
     {
         return String.format(ENGLISH, "%d|%s|%d|%s|", nationKey, name, regionKey, comment);
