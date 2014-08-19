@@ -28,6 +28,9 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
+            <!-- Require at least version 15.0, for Splitter.splitToList.
+                 Later versions OK too. -->
+            <version>15.0</version>
         </dependency>
 
         <!-- for testing -->
