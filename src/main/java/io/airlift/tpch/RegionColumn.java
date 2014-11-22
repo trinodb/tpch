@@ -79,4 +79,10 @@ public enum RegionColumn
     {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int getDate(Region entity)
+    {
+        throw new UnsupportedOperationException();
+    }
 }

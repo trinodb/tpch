@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static io.airlift.tpch.GenerateUtils.calculateRowCount;
 import static io.airlift.tpch.GenerateUtils.calculateStartIndex;
-import static io.airlift.tpch.GenerateUtils.toDateString;
+import static io.airlift.tpch.GenerateUtils.toEpochDate;
 import static io.airlift.tpch.OrderGenerator.LINE_COUNT_MAX;
 import static io.airlift.tpch.OrderGenerator.createLineCountRandom;
 import static io.airlift.tpch.OrderGenerator.createOrderDateRandom;
@@ -259,9 +259,9 @@ public class LineItemGenerator
                     tax,
                     returnedFlag,
                     status,
-                    toDateString(shipDate),
-                    toDateString(commitDate),
-                    toDateString(receiptDate),
+                    toEpochDate(shipDate),
+                    toEpochDate(commitDate),
+                    toEpochDate(receiptDate),
                     shipInstructions,
                     shipMode,
                     comment);

@@ -128,4 +128,10 @@ public enum PartColumn
     {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int getDate(Part entity)
+    {
+        throw new UnsupportedOperationException();
+    }
 }

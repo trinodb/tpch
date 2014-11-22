@@ -14,6 +14,7 @@
 package io.airlift.tpch;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static io.airlift.tpch.GenerateUtils.formatDate;
 import static io.airlift.tpch.GenerateUtils.formatMoney;
 import static java.util.Locale.ENGLISH;
 
@@ -25,7 +26,7 @@ public class Order
     private final long customerKey;
     private final char orderStatus;
     private final long totalPrice;
-    private final String orderDate;
+    private final int orderDate;
     private final String orderPriority;
     private final String clerk;
     private final long shipPriority;
@@ -36,7 +37,7 @@ public class Order
             long customerKey,
             char orderStatus,
             long totalPrice,
-            String orderDate,
+            int orderDate,
             String orderPriority,
             String clerk,
             long shipPriority,
@@ -47,7 +48,7 @@ public class Order
         this.customerKey = customerKey;
         this.orderStatus = orderStatus;
         this.totalPrice = totalPrice;
-        this.orderDate = checkNotNull(orderDate, "orderDate is null");
+        this.orderDate = orderDate;
         this.orderPriority = checkNotNull(orderPriority, "orderPriority is null");
         this.clerk = checkNotNull(clerk, "clerk is null");
         this.shipPriority = shipPriority;
@@ -80,7 +81,7 @@ public class Order
         return totalPrice / 100.0;
     }
 
-    public String getOrderDate()
+    public int getOrderDate()
     {
         return orderDate;
     }
@@ -114,7 +115,7 @@ public class Order
                 customerKey,
                 orderStatus,
                 formatMoney(totalPrice),
-                orderDate,
+                formatDate(orderDate),
                 orderPriority,
                 clerk,
                 shipPriority,

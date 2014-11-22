@@ -24,4 +24,6 @@ public interface TpchColumn<E extends TpchEntity>
     long getLong(E entity);
 
     String getString(E entity);
+
+    int getDate(E entity);
 }

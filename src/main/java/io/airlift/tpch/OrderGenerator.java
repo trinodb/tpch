@@ -19,11 +19,11 @@ import java.util.Iterator;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
-import static io.airlift.tpch.GenerateUtils.START_DATE;
+import static io.airlift.tpch.GenerateUtils.MIN_GENERATE_DATE;
 import static io.airlift.tpch.GenerateUtils.TOTAL_DATE_RANGE;
 import static io.airlift.tpch.GenerateUtils.calculateRowCount;
 import static io.airlift.tpch.GenerateUtils.calculateStartIndex;
-import static io.airlift.tpch.GenerateUtils.toDateString;
+import static io.airlift.tpch.GenerateUtils.toEpochDate;
 import static io.airlift.tpch.LineItemGenerator.ITEM_SHIP_DAYS;
 import static io.airlift.tpch.LineItemGenerator.createDiscountRandom;
 import static io.airlift.tpch.LineItemGenerator.createPartKeyRandom;
@@ -41,7 +41,7 @@ public class OrderGenerator
     // portion with have no orders
     public static final int CUSTOMER_MORTALITY = 3;
 
-    private static final int ORDER_DATE_MIN = START_DATE;
+    private static final int ORDER_DATE_MIN = MIN_GENERATE_DATE;
     private static final int ORDER_DATE_MAX = ORDER_DATE_MIN + (TOTAL_DATE_RANGE - ITEM_SHIP_DAYS - 1);
     private static final int CLERK_SCALE_BASE = 1000;
 
@@ -225,7 +225,7 @@ public class OrderGenerator
                     customerKey,
                     orderStatus,
                     totalPrice,
-                    toDateString(orderDate),
+                    toEpochDate(orderDate),
                     orderPriorityRandom.nextValue(),
                     String.format(ENGLISH, "Clerk#%09d", clerkRandom.nextValue()),
                     0,

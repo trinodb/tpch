@@ -118,4 +118,10 @@ public enum CustomerColumn
     {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int getDate(Customer entity)
+    {
+        throw new UnsupportedOperationException();
+    }
 }

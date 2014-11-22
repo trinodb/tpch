@@ -88,4 +88,10 @@ public enum NationColumn
     {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int getDate(Nation entity)
+    {
+        throw new UnsupportedOperationException();
+    }
 }

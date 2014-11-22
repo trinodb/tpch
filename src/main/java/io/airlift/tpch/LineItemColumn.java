@@ -13,6 +13,8 @@
  */
 package io.airlift.tpch;
 
+import static io.airlift.tpch.GenerateUtils.formatDate;
+
 public enum LineItemColumn
         implements TpchColumn<LineItem>
 {
@@ -103,27 +105,43 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_DATE("shipdate", String.class)
+    SHIP_DATE("shipdate", Integer.class)
             {
                 public String getString(LineItem lineItem)
+                {
+                    return formatDate(getDate(lineItem));
+                }
+
+                public int getDate(LineItem lineItem)
                 {
                     return lineItem.getShipDate();
                 }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    COMMIT_DATE("commitdate", String.class)
+    COMMIT_DATE("commitdate", Integer.class)
             {
                 public String getString(LineItem lineItem)
+                {
+                    return formatDate(getDate(lineItem));
+                }
+
+                public int getDate(LineItem lineItem)
                 {
                     return lineItem.getCommitDate();
                 }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RECEIPT_DATE("receiptdate", String.class)
+    RECEIPT_DATE("receiptdate", Integer.class)
             {
                 public String getString(LineItem lineItem)
+                {
+                    return formatDate(getDate(lineItem));
+                }
+
+                @Override
+                public int getDate(LineItem lineItem)
                 {
                     return lineItem.getReceiptDate();
                 }
@@ -191,6 +209,12 @@ public enum LineItemColumn
 
     @Override
     public String getString(LineItem lineItem)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getDate(LineItem entity)
     {
         throw new UnsupportedOperationException();
     }

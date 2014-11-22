@@ -15,6 +15,7 @@ package io.airlift.tpch;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static io.airlift.tpch.GenerateUtils.formatMoney;
+import static io.airlift.tpch.GenerateUtils.formatDate;
 import static java.util.Locale.ENGLISH;
 
 public class LineItem
@@ -31,9 +32,9 @@ public class LineItem
     private final long tax;
     private final String returnFlag;
     private final String status;
-    private final String shipDate;
-    private final String commitDate;
-    private final String receiptDate;
+    private final int shipDate;
+    private final int commitDate;
+    private final int receiptDate;
     private final String shipInstructions;
     private final String shipMode;
     private final String comment;
@@ -49,9 +50,9 @@ public class LineItem
             long tax,
             String returnFlag,
             String status,
-            String shipDate,
-            String commitDate,
-            String receiptDate,
+            int shipDate,
+            int commitDate,
+            int receiptDate,
             String shipInstructions,
             String shipMode,
             String comment)
@@ -67,9 +68,9 @@ public class LineItem
         this.tax = tax;
         this.returnFlag = checkNotNull(returnFlag, "returnFlag is null");
         this.status = checkNotNull(status, "status is null");
-        this.shipDate = checkNotNull(shipDate, "shipDate is null");
-        this.commitDate = checkNotNull(commitDate, "commitDate is null");
-        this.receiptDate = checkNotNull(receiptDate, "receiptDate is null");
+        this.shipDate = shipDate;
+        this.commitDate = commitDate;
+        this.receiptDate = receiptDate;
         this.shipInstructions = checkNotNull(shipInstructions, "shipInstructions is null");
         this.shipMode = checkNotNull(shipMode, "shipMode is null");
         this.comment = checkNotNull(comment, "comment is null");
@@ -131,17 +132,17 @@ public class LineItem
         return status;
     }
 
-    public String getShipDate()
+    public int getShipDate()
     {
         return shipDate;
     }
 
-    public String getCommitDate()
+    public int getCommitDate()
     {
         return commitDate;
     }
 
-    public String getReceiptDate()
+    public int getReceiptDate()
     {
         return receiptDate;
     }
@@ -176,9 +177,9 @@ public class LineItem
                 formatMoney(tax),
                 returnFlag,
                 status,
-                shipDate,
-                commitDate,
-                receiptDate,
+                formatDate(shipDate),
+                formatDate(commitDate),
+                formatDate(receiptDate),
                 shipInstructions,
                 shipMode,
                 comment);

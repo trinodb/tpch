@@ -99,4 +99,10 @@ public enum PartSupplierColumn
     {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int getDate(PartSupplier entity)
+    {
+        throw new UnsupportedOperationException();
+    }
 }

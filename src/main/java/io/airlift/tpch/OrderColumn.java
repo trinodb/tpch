@@ -13,6 +13,8 @@
  */
 package io.airlift.tpch;
 
+import static io.airlift.tpch.GenerateUtils.formatDate;
+
 public enum OrderColumn
         implements TpchColumn<Order>
 {
@@ -53,9 +55,15 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_DATE("orderdate", String.class)
+    ORDER_DATE("orderdate", Integer.class)
             {
+                @Override
                 public String getString(Order order)
+                {
+                    return formatDate(getDate(order));
+                }
+
+                public int getDate(Order order)
                 {
                     return order.getOrderDate();
                 }
@@ -130,6 +138,12 @@ public enum OrderColumn
 
     @Override
     public String getString(Order order)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getDate(Order entity)
     {
         throw new UnsupportedOperationException();
     }

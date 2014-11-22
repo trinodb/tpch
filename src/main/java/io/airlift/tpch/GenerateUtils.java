@@ -17,7 +17,6 @@ import com.google.common.collect.ImmutableList;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Locale;
 
 import static java.util.Locale.ENGLISH;
 
@@ -50,7 +49,12 @@ public final class GenerateUtils
     // Date Utils
     //
 
-    public static final int START_DATE = 92001;
+    /**
+     * The value of 1970-01-01 in the date generator system
+     */
+    public static final int GENERATED_DATE_EPOCH_OFFSET = 83966;
+
+    public static final int MIN_GENERATE_DATE = 92001;
     private static final int CURRENT_DATE = 95168;
     public static final int TOTAL_DATE_RANGE = 2557;
 
@@ -72,9 +76,14 @@ public final class GenerateUtils
 
     private static final List<String> DATE_STRING_INDEX = makeDateStringIndex();
 
-    public static String toDateString(int date)
+    public static int toEpochDate(int generatedDate)
     {
-        return DATE_STRING_INDEX.get(date - START_DATE);
+        return generatedDate - GENERATED_DATE_EPOCH_OFFSET;
+    }
+
+    public static String formatDate(int epochDate)
+    {
+        return DATE_STRING_INDEX.get(epochDate - (MIN_GENERATE_DATE - GENERATED_DATE_EPOCH_OFFSET));
     }
 
     private static List<String> makeDateStringIndex()
@@ -89,8 +98,8 @@ public final class GenerateUtils
 
     private static String makeDate(int index)
     {
-        int y = julian(index + START_DATE - 1) / 1000;
-        int d = julian(index + START_DATE - 1) % 1000;
+        int y = julian(index + MIN_GENERATE_DATE - 1) / 1000;
+        int d = julian(index + MIN_GENERATE_DATE - 1) % 1000;
 
         int m = 0;
         while (d > MONTH_YEAR_DAY_START[m] + leapYearAdjustment(y, m)) {
@@ -108,13 +117,13 @@ public final class GenerateUtils
 
     public static boolean isInPast(int date)
     {
-        return GenerateUtils.julian(date) <= CURRENT_DATE;
+        return julian(date) <= CURRENT_DATE;
     }
 
     private static int julian(int date)
     {
-        int offset = date - START_DATE;
-        int result = START_DATE;
+        int offset = date - MIN_GENERATE_DATE;
+        int result = MIN_GENERATE_DATE;
 
         while (true) {
             int year = result / 1000;

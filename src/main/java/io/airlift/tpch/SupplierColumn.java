@@ -113,4 +113,10 @@ public enum SupplierColumn
     {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int getDate(Supplier entity)
+    {
+        throw new UnsupportedOperationException();
+    }
 }
