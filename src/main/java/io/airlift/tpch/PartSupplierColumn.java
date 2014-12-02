@@ -13,11 +13,15 @@
  */
 package io.airlift.tpch;
 
+import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.VARCHAR;
+
 public enum PartSupplierColumn
         implements TpchColumn<PartSupplier>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", Long.class)
+    PART_KEY("partkey", BIGINT)
             {
                 public long getLong(PartSupplier partSupplier)
                 {
@@ -26,7 +30,7 @@ public enum PartSupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", Long.class)
+    SUPPLIER_KEY("suppkey", BIGINT)
             {
                 public long getLong(PartSupplier partSupplier)
                 {
@@ -35,7 +39,7 @@ public enum PartSupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    AVAILABLE_QUANTITY("availqty", Long.class)
+    AVAILABLE_QUANTITY("availqty", BIGINT)
             {
                 public long getLong(PartSupplier partSupplier)
                 {
@@ -44,7 +48,7 @@ public enum PartSupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLY_COST("supplycost", Double.class)
+    SUPPLY_COST("supplycost", DOUBLE)
             {
                 public double getDouble(PartSupplier partSupplier)
                 {
@@ -52,7 +56,7 @@ public enum PartSupplierColumn
                 }
             },
 
-    COMMENT("comment", String.class)
+    COMMENT("comment", VARCHAR)
             {
                 public String getString(PartSupplier partSupplier)
                 {
@@ -62,9 +66,9 @@ public enum PartSupplierColumn
 
 
     private final String columnName;
-    private final Class<?> type;
+    private final TpchColumnType type;
 
-    PartSupplierColumn(String columnName, Class<?> type)
+    PartSupplierColumn(String columnName, TpchColumnType type)
     {
         this.columnName = columnName;
         this.type = type;
@@ -77,7 +81,7 @@ public enum PartSupplierColumn
     }
 
     @Override
-    public Class<?> getType()
+    public TpchColumnType getType()
     {
         return type;
     }

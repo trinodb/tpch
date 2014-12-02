@@ -13,11 +13,14 @@
  */
 package io.airlift.tpch;
 
+import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.VARCHAR;
+
 public enum RegionColumn
         implements TpchColumn<Region>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    REGION_KEY("regionkey", Long.class)
+    REGION_KEY("regionkey", BIGINT)
             {
                 public long getLong(Region region)
                 {
@@ -25,7 +28,7 @@ public enum RegionColumn
                 }
             },
 
-    NAME("name", String.class)
+    NAME("name", VARCHAR)
             {
                 public String getString(Region region)
                 {
@@ -33,7 +36,7 @@ public enum RegionColumn
                 }
             },
 
-    COMMENT("comment", String.class)
+    COMMENT("comment", VARCHAR)
             {
                 public String getString(Region region)
                 {
@@ -42,9 +45,9 @@ public enum RegionColumn
             };
 
     private final String columnName;
-    private final Class<?> type;
+    private final TpchColumnType type;
 
-    RegionColumn(String columnName, Class<?> type)
+    RegionColumn(String columnName, TpchColumnType type)
     {
         this.columnName = columnName;
         this.type = type;
@@ -57,7 +60,7 @@ public enum RegionColumn
     }
 
     @Override
-    public Class<?> getType()
+    public TpchColumnType getType()
     {
         return type;
     }

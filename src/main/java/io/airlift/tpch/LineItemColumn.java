@@ -14,12 +14,16 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.GenerateUtils.formatDate;
+import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.DATE;
+import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
 public enum LineItemColumn
         implements TpchColumn<LineItem>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_KEY("orderkey", Long.class)
+    ORDER_KEY("orderkey", BIGINT)
             {
                 public long getLong(LineItem lineItem)
                 {
@@ -28,7 +32,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", Long.class)
+    PART_KEY("partkey", BIGINT)
             {
                 public long getLong(LineItem lineItem)
                 {
@@ -37,7 +41,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", Long.class)
+    SUPPLIER_KEY("suppkey", BIGINT)
             {
                 public long getLong(LineItem lineItem)
                 {
@@ -46,7 +50,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    LINE_NUMBER("linenumber", Long.class)
+    LINE_NUMBER("linenumber", BIGINT)
             {
                 public long getLong(LineItem lineItem)
                 {
@@ -54,7 +58,7 @@ public enum LineItemColumn
                 }
             },
 
-    QUANTITY("quantity", Long.class)
+    QUANTITY("quantity", BIGINT)
             {
                 public long getLong(LineItem lineItem)
                 {
@@ -63,7 +67,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    EXTENDED_PRICE("extendedprice", Double.class)
+    EXTENDED_PRICE("extendedprice", DOUBLE)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -71,7 +75,7 @@ public enum LineItemColumn
                 }
             },
 
-    DISCOUNT("discount", Double.class)
+    DISCOUNT("discount", DOUBLE)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -79,7 +83,7 @@ public enum LineItemColumn
                 }
             },
 
-    TAX("tax", Double.class)
+    TAX("tax", DOUBLE)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -88,7 +92,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RETURN_FLAG("returnflag", String.class)
+    RETURN_FLAG("returnflag", VARCHAR)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -96,7 +100,7 @@ public enum LineItemColumn
                 }
             },
 
-    STATUS("linestatus", String.class)
+    STATUS("linestatus", VARCHAR)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -105,7 +109,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_DATE("shipdate", Integer.class)
+    SHIP_DATE("shipdate", DATE)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -119,7 +123,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    COMMIT_DATE("commitdate", Integer.class)
+    COMMIT_DATE("commitdate", DATE)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -133,7 +137,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RECEIPT_DATE("receiptdate", Integer.class)
+    RECEIPT_DATE("receiptdate", DATE)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -148,7 +152,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_INSTRUCTIONS("shipinstruct", String.class)
+    SHIP_INSTRUCTIONS("shipinstruct", VARCHAR)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -157,7 +161,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_MODE("shipmode", String.class)
+    SHIP_MODE("shipmode", VARCHAR)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -165,7 +169,7 @@ public enum LineItemColumn
                 }
             },
 
-    COMMENT("comment", String.class)
+    COMMENT("comment", VARCHAR)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -175,9 +179,9 @@ public enum LineItemColumn
 
 
     private final String columnName;
-    private final Class<?> type;
+    private final TpchColumnType type;
 
-    LineItemColumn(String columnName, Class<?> type)
+    LineItemColumn(String columnName, TpchColumnType type)
     {
         this.columnName = columnName;
         this.type = type;
@@ -190,7 +194,7 @@ public enum LineItemColumn
     }
 
     @Override
-    public Class<?> getType()
+    public TpchColumnType getType()
     {
         return type;
     }

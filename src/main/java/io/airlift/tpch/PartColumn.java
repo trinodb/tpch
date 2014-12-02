@@ -13,11 +13,15 @@
  */
 package io.airlift.tpch;
 
+import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.VARCHAR;
+
 public enum PartColumn
         implements TpchColumn<Part>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", Long.class)
+    PART_KEY("partkey", BIGINT)
             {
                 public long getLong(Part part)
                 {
@@ -25,7 +29,7 @@ public enum PartColumn
                 }
             },
 
-    NAME("name", String.class)
+    NAME("name", VARCHAR)
             {
                 public String getString(Part part)
                 {
@@ -33,7 +37,7 @@ public enum PartColumn
                 }
             },
 
-    MANUFACTURER("mfgr", String.class)
+    MANUFACTURER("mfgr", VARCHAR)
             {
                 public String getString(Part part)
                 {
@@ -41,7 +45,7 @@ public enum PartColumn
                 }
             },
 
-    BRAND("brand", String.class)
+    BRAND("brand", VARCHAR)
             {
                 public String getString(Part part)
                 {
@@ -49,7 +53,7 @@ public enum PartColumn
                 }
             },
 
-    TYPE("type", String.class)
+    TYPE("type", VARCHAR)
             {
                 public String getString(Part part)
                 {
@@ -57,7 +61,7 @@ public enum PartColumn
                 }
             },
 
-    SIZE("size", Long.class)
+    SIZE("size", BIGINT)
             {
                 public long getLong(Part part)
                 {
@@ -65,7 +69,7 @@ public enum PartColumn
                 }
             },
 
-    CONTAINER("container", String.class)
+    CONTAINER("container", VARCHAR)
             {
                 public String getString(Part part)
                 {
@@ -74,7 +78,7 @@ public enum PartColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RETAIL_PRICE("retailprice", Double.class)
+    RETAIL_PRICE("retailprice", DOUBLE)
             {
                 public double getDouble(Part part)
                 {
@@ -82,7 +86,7 @@ public enum PartColumn
                 }
             },
 
-    COMMENT("comment", String.class)
+    COMMENT("comment", VARCHAR)
             {
                 public String getString(Part part)
                 {
@@ -91,9 +95,9 @@ public enum PartColumn
             };
 
     private final String columnName;
-    private final Class<?> type;
+    private final TpchColumnType type;
 
-    PartColumn(String columnName, Class<?> type)
+    PartColumn(String columnName, TpchColumnType type)
     {
         this.columnName = columnName;
         this.type = type;
@@ -106,7 +110,7 @@ public enum PartColumn
     }
 
     @Override
-    public Class<?> getType()
+    public TpchColumnType getType()
     {
         return type;
     }

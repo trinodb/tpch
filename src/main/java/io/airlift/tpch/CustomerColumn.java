@@ -13,10 +13,14 @@
  */
 package io.airlift.tpch;
 
+import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.VARCHAR;
+
 public enum CustomerColumn
         implements TpchColumn<Customer>
 {
-    CUSTOMER_KEY("custkey", Long.class)
+    CUSTOMER_KEY("custkey", BIGINT)
             {
                 public long getLong(Customer customer)
                 {
@@ -24,7 +28,7 @@ public enum CustomerColumn
                 }
             },
 
-    NAME("name", String.class)
+    NAME("name", VARCHAR)
             {
                 public String getString(Customer customer)
                 {
@@ -32,7 +36,7 @@ public enum CustomerColumn
                 }
             },
 
-    ADDRESS("address", String.class)
+    ADDRESS("address", VARCHAR)
             {
                 public String getString(Customer customer)
                 {
@@ -40,7 +44,7 @@ public enum CustomerColumn
                 }
             },
 
-    NATION_KEY("nationkey", Long.class)
+    NATION_KEY("nationkey", BIGINT)
             {
                 public long getLong(Customer customer)
                 {
@@ -48,7 +52,7 @@ public enum CustomerColumn
                 }
             },
 
-    PHONE("phone", String.class)
+    PHONE("phone", VARCHAR)
             {
                 public String getString(Customer customer)
                 {
@@ -56,7 +60,7 @@ public enum CustomerColumn
                 }
             },
 
-    ACCOUNT_BALANCE("acctbal", Double.class)
+    ACCOUNT_BALANCE("acctbal", DOUBLE)
             {
                 public double getDouble(Customer customer)
                 {
@@ -64,7 +68,7 @@ public enum CustomerColumn
                 }
             },
 
-    MARKET_SEGMENT("mktsegment", String.class)
+    MARKET_SEGMENT("mktsegment", VARCHAR)
             {
                 public String getString(Customer customer)
                 {
@@ -72,7 +76,7 @@ public enum CustomerColumn
                 }
             },
 
-    COMMENT("comment", String.class)
+    COMMENT("comment", VARCHAR)
             {
                 public String getString(Customer customer)
                 {
@@ -81,9 +85,9 @@ public enum CustomerColumn
             };
 
     private final String columnName;
-    private final Class<?> type;
+    private final TpchColumnType type;
 
-    CustomerColumn(String columnName, Class<?> type)
+    CustomerColumn(String columnName, TpchColumnType type)
     {
         this.columnName = columnName;
         this.type = type;
@@ -96,7 +100,7 @@ public enum CustomerColumn
     }
 
     @Override
-    public Class<?> getType()
+    public TpchColumnType getType()
     {
         return type;
     }

@@ -14,12 +14,16 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.GenerateUtils.formatDate;
+import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.DATE;
+import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
 public enum OrderColumn
         implements TpchColumn<Order>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_KEY("orderkey", Long.class)
+    ORDER_KEY("orderkey", BIGINT)
             {
                 public long getLong(Order order)
                 {
@@ -28,7 +32,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    CUSTOMER_KEY("custkey", Long.class)
+    CUSTOMER_KEY("custkey", BIGINT)
             {
                 public long getLong(Order order)
                 {
@@ -37,7 +41,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_STATUS("orderstatus", String.class)
+    ORDER_STATUS("orderstatus", VARCHAR)
             {
                 public String getString(Order order)
                 {
@@ -46,7 +50,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    TOTAL_PRICE("totalprice", Double.class)
+    TOTAL_PRICE("totalprice", DOUBLE)
             {
                 public double getDouble(Order order)
                 {
@@ -55,7 +59,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_DATE("orderdate", Integer.class)
+    ORDER_DATE("orderdate", DATE)
             {
                 @Override
                 public String getString(Order order)
@@ -70,7 +74,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_PRIORITY("orderpriority", String.class)
+    ORDER_PRIORITY("orderpriority", VARCHAR)
             {
                 public String getString(Order order)
                 {
@@ -78,7 +82,7 @@ public enum OrderColumn
                 }
             },
 
-    CLERK("clerk", String.class)
+    CLERK("clerk", VARCHAR)
             {
                 public String getString(Order order)
                 {
@@ -87,7 +91,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_PRIORITY("shippriority", Long.class)
+    SHIP_PRIORITY("shippriority", BIGINT)
             {
                 public long getLong(Order order)
                 {
@@ -95,7 +99,7 @@ public enum OrderColumn
                 }
             },
 
-    COMMENT("comment", String.class)
+    COMMENT("comment", VARCHAR)
             {
                 public String getString(Order order)
                 {
@@ -104,9 +108,9 @@ public enum OrderColumn
             };
 
     private final String columnName;
-    private final Class<?> type;
+    private final TpchColumnType type;
 
-    OrderColumn(String columnName, Class<?> type)
+    OrderColumn(String columnName, TpchColumnType type)
     {
         this.columnName = columnName;
         this.type = type;
@@ -119,7 +123,7 @@ public enum OrderColumn
     }
 
     @Override
-    public Class<?> getType()
+    public TpchColumnType getType()
     {
         return type;
     }

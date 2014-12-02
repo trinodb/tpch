@@ -13,11 +13,15 @@
  */
 package io.airlift.tpch;
 
+import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.VARCHAR;
+
 public enum SupplierColumn
         implements TpchColumn<Supplier>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", Long.class)
+    SUPPLIER_KEY("suppkey", BIGINT)
             {
                 public long getLong(Supplier supplier)
                 {
@@ -25,7 +29,7 @@ public enum SupplierColumn
                 }
             },
 
-    NAME("name", String.class)
+    NAME("name", VARCHAR)
             {
                 public String getString(Supplier supplier)
                 {
@@ -33,7 +37,7 @@ public enum SupplierColumn
                 }
             },
 
-    ADDRESS("address", String.class)
+    ADDRESS("address", VARCHAR)
             {
                 public String getString(Supplier supplier)
                 {
@@ -42,7 +46,7 @@ public enum SupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    NATION_KEY("nationkey", Long.class)
+    NATION_KEY("nationkey", BIGINT)
             {
                 public long getLong(Supplier supplier)
                 {
@@ -50,7 +54,7 @@ public enum SupplierColumn
                 }
             },
 
-    PHONE("phone", String.class)
+    PHONE("phone", VARCHAR)
             {
                 public String getString(Supplier supplier)
                 {
@@ -59,7 +63,7 @@ public enum SupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ACCOUNT_BALANCE("acctbal", Double.class)
+    ACCOUNT_BALANCE("acctbal", DOUBLE)
             {
                 public double getDouble(Supplier supplier)
                 {
@@ -67,7 +71,7 @@ public enum SupplierColumn
                 }
             },
 
-    COMMENT("comment", String.class)
+    COMMENT("comment", VARCHAR)
             {
                 public String getString(Supplier supplier)
                 {
@@ -76,9 +80,9 @@ public enum SupplierColumn
             };
 
     private final String columnName;
-    private final Class<?> type;
+    private final TpchColumnType type;
 
-    SupplierColumn(String columnName, Class<?> type)
+    SupplierColumn(String columnName, TpchColumnType type)
     {
         this.columnName = columnName;
         this.type = type;
@@ -91,7 +95,7 @@ public enum SupplierColumn
     }
 
     @Override
-    public Class<?> getType()
+    public TpchColumnType getType()
     {
         return type;
     }

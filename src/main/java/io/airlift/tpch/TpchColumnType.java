@@ -13,17 +13,7 @@
  */
 package io.airlift.tpch;
 
-public interface TpchColumn<E extends TpchEntity>
+public enum TpchColumnType
 {
-    String getColumnName();
-
-    TpchColumnType getType();
-
-    double getDouble(E entity);
-
-    long getLong(E entity);
-
-    String getString(E entity);
-
-    int getDate(E entity);
+    BIGINT, DATE, DOUBLE, VARCHAR
 }
