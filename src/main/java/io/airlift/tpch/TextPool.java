@@ -71,7 +71,7 @@ public class TextPool
 
     public String getText(int begin, int end)
     {
-        if (end >= textPoolSize) {
+        if (end > textPoolSize) {
             throw new IndexOutOfBoundsException(format("Index %d is beyond end of text pool (size = %d)", end, textPoolSize));
         }
         return new String(textPool, begin, end - begin, US_ASCII);
