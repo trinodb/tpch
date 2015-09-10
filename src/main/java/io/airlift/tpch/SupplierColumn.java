@@ -69,6 +69,11 @@ public enum SupplierColumn
                 {
                     return supplier.getAccountBalance();
                 }
+
+                public long getLong(Supplier supplier)
+                {
+                    return supplier.getAccountBalanceInCents();
+                }
             },
 
     COMMENT("comment", VARCHAR)

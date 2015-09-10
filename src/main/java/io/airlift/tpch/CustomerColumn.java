@@ -66,6 +66,11 @@ public enum CustomerColumn
                 {
                     return customer.getAccountBalance();
                 }
+
+                public long getLong(Customer customer)
+                {
+                    return customer.getAccountBalanceInCents();
+                }
             },
 
     MARKET_SEGMENT("mktsegment", VARCHAR)

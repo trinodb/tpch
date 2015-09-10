@@ -81,6 +81,11 @@ public class Order
         return totalPrice / 100.0;
     }
 
+    public long getTotalPriceInCents()
+    {
+        return totalPrice;
+    }
+
     public int getOrderDate()
     {
         return orderDate;

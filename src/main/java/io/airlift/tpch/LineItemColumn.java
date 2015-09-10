@@ -73,6 +73,11 @@ public enum LineItemColumn
                 {
                     return lineItem.getExtendedPrice();
                 }
+
+                public long getLong(LineItem lingItem)
+                {
+                    return lingItem.getExtendedPriceInCents();
+                }
             },
 
     DISCOUNT("discount", DOUBLE)
@@ -81,6 +86,11 @@ public enum LineItemColumn
                 {
                     return lineItem.getDiscount();
                 }
+
+                public long getLong(LineItem lineItem)
+                {
+                    return lineItem.getDiscountPercent();
+                }
             },
 
     TAX("tax", DOUBLE)
@@ -88,6 +98,11 @@ public enum LineItemColumn
                 public double getDouble(LineItem lineItem)
                 {
                     return lineItem.getTax();
+                }
+
+                public long getLong(LineItem lineItem)
+                {
+                    return lineItem.getTaxPercent();
                 }
             },
 

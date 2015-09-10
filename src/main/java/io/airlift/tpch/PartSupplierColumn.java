@@ -54,6 +54,11 @@ public enum PartSupplierColumn
                 {
                     return partSupplier.getSupplyCost();
                 }
+
+                public long getLong(PartSupplier partSupplier)
+                {
+                    return partSupplier.getSupplyCostInCents();
+                }
             },
 
     COMMENT("comment", VARCHAR)

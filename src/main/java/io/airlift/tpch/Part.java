@@ -100,6 +100,11 @@ public class Part
         return retailPrice / 100.0;
     }
 
+    public long getRetailPriceInCents()
+    {
+        return retailPrice;
+    }
+
     public String getComment()
     {
         return comment;

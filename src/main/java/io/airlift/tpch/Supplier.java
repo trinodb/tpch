@@ -77,6 +77,11 @@ public class Supplier
         return accountBalance / 100.0;
     }
 
+    public long getAccountBalanceInCents()
+    {
+        return accountBalance;
+    }
+
     public String getComment()
     {
         return comment;

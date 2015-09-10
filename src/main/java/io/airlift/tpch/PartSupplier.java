@@ -63,6 +63,11 @@ public class PartSupplier
         return supplyCost / 100.0;
     }
 
+    public long getSupplyCostInCents()
+    {
+        return supplyCost;
+    }
+
     public String getComment()
     {
         return comment;

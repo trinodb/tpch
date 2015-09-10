@@ -84,6 +84,11 @@ public enum PartColumn
                 {
                     return part.getRetailPrice();
                 }
+
+                public long getLong(Part part)
+                {
+                    return part.getRetailPriceInCents();
+                }
             },
 
     COMMENT("comment", VARCHAR)

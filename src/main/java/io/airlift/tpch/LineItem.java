@@ -14,8 +14,8 @@
 package io.airlift.tpch;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static io.airlift.tpch.GenerateUtils.formatMoney;
 import static io.airlift.tpch.GenerateUtils.formatDate;
+import static io.airlift.tpch.GenerateUtils.formatMoney;
 import static java.util.Locale.ENGLISH;
 
 public class LineItem
@@ -112,14 +112,29 @@ public class LineItem
         return extendedPrice / 100.0;
     }
 
+    public long getExtendedPriceInCents()
+    {
+        return extendedPrice;
+    }
+
     public double getDiscount()
     {
         return discount / 100.0;
     }
 
+    public long getDiscountPercent()
+    {
+        return discount;
+    }
+
     public double getTax()
     {
         return tax / 100.0;
+    }
+
+    public long getTaxPercent()
+    {
+        return tax;
     }
 
     public String getReturnFlag()

@@ -56,6 +56,11 @@ public enum OrderColumn
                 {
                     return order.getTotalPrice();
                 }
+
+                public long getLong(Order order)
+                {
+                    return order.getTotalPriceInCents();
+                }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
