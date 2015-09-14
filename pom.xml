@@ -4,7 +4,7 @@
 
     <groupId>io.airlift.tpch</groupId>
     <artifactId>tpch</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.5</version>
     <packaging>jar</packaging>
 
     <name>tpch</name>
@@ -51,4 +51,8 @@
             </plugins>
         </pluginManagement>
     </build>
+
+  <scm>
+    <tag>0.5</tag>
+  </scm>
 </project>
