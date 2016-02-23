@@ -58,11 +58,16 @@ public enum LineItemColumn
                 }
             },
 
-    QUANTITY("quantity", BIGINT)
+    QUANTITY("quantity", DOUBLE)
             {
-                public long getLong(LineItem lineItem)
+                public double getDouble(LineItem lineItem)
                 {
                     return lineItem.getQuantity();
+                }
+
+                public long getLong(LineItem lineItem)
+                {
+                    return lineItem.getQuantityUnscaled();
                 }
             },
 
