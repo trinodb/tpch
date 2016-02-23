@@ -102,9 +102,14 @@ public class LineItem
         return lineNumber;
     }
 
-    public long getQuantity()
+    public double getQuantity()
     {
         return quantity;
+    }
+
+    public long getQuantityUnscaled()
+    {
+        return quantity * 100;
     }
 
     public double getExtendedPrice()
