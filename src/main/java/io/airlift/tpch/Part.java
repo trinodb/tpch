@@ -26,7 +26,7 @@ public class Part
     private final String manufacturer;
     private final String brand;
     private final String type;
-    private final long size;
+    private final int size;
     private final String container;
     private final long retailPrice;
     private final String comment;
@@ -37,7 +37,7 @@ public class Part
             String manufacturer,
             String brand,
             String type,
-            long size,
+            int size,
             String container,
             long retailPrice,
             String comment)
@@ -85,7 +85,7 @@ public class Part
         return type;
     }
 
-    public long getSize()
+    public int getSize()
     {
         return size;
     }

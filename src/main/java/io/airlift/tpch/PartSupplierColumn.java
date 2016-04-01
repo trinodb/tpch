@@ -13,35 +13,36 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.INTEGER;
 import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
 public enum PartSupplierColumn
         implements TpchColumn<PartSupplier>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", BIGINT)
+    PART_KEY("partkey", IDENTIFIER)
             {
-                public long getLong(PartSupplier partSupplier)
+                public long getIdentifier(PartSupplier partSupplier)
                 {
                     return partSupplier.getPartKey();
                 }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", BIGINT)
+    SUPPLIER_KEY("suppkey", IDENTIFIER)
             {
-                public long getLong(PartSupplier partSupplier)
+                public long getIdentifier(PartSupplier partSupplier)
                 {
                     return partSupplier.getSupplierKey();
                 }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    AVAILABLE_QUANTITY("availqty", BIGINT)
+    AVAILABLE_QUANTITY("availqty", INTEGER)
             {
-                public long getLong(PartSupplier partSupplier)
+                public int getInteger(PartSupplier partSupplier)
                 {
                     return partSupplier.getAvailableQuantity();
                 }
@@ -55,7 +56,7 @@ public enum PartSupplierColumn
                     return partSupplier.getSupplyCost();
                 }
 
-                public long getLong(PartSupplier partSupplier)
+                public long getIdentifier(PartSupplier partSupplier)
                 {
                     return partSupplier.getSupplyCostInCents();
                 }
@@ -98,7 +99,13 @@ public enum PartSupplierColumn
     }
 
     @Override
-    public long getLong(PartSupplier partSupplier)
+    public long getIdentifier(PartSupplier partSupplier)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getInteger(PartSupplier partSupplier)
     {
         throw new UnsupportedOperationException();
     }

@@ -14,55 +14,61 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.GenerateUtils.formatDate;
-import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnType.DATE;
 import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.INTEGER;
 import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
 public enum LineItemColumn
         implements TpchColumn<LineItem>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_KEY("orderkey", BIGINT)
+    ORDER_KEY("orderkey", IDENTIFIER)
             {
-                public long getLong(LineItem lineItem)
+                public long getIdentifier(LineItem lineItem)
                 {
                     return lineItem.getOrderKey();
                 }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", BIGINT)
+    PART_KEY("partkey", IDENTIFIER)
             {
-                public long getLong(LineItem lineItem)
+                public long getIdentifier(LineItem lineItem)
                 {
                     return lineItem.getPartKey();
                 }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", BIGINT)
+    SUPPLIER_KEY("suppkey", IDENTIFIER)
             {
-                public long getLong(LineItem lineItem)
+                public long getIdentifier(LineItem lineItem)
                 {
                     return lineItem.getSupplierKey();
                 }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    LINE_NUMBER("linenumber", BIGINT)
+    LINE_NUMBER("linenumber", INTEGER)
             {
-                public long getLong(LineItem lineItem)
+                public int getInteger(LineItem lineItem)
                 {
                     return lineItem.getLineNumber();
                 }
             },
 
-    QUANTITY("quantity", BIGINT)
+    QUANTITY("quantity", DOUBLE)
             {
-                public long getLong(LineItem lineItem)
+                public double getDouble(LineItem lineItem)
                 {
                     return lineItem.getQuantity();
+                }
+
+                public long getIdentifier(LineItem lineItem)
+                {
+                    return lineItem.getQuantityInCents();
                 }
             },
 
@@ -74,7 +80,7 @@ public enum LineItemColumn
                     return lineItem.getExtendedPrice();
                 }
 
-                public long getLong(LineItem lingItem)
+                public long getIdentifier(LineItem lingItem)
                 {
                     return lingItem.getExtendedPriceInCents();
                 }
@@ -87,7 +93,7 @@ public enum LineItemColumn
                     return lineItem.getDiscount();
                 }
 
-                public long getLong(LineItem lineItem)
+                public long getIdentifier(LineItem lineItem)
                 {
                     return lineItem.getDiscountPercent();
                 }
@@ -100,7 +106,7 @@ public enum LineItemColumn
                     return lineItem.getTax();
                 }
 
-                public long getLong(LineItem lineItem)
+                public long getIdentifier(LineItem lineItem)
                 {
                     return lineItem.getTaxPercent();
                 }
@@ -221,7 +227,13 @@ public enum LineItemColumn
     }
 
     @Override
-    public long getLong(LineItem lineItem)
+    public long getIdentifier(LineItem lineItem)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getInteger(LineItem lineItem)
     {
         throw new UnsupportedOperationException();
     }

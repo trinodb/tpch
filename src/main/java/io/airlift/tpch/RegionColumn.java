@@ -13,16 +13,16 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
 public enum RegionColumn
         implements TpchColumn<Region>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    REGION_KEY("regionkey", BIGINT)
+    REGION_KEY("regionkey", IDENTIFIER)
             {
-                public long getLong(Region region)
+                public long getIdentifier(Region region)
                 {
                     return region.getRegionKey();
                 }
@@ -72,7 +72,13 @@ public enum RegionColumn
     }
 
     @Override
-    public long getLong(Region region)
+    public long getIdentifier(Region region)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getInteger(Region region)
     {
         throw new UnsupportedOperationException();
     }

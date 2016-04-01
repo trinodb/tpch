@@ -13,7 +13,7 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnType.DOUBLE;
 import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
@@ -21,9 +21,9 @@ public enum SupplierColumn
         implements TpchColumn<Supplier>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", BIGINT)
+    SUPPLIER_KEY("suppkey", IDENTIFIER)
             {
-                public long getLong(Supplier supplier)
+                public long getIdentifier(Supplier supplier)
                 {
                     return supplier.getSupplierKey();
                 }
@@ -46,9 +46,9 @@ public enum SupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    NATION_KEY("nationkey", BIGINT)
+    NATION_KEY("nationkey", IDENTIFIER)
             {
-                public long getLong(Supplier supplier)
+                public long getIdentifier(Supplier supplier)
                 {
                     return supplier.getNationKey();
                 }
@@ -70,7 +70,7 @@ public enum SupplierColumn
                     return supplier.getAccountBalance();
                 }
 
-                public long getLong(Supplier supplier)
+                public long getIdentifier(Supplier supplier)
                 {
                     return supplier.getAccountBalanceInCents();
                 }
@@ -112,7 +112,13 @@ public enum SupplierColumn
     }
 
     @Override
-    public long getLong(Supplier supplier)
+    public long getIdentifier(Supplier supplier)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getInteger(Supplier supplier)
     {
         throw new UnsupportedOperationException();
     }

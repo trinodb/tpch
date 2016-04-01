@@ -23,11 +23,11 @@ public class PartSupplier
     private final long rowNumber;
     private final long partKey;
     private final long supplierKey;
-    private final long availableQuantity;
+    private final int availableQuantity;
     private final long supplyCost;
     private final String comment;
 
-    public PartSupplier(long rowNumber, long partKey, long supplierKey, long availableQuantity, long supplyCost, String comment)
+    public PartSupplier(long rowNumber, long partKey, long supplierKey, int availableQuantity, long supplyCost, String comment)
     {
         this.rowNumber = rowNumber;
         this.partKey = partKey;
@@ -53,7 +53,7 @@ public class PartSupplier
         return supplierKey;
     }
 
-    public long getAvailableQuantity()
+    public int getAvailableQuantity()
     {
         return availableQuantity;
     }

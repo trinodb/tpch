@@ -25,7 +25,7 @@ public class LineItem
     private final long orderKey;
     private final long partKey;
     private final long supplierKey;
-    private final long lineNumber;
+    private final int lineNumber;
     private final long quantity;
     private final long extendedPrice;
     private final long discount;
@@ -43,7 +43,7 @@ public class LineItem
             long orderKey,
             long partKey,
             long supplierKey,
-            long lineNumber,
+            int lineNumber,
             long quantity,
             long extendedPrice,
             long discount,
@@ -97,12 +97,17 @@ public class LineItem
         return supplierKey;
     }
 
-    public long getLineNumber()
+    public int getLineNumber()
     {
         return lineNumber;
     }
 
-    public long getQuantity()
+    public double getQuantity()
+    {
+        return quantity / 100.0;
+    }
+
+    public long getQuantityInCents()
     {
         return quantity;
     }

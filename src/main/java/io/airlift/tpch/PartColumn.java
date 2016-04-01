@@ -13,17 +13,18 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.INTEGER;
 import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
 public enum PartColumn
         implements TpchColumn<Part>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", BIGINT)
+    PART_KEY("partkey", IDENTIFIER)
             {
-                public long getLong(Part part)
+                public long getIdentifier(Part part)
                 {
                     return part.getPartKey();
                 }
@@ -61,9 +62,9 @@ public enum PartColumn
                 }
             },
 
-    SIZE("size", BIGINT)
+    SIZE("size", INTEGER)
             {
-                public long getLong(Part part)
+                public int getInteger(Part part)
                 {
                     return part.getSize();
                 }
@@ -85,7 +86,7 @@ public enum PartColumn
                     return part.getRetailPrice();
                 }
 
-                public long getLong(Part part)
+                public long getIdentifier(Part part)
                 {
                     return part.getRetailPriceInCents();
                 }
@@ -127,7 +128,13 @@ public enum PartColumn
     }
 
     @Override
-    public long getLong(Part part)
+    public long getIdentifier(Part part)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getInteger(Part part)
     {
         throw new UnsupportedOperationException();
     }

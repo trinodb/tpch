@@ -13,16 +13,16 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnType.DOUBLE;
 import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
 public enum CustomerColumn
         implements TpchColumn<Customer>
 {
-    CUSTOMER_KEY("custkey", BIGINT)
+    CUSTOMER_KEY("custkey", IDENTIFIER)
             {
-                public long getLong(Customer customer)
+                public long getIdentifier(Customer customer)
                 {
                     return customer.getCustomerKey();
                 }
@@ -44,9 +44,9 @@ public enum CustomerColumn
                 }
             },
 
-    NATION_KEY("nationkey", BIGINT)
+    NATION_KEY("nationkey", IDENTIFIER)
             {
-                public long getLong(Customer customer)
+                public long getIdentifier(Customer customer)
                 {
                     return customer.getNationKey();
                 }
@@ -67,7 +67,7 @@ public enum CustomerColumn
                     return customer.getAccountBalance();
                 }
 
-                public long getLong(Customer customer)
+                public long getIdentifier(Customer customer)
                 {
                     return customer.getAccountBalanceInCents();
                 }
@@ -117,7 +117,13 @@ public enum CustomerColumn
     }
 
     @Override
-    public long getLong(Customer customer)
+    public long getIdentifier(Customer customer)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getInteger(Customer customer)
     {
         throw new UnsupportedOperationException();
     }

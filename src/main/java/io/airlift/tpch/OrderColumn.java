@@ -14,27 +14,28 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.GenerateUtils.formatDate;
-import static io.airlift.tpch.TpchColumnType.BIGINT;
+import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnType.DATE;
 import static io.airlift.tpch.TpchColumnType.DOUBLE;
+import static io.airlift.tpch.TpchColumnType.INTEGER;
 import static io.airlift.tpch.TpchColumnType.VARCHAR;
 
 public enum OrderColumn
         implements TpchColumn<Order>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_KEY("orderkey", BIGINT)
+    ORDER_KEY("orderkey", IDENTIFIER)
             {
-                public long getLong(Order order)
+                public long getIdentifier(Order order)
                 {
                     return order.getOrderKey();
                 }
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    CUSTOMER_KEY("custkey", BIGINT)
+    CUSTOMER_KEY("custkey", IDENTIFIER)
             {
-                public long getLong(Order order)
+                public long getIdentifier(Order order)
                 {
                     return order.getCustomerKey();
                 }
@@ -57,7 +58,7 @@ public enum OrderColumn
                     return order.getTotalPrice();
                 }
 
-                public long getLong(Order order)
+                public long getIdentifier(Order order)
                 {
                     return order.getTotalPriceInCents();
                 }
@@ -96,9 +97,9 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_PRIORITY("shippriority", BIGINT)
+    SHIP_PRIORITY("shippriority", INTEGER)
             {
-                public long getLong(Order order)
+                public int getInteger(Order order)
                 {
                     return order.getShipPriority();
                 }
@@ -140,7 +141,13 @@ public enum OrderColumn
     }
 
     @Override
-    public long getLong(Order order)
+    public long getIdentifier(Order order)
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getInteger(Order order)
     {
         throw new UnsupportedOperationException();
     }

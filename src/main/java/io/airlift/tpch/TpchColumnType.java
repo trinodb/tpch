@@ -15,5 +15,5 @@ package io.airlift.tpch;
 
 public enum TpchColumnType
 {
-    BIGINT, DATE, DOUBLE, VARCHAR
+    INTEGER, IDENTIFIER, DATE, DOUBLE, VARCHAR
 }

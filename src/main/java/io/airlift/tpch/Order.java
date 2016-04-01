@@ -29,7 +29,7 @@ public class Order
     private final int orderDate;
     private final String orderPriority;
     private final String clerk;
-    private final long shipPriority;
+    private final int shipPriority;
     private final String comment;
 
     public Order(long rowNumber,
@@ -40,7 +40,7 @@ public class Order
             int orderDate,
             String orderPriority,
             String clerk,
-            long shipPriority,
+            int shipPriority,
             String comment)
     {
         this.rowNumber = rowNumber;
@@ -101,7 +101,7 @@ public class Order
         return clerk;
     }
 
-    public long getShipPriority()
+    public int getShipPriority()
     {
         return shipPriority;
     }

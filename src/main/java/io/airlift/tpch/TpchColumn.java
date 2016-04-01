@@ -21,7 +21,9 @@ public interface TpchColumn<E extends TpchEntity>
 
     double getDouble(E entity);
 
-    long getLong(E entity);
+    long getIdentifier(E entity);
+
+    int getInteger(E entity);
 
     String getString(E entity);
 
