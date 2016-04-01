@@ -80,9 +80,9 @@ public enum LineItemColumn
                     return lineItem.getExtendedPrice();
                 }
 
-                public long getIdentifier(LineItem lingItem)
+                public long getIdentifier(LineItem lineItem)
                 {
-                    return lingItem.getExtendedPriceInCents();
+                    return lineItem.getExtendedPriceInCents();
                 }
             },
 
