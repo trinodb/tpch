@@ -68,7 +68,7 @@ public enum LineItemColumn
 
                 public long getIdentifier(LineItem lineItem)
                 {
-                    return lineItem.getQuantityInCents();
+                    return lineItem.getQuantity() * 100;
                 }
             },
 

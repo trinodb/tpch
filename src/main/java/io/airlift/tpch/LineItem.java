@@ -102,12 +102,7 @@ public class LineItem
         return lineNumber;
     }
 
-    public double getQuantity()
-    {
-        return quantity / 100.0;
-    }
-
-    public long getQuantityInCents()
+    public long getQuantity()
     {
         return quantity;
     }
