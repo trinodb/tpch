@@ -13,8 +13,8 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnType.VARCHAR;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
+import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum NationColumn
         implements TpchColumn<Nation>
@@ -28,7 +28,7 @@ public enum NationColumn
                 }
             },
 
-    NAME("name", VARCHAR)
+    NAME("name", varchar(25))
             {
                 public String getString(Nation nation)
                 {
@@ -45,7 +45,7 @@ public enum NationColumn
                 }
             },
 
-    COMMENT("comment", VARCHAR)
+    COMMENT("comment", varchar(152))
             {
                 public String getString(Nation nation)
                 {

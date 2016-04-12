@@ -13,7 +13,79 @@
  */
 package io.airlift.tpch;
 
-public enum TpchColumnType
+import java.util.Optional;
+
+import java.util.Objects;
+
+public class TpchColumnType
 {
-    INTEGER, IDENTIFIER, DATE, DOUBLE, VARCHAR
+    public enum Base {
+        INTEGER,
+        IDENTIFIER,
+        DATE,
+        DOUBLE,
+        VARCHAR
+    }
+
+    private final Base base;
+    private final Optional<Long> precision;
+    private final Optional<Long> scale;
+
+    private TpchColumnType(Base base, Optional<Long> precision, Optional<Long> scale)
+    {
+        this.base = base;
+        this.precision = precision;
+        this.scale = scale;
+    }
+
+    TpchColumnType(Base base, long precision, long scale)
+    {
+        this(base, Optional.of(precision), Optional.of(scale));
+    }
+
+    TpchColumnType(Base base, long precision)
+    {
+        this(base, Optional.of(precision), Optional.<Long>empty());
+    }
+
+    TpchColumnType(Base base)
+    {
+        this(base, Optional.<Long>empty(), Optional.<Long>empty());
+    }
+
+    public Base getBase()
+    {
+        return base;
+    }
+
+    public Optional<Long> getPrecision()
+    {
+        return precision;
+    }
+
+    public Optional<Long> getScale()
+    {
+        return scale;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TpchColumnType that = (TpchColumnType) o;
+        return Objects.equals(base, that.base) &&
+                Objects.equals(precision, that.precision) &&
+                Objects.equals(scale, that.scale);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(base, precision, scale);
+    }
 }

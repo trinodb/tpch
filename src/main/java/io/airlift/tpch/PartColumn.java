@@ -13,10 +13,10 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnType.DOUBLE;
-import static io.airlift.tpch.TpchColumnType.INTEGER;
-import static io.airlift.tpch.TpchColumnType.VARCHAR;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
+import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.INTEGER;
+import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum PartColumn
         implements TpchColumn<Part>
@@ -30,7 +30,7 @@ public enum PartColumn
                 }
             },
 
-    NAME("name", VARCHAR)
+    NAME("name", varchar(55))
             {
                 public String getString(Part part)
                 {
@@ -38,7 +38,7 @@ public enum PartColumn
                 }
             },
 
-    MANUFACTURER("mfgr", VARCHAR)
+    MANUFACTURER("mfgr", varchar(25))
             {
                 public String getString(Part part)
                 {
@@ -46,7 +46,7 @@ public enum PartColumn
                 }
             },
 
-    BRAND("brand", VARCHAR)
+    BRAND("brand", varchar(10))
             {
                 public String getString(Part part)
                 {
@@ -54,7 +54,7 @@ public enum PartColumn
                 }
             },
 
-    TYPE("type", VARCHAR)
+    TYPE("type", varchar(25))
             {
                 public String getString(Part part)
                 {
@@ -70,7 +70,7 @@ public enum PartColumn
                 }
             },
 
-    CONTAINER("container", VARCHAR)
+    CONTAINER("container", varchar(10))
             {
                 public String getString(Part part)
                 {
@@ -92,7 +92,7 @@ public enum PartColumn
                 }
             },
 
-    COMMENT("comment", VARCHAR)
+    COMMENT("comment", varchar(23))
             {
                 public String getString(Part part)
                 {

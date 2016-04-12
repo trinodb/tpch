@@ -14,11 +14,11 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.GenerateUtils.formatDate;
-import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnType.DATE;
-import static io.airlift.tpch.TpchColumnType.DOUBLE;
-import static io.airlift.tpch.TpchColumnType.INTEGER;
-import static io.airlift.tpch.TpchColumnType.VARCHAR;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
+import static io.airlift.tpch.TpchColumnTypes.DATE;
+import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.INTEGER;
+import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum LineItemColumn
         implements TpchColumn<LineItem>
@@ -113,7 +113,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RETURN_FLAG("returnflag", VARCHAR)
+    RETURN_FLAG("returnflag", varchar(1))
             {
                 public String getString(LineItem lineItem)
                 {
@@ -121,7 +121,7 @@ public enum LineItemColumn
                 }
             },
 
-    STATUS("linestatus", VARCHAR)
+    STATUS("linestatus", varchar(1))
             {
                 public String getString(LineItem lineItem)
                 {
@@ -173,7 +173,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_INSTRUCTIONS("shipinstruct", VARCHAR)
+    SHIP_INSTRUCTIONS("shipinstruct", varchar(25))
             {
                 public String getString(LineItem lineItem)
                 {
@@ -182,7 +182,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_MODE("shipmode", VARCHAR)
+    SHIP_MODE("shipmode", varchar(10))
             {
                 public String getString(LineItem lineItem)
                 {
@@ -190,7 +190,7 @@ public enum LineItemColumn
                 }
             },
 
-    COMMENT("comment", VARCHAR)
+    COMMENT("comment", varchar(44))
             {
                 public String getString(LineItem lineItem)
                 {

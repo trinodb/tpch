@@ -14,11 +14,11 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.GenerateUtils.formatDate;
-import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnType.DATE;
-import static io.airlift.tpch.TpchColumnType.DOUBLE;
-import static io.airlift.tpch.TpchColumnType.INTEGER;
-import static io.airlift.tpch.TpchColumnType.VARCHAR;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
+import static io.airlift.tpch.TpchColumnTypes.DATE;
+import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.INTEGER;
+import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum OrderColumn
         implements TpchColumn<Order>
@@ -42,7 +42,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_STATUS("orderstatus", VARCHAR)
+    ORDER_STATUS("orderstatus", varchar(1))
             {
                 public String getString(Order order)
                 {
@@ -80,7 +80,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_PRIORITY("orderpriority", VARCHAR)
+    ORDER_PRIORITY("orderpriority", varchar(15))
             {
                 public String getString(Order order)
                 {
@@ -88,7 +88,7 @@ public enum OrderColumn
                 }
             },
 
-    CLERK("clerk", VARCHAR)
+    CLERK("clerk", varchar(15))
             {
                 public String getString(Order order)
                 {
@@ -105,7 +105,7 @@ public enum OrderColumn
                 }
             },
 
-    COMMENT("comment", VARCHAR)
+    COMMENT("comment", varchar(79))
             {
                 public String getString(Order order)
                 {

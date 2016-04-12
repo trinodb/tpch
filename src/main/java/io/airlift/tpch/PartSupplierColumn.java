@@ -13,10 +13,10 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnType.DOUBLE;
-import static io.airlift.tpch.TpchColumnType.INTEGER;
-import static io.airlift.tpch.TpchColumnType.VARCHAR;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
+import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.INTEGER;
+import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum PartSupplierColumn
         implements TpchColumn<PartSupplier>
@@ -62,7 +62,7 @@ public enum PartSupplierColumn
                 }
             },
 
-    COMMENT("comment", VARCHAR)
+    COMMENT("comment", varchar(199))
             {
                 public String getString(PartSupplier partSupplier)
                 {

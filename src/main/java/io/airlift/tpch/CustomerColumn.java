@@ -13,9 +13,9 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnType.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnType.DOUBLE;
-import static io.airlift.tpch.TpchColumnType.VARCHAR;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
+import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum CustomerColumn
         implements TpchColumn<Customer>
@@ -28,7 +28,7 @@ public enum CustomerColumn
                 }
             },
 
-    NAME("name", VARCHAR)
+    NAME("name", varchar(25))
             {
                 public String getString(Customer customer)
                 {
@@ -36,7 +36,7 @@ public enum CustomerColumn
                 }
             },
 
-    ADDRESS("address", VARCHAR)
+    ADDRESS("address", varchar(40))
             {
                 public String getString(Customer customer)
                 {
@@ -52,7 +52,7 @@ public enum CustomerColumn
                 }
             },
 
-    PHONE("phone", VARCHAR)
+    PHONE("phone", varchar(15))
             {
                 public String getString(Customer customer)
                 {
@@ -73,7 +73,7 @@ public enum CustomerColumn
                 }
             },
 
-    MARKET_SEGMENT("mktsegment", VARCHAR)
+    MARKET_SEGMENT("mktsegment", varchar(10))
             {
                 public String getString(Customer customer)
                 {
@@ -81,7 +81,7 @@ public enum CustomerColumn
                 }
             },
 
-    COMMENT("comment", VARCHAR)
+    COMMENT("comment", varchar(117))
             {
                 public String getString(Customer customer)
                 {
