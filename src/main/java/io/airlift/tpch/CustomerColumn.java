@@ -20,7 +20,7 @@ import static io.airlift.tpch.TpchColumnTypes.varchar;
 public enum CustomerColumn
         implements TpchColumn<Customer>
 {
-    CUSTOMER_KEY("custkey", IDENTIFIER)
+    CUSTOMER_KEY("c_custkey", IDENTIFIER)
             {
                 public long getIdentifier(Customer customer)
                 {
@@ -28,7 +28,7 @@ public enum CustomerColumn
                 }
             },
 
-    NAME("name", varchar(25))
+    NAME("c_name", varchar(25))
             {
                 public String getString(Customer customer)
                 {
@@ -36,7 +36,7 @@ public enum CustomerColumn
                 }
             },
 
-    ADDRESS("address", varchar(40))
+    ADDRESS("c_address", varchar(40))
             {
                 public String getString(Customer customer)
                 {
@@ -44,7 +44,7 @@ public enum CustomerColumn
                 }
             },
 
-    NATION_KEY("nationkey", IDENTIFIER)
+    NATION_KEY("c_nationkey", IDENTIFIER)
             {
                 public long getIdentifier(Customer customer)
                 {
@@ -52,7 +52,7 @@ public enum CustomerColumn
                 }
             },
 
-    PHONE("phone", varchar(15))
+    PHONE("c_phone", varchar(15))
             {
                 public String getString(Customer customer)
                 {
@@ -60,7 +60,7 @@ public enum CustomerColumn
                 }
             },
 
-    ACCOUNT_BALANCE("acctbal", DOUBLE)
+    ACCOUNT_BALANCE("c_acctbal", DOUBLE)
             {
                 public double getDouble(Customer customer)
                 {
@@ -73,7 +73,7 @@ public enum CustomerColumn
                 }
             },
 
-    MARKET_SEGMENT("mktsegment", varchar(10))
+    MARKET_SEGMENT("c_mktsegment", varchar(10))
             {
                 public String getString(Customer customer)
                 {
@@ -81,7 +81,7 @@ public enum CustomerColumn
                 }
             },
 
-    COMMENT("comment", varchar(117))
+    COMMENT("c_comment", varchar(117))
             {
                 public String getString(Customer customer)
                 {

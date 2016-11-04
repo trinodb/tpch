@@ -20,7 +20,7 @@ public enum RegionColumn
         implements TpchColumn<Region>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    REGION_KEY("regionkey", IDENTIFIER)
+    REGION_KEY("r_regionkey", IDENTIFIER)
             {
                 public long getIdentifier(Region region)
                 {
@@ -28,7 +28,7 @@ public enum RegionColumn
                 }
             },
 
-    NAME("name", varchar(25))
+    NAME("r_name", varchar(25))
             {
                 public String getString(Region region)
                 {
@@ -36,7 +36,7 @@ public enum RegionColumn
                 }
             },
 
-    COMMENT("comment", varchar(152))
+    COMMENT("r_comment", varchar(152))
             {
                 public String getString(Region region)
                 {

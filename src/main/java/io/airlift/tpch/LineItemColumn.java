@@ -24,7 +24,7 @@ public enum LineItemColumn
         implements TpchColumn<LineItem>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_KEY("orderkey", IDENTIFIER)
+    ORDER_KEY("l_orderkey", IDENTIFIER)
             {
                 public long getIdentifier(LineItem lineItem)
                 {
@@ -33,7 +33,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", IDENTIFIER)
+    PART_KEY("l_partkey", IDENTIFIER)
             {
                 public long getIdentifier(LineItem lineItem)
                 {
@@ -42,7 +42,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", IDENTIFIER)
+    SUPPLIER_KEY("l_suppkey", IDENTIFIER)
             {
                 public long getIdentifier(LineItem lineItem)
                 {
@@ -51,7 +51,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    LINE_NUMBER("linenumber", INTEGER)
+    LINE_NUMBER("l_linenumber", INTEGER)
             {
                 public int getInteger(LineItem lineItem)
                 {
@@ -59,7 +59,7 @@ public enum LineItemColumn
                 }
             },
 
-    QUANTITY("quantity", DOUBLE)
+    QUANTITY("l_quantity", DOUBLE)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -73,7 +73,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    EXTENDED_PRICE("extendedprice", DOUBLE)
+    EXTENDED_PRICE("l_extendedprice", DOUBLE)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -86,7 +86,7 @@ public enum LineItemColumn
                 }
             },
 
-    DISCOUNT("discount", DOUBLE)
+    DISCOUNT("l_discount", DOUBLE)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -99,7 +99,7 @@ public enum LineItemColumn
                 }
             },
 
-    TAX("tax", DOUBLE)
+    TAX("l_tax", DOUBLE)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -113,7 +113,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RETURN_FLAG("returnflag", varchar(1))
+    RETURN_FLAG("l_returnflag", varchar(1))
             {
                 public String getString(LineItem lineItem)
                 {
@@ -121,7 +121,7 @@ public enum LineItemColumn
                 }
             },
 
-    STATUS("linestatus", varchar(1))
+    STATUS("l_linestatus", varchar(1))
             {
                 public String getString(LineItem lineItem)
                 {
@@ -130,7 +130,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_DATE("shipdate", DATE)
+    SHIP_DATE("l_shipdate", DATE)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -144,7 +144,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    COMMIT_DATE("commitdate", DATE)
+    COMMIT_DATE("l_commitdate", DATE)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -158,7 +158,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RECEIPT_DATE("receiptdate", DATE)
+    RECEIPT_DATE("l_receiptdate", DATE)
             {
                 public String getString(LineItem lineItem)
                 {
@@ -173,7 +173,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_INSTRUCTIONS("shipinstruct", varchar(25))
+    SHIP_INSTRUCTIONS("l_shipinstruct", varchar(25))
             {
                 public String getString(LineItem lineItem)
                 {
@@ -182,7 +182,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_MODE("shipmode", varchar(10))
+    SHIP_MODE("l_shipmode", varchar(10))
             {
                 public String getString(LineItem lineItem)
                 {
@@ -190,7 +190,7 @@ public enum LineItemColumn
                 }
             },
 
-    COMMENT("comment", varchar(44))
+    COMMENT("l_comment", varchar(44))
             {
                 public String getString(LineItem lineItem)
                 {

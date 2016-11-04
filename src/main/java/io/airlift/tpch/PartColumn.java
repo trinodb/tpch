@@ -22,7 +22,7 @@ public enum PartColumn
         implements TpchColumn<Part>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", IDENTIFIER)
+    PART_KEY("p_partkey", IDENTIFIER)
             {
                 public long getIdentifier(Part part)
                 {
@@ -30,7 +30,7 @@ public enum PartColumn
                 }
             },
 
-    NAME("name", varchar(55))
+    NAME("p_name", varchar(55))
             {
                 public String getString(Part part)
                 {
@@ -38,7 +38,7 @@ public enum PartColumn
                 }
             },
 
-    MANUFACTURER("mfgr", varchar(25))
+    MANUFACTURER("p_mfgr", varchar(25))
             {
                 public String getString(Part part)
                 {
@@ -46,7 +46,7 @@ public enum PartColumn
                 }
             },
 
-    BRAND("brand", varchar(10))
+    BRAND("p_brand", varchar(10))
             {
                 public String getString(Part part)
                 {
@@ -54,7 +54,7 @@ public enum PartColumn
                 }
             },
 
-    TYPE("type", varchar(25))
+    TYPE("p_type", varchar(25))
             {
                 public String getString(Part part)
                 {
@@ -62,7 +62,7 @@ public enum PartColumn
                 }
             },
 
-    SIZE("size", INTEGER)
+    SIZE("p_size", INTEGER)
             {
                 public int getInteger(Part part)
                 {
@@ -70,7 +70,7 @@ public enum PartColumn
                 }
             },
 
-    CONTAINER("container", varchar(10))
+    CONTAINER("p_container", varchar(10))
             {
                 public String getString(Part part)
                 {
@@ -79,7 +79,7 @@ public enum PartColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RETAIL_PRICE("retailprice", DOUBLE)
+    RETAIL_PRICE("p_retailprice", DOUBLE)
             {
                 public double getDouble(Part part)
                 {
@@ -92,7 +92,7 @@ public enum PartColumn
                 }
             },
 
-    COMMENT("comment", varchar(23))
+    COMMENT("p_comment", varchar(23))
             {
                 public String getString(Part part)
                 {

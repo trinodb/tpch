@@ -21,7 +21,7 @@ public enum SupplierColumn
         implements TpchColumn<Supplier>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", IDENTIFIER)
+    SUPPLIER_KEY("s_suppkey", IDENTIFIER)
             {
                 public long getIdentifier(Supplier supplier)
                 {
@@ -29,7 +29,7 @@ public enum SupplierColumn
                 }
             },
 
-    NAME("name", varchar(25))
+    NAME("s_name", varchar(25))
             {
                 public String getString(Supplier supplier)
                 {
@@ -37,7 +37,7 @@ public enum SupplierColumn
                 }
             },
 
-    ADDRESS("address", varchar(40))
+    ADDRESS("s_address", varchar(40))
             {
                 public String getString(Supplier supplier)
                 {
@@ -46,7 +46,7 @@ public enum SupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    NATION_KEY("nationkey", IDENTIFIER)
+    NATION_KEY("s_nationkey", IDENTIFIER)
             {
                 public long getIdentifier(Supplier supplier)
                 {
@@ -54,7 +54,7 @@ public enum SupplierColumn
                 }
             },
 
-    PHONE("phone", varchar(15))
+    PHONE("s_phone", varchar(15))
             {
                 public String getString(Supplier supplier)
                 {
@@ -63,7 +63,7 @@ public enum SupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ACCOUNT_BALANCE("acctbal", DOUBLE)
+    ACCOUNT_BALANCE("s_acctbal", DOUBLE)
             {
                 public double getDouble(Supplier supplier)
                 {
@@ -76,7 +76,7 @@ public enum SupplierColumn
                 }
             },
 
-    COMMENT("comment", varchar(101))
+    COMMENT("s_comment", varchar(101))
             {
                 public String getString(Supplier supplier)
                 {
