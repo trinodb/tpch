@@ -24,7 +24,7 @@ public enum OrderColumn
         implements TpchColumn<Order>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_KEY("orderkey", IDENTIFIER)
+    ORDER_KEY("o_orderkey", IDENTIFIER)
             {
                 public long getIdentifier(Order order)
                 {
@@ -33,7 +33,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    CUSTOMER_KEY("custkey", IDENTIFIER)
+    CUSTOMER_KEY("o_custkey", IDENTIFIER)
             {
                 public long getIdentifier(Order order)
                 {
@@ -42,7 +42,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_STATUS("orderstatus", varchar(1))
+    ORDER_STATUS("o_orderstatus", varchar(1))
             {
                 public String getString(Order order)
                 {
@@ -51,7 +51,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    TOTAL_PRICE("totalprice", DOUBLE)
+    TOTAL_PRICE("o_totalprice", DOUBLE)
             {
                 public double getDouble(Order order)
                 {
@@ -65,7 +65,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_DATE("orderdate", DATE)
+    ORDER_DATE("o_orderdate", DATE)
             {
                 @Override
                 public String getString(Order order)
@@ -80,7 +80,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_PRIORITY("orderpriority", varchar(15))
+    ORDER_PRIORITY("o_orderpriority", varchar(15))
             {
                 public String getString(Order order)
                 {
@@ -88,7 +88,7 @@ public enum OrderColumn
                 }
             },
 
-    CLERK("clerk", varchar(15))
+    CLERK("o_clerk", varchar(15))
             {
                 public String getString(Order order)
                 {
@@ -97,7 +97,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_PRIORITY("shippriority", INTEGER)
+    SHIP_PRIORITY("o_shippriority", INTEGER)
             {
                 public int getInteger(Order order)
                 {
@@ -105,7 +105,7 @@ public enum OrderColumn
                 }
             },
 
-    COMMENT("comment", varchar(79))
+    COMMENT("o_comment", varchar(79))
             {
                 public String getString(Order order)
                 {

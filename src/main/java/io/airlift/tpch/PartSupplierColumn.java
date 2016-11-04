@@ -22,7 +22,7 @@ public enum PartSupplierColumn
         implements TpchColumn<PartSupplier>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("partkey", IDENTIFIER)
+    PART_KEY("ps_partkey", IDENTIFIER)
             {
                 public long getIdentifier(PartSupplier partSupplier)
                 {
@@ -31,7 +31,7 @@ public enum PartSupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("suppkey", IDENTIFIER)
+    SUPPLIER_KEY("ps_suppkey", IDENTIFIER)
             {
                 public long getIdentifier(PartSupplier partSupplier)
                 {
@@ -40,7 +40,7 @@ public enum PartSupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    AVAILABLE_QUANTITY("availqty", INTEGER)
+    AVAILABLE_QUANTITY("ps_availqty", INTEGER)
             {
                 public int getInteger(PartSupplier partSupplier)
                 {
@@ -49,7 +49,7 @@ public enum PartSupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLY_COST("supplycost", DOUBLE)
+    SUPPLY_COST("ps_supplycost", DOUBLE)
             {
                 public double getDouble(PartSupplier partSupplier)
                 {
@@ -62,7 +62,7 @@ public enum PartSupplierColumn
                 }
             },
 
-    COMMENT("comment", varchar(199))
+    COMMENT("ps_comment", varchar(199))
             {
                 public String getString(PartSupplier partSupplier)
                 {

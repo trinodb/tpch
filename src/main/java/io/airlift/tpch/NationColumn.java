@@ -20,7 +20,7 @@ public enum NationColumn
         implements TpchColumn<Nation>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    NATION_KEY("nationkey", IDENTIFIER)
+    NATION_KEY("n_nationkey", IDENTIFIER)
             {
                 public long getIdentifier(Nation nation)
                 {
@@ -28,7 +28,7 @@ public enum NationColumn
                 }
             },
 
-    NAME("name", varchar(25))
+    NAME("n_name", varchar(25))
             {
                 public String getString(Nation nation)
                 {
@@ -37,7 +37,7 @@ public enum NationColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    REGION_KEY("regionkey", IDENTIFIER)
+    REGION_KEY("n_regionkey", IDENTIFIER)
             {
                 public long getIdentifier(Nation nation)
                 {
@@ -45,7 +45,7 @@ public enum NationColumn
                 }
             },
 
-    COMMENT("comment", varchar(152))
+    COMMENT("n_comment", varchar(152))
             {
                 public String getString(Nation nation)
                 {
