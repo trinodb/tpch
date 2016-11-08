@@ -16,6 +16,7 @@ package io.airlift.tpch;
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
 import java.util.List;
@@ -123,7 +124,10 @@ public abstract class TpchTable<E extends TpchEntity>
     {
         this.tableName = tableName;
         this.columns = ImmutableList.copyOf(columns);
-        this.columnsByName = Maps.uniqueIndex(this.columns, columnNameGetter());
+        this.columnsByName = new ImmutableMap.Builder<String, TpchColumn<E>>()
+                .putAll(Maps.uniqueIndex(this.columns, columnNameGetter()))
+                .putAll(Maps.uniqueIndex(this.columns, TpchColumn::getSimplifiedColumnName))
+                .build();
     }
 
     public String getTableName()
