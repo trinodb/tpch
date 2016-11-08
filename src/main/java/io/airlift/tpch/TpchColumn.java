@@ -28,4 +28,11 @@ public interface TpchColumn<E extends TpchEntity>
     String getString(E entity);
 
     int getDate(E entity);
+
+    String TPCH_COLUMN_VALID_PREFIX_REGEX = "(?i)^(p|ps|l|o|s|c|n|r)_";
+
+    default String getSimplifiedColumnName()
+    {
+        return getColumnName().replaceFirst(TPCH_COLUMN_VALID_PREFIX_REGEX, "");
+    }
 }

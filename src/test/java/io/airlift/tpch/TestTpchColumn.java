@@ -21,6 +21,7 @@ import java.util.stream.Stream;
 
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
@@ -48,6 +49,17 @@ public class TestTpchColumn
         String columnNameLowercase = columnName.toLowerCase();
         return Stream.of("p_", "ps_", "l_", "o_", "s_", "c_", "n_", "r_")
                 .anyMatch(columnNameLowercase::startsWith);
+    }
+
+    @Test
+    public void testSimplifiedColumnNamesAreSuffixesOfColumnNames()
+    {
+        forEachTpchColumn(column -> assertEquals(column.getSimplifiedColumnName(), stripPrefix(column.getColumnName())));
+    }
+
+    private String stripPrefix(String columnName)
+    {
+        return columnName.replaceFirst("\\w{1,2}_", "");
     }
 
     private void forEachTpchColumn(Consumer<TpchColumn> columnConsumer)
