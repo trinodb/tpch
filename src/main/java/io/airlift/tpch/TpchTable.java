@@ -13,7 +13,6 @@
  */
 package io.airlift.tpch;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -101,7 +100,7 @@ public abstract class TpchTable<E extends TpchEntity>
 
     static {
         TABLES = ImmutableList.of(CUSTOMER, ORDERS, LINE_ITEM, PART, PART_SUPPLIER, SUPPLIER, NATION, REGION);
-        TABLES_BY_NAME = Maps.uniqueIndex(TABLES, tableNameGetter());
+        TABLES_BY_NAME = Maps.uniqueIndex(TABLES, TpchTable::getTableName);
     }
 
     public static List<TpchTable<?>> getTables()
@@ -125,7 +124,7 @@ public abstract class TpchTable<E extends TpchEntity>
         this.tableName = tableName;
         this.columns = ImmutableList.copyOf(columns);
         this.columnsByName = new ImmutableMap.Builder<String, TpchColumn<E>>()
-                .putAll(Maps.uniqueIndex(this.columns, columnNameGetter()))
+                .putAll(Maps.uniqueIndex(this.columns, TpchColumn::getColumnName))
                 .putAll(Maps.uniqueIndex(this.columns, TpchColumn::getSimplifiedColumnName))
                 .build();
     }
@@ -148,26 +147,4 @@ public abstract class TpchTable<E extends TpchEntity>
     }
 
     public abstract Iterable<E> createGenerator(double scaleFactor, int part, int partCount);
-
-    public static Function<TpchTable<?>, String> tableNameGetter()
-    {
-        return new Function<TpchTable<?>, String>()
-        {
-            public String apply(TpchTable<?> table)
-            {
-                return table.getTableName();
-            }
-        };
-    }
-
-    public static Function<TpchColumn<?>, String> columnNameGetter()
-    {
-        return new Function<TpchColumn<?>, String>()
-        {
-            public String apply(TpchColumn<?> column)
-            {
-                return column.getColumnName();
-            }
-        };
-    }
 }
