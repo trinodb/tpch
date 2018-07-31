@@ -14,7 +14,7 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.DECIMAL;
 import static io.airlift.tpch.TpchColumnTypes.INTEGER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
@@ -79,7 +79,7 @@ public enum PartColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RETAIL_PRICE("p_retailprice", DOUBLE)
+    RETAIL_PRICE("p_retailprice", DECIMAL)
             {
                 public double getDouble(Part part)
                 {

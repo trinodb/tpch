@@ -14,7 +14,7 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.DECIMAL;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum CustomerColumn
@@ -60,7 +60,7 @@ public enum CustomerColumn
                 }
             },
 
-    ACCOUNT_BALANCE("c_acctbal", DOUBLE)
+    ACCOUNT_BALANCE("c_acctbal", DECIMAL)
             {
                 public double getDouble(Customer customer)
                 {

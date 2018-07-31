@@ -16,7 +16,7 @@ package io.airlift.tpch;
 import static io.airlift.tpch.GenerateUtils.formatDate;
 import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.DATE;
-import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.DECIMAL;
 import static io.airlift.tpch.TpchColumnTypes.INTEGER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
@@ -59,7 +59,7 @@ public enum LineItemColumn
                 }
             },
 
-    QUANTITY("l_quantity", DOUBLE)
+    QUANTITY("l_quantity", DECIMAL)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -73,7 +73,7 @@ public enum LineItemColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    EXTENDED_PRICE("l_extendedprice", DOUBLE)
+    EXTENDED_PRICE("l_extendedprice", DECIMAL)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -86,7 +86,7 @@ public enum LineItemColumn
                 }
             },
 
-    DISCOUNT("l_discount", DOUBLE)
+    DISCOUNT("l_discount", DECIMAL)
             {
                 public double getDouble(LineItem lineItem)
                 {
@@ -99,7 +99,7 @@ public enum LineItemColumn
                 }
             },
 
-    TAX("l_tax", DOUBLE)
+    TAX("l_tax", DECIMAL)
             {
                 public double getDouble(LineItem lineItem)
                 {

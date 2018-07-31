@@ -23,7 +23,7 @@ public class TpchColumnType
         INTEGER,
         IDENTIFIER,
         DATE,
-        DOUBLE,
+        DECIMAL,
         VARCHAR
     }
 
