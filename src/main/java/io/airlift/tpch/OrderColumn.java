@@ -16,7 +16,7 @@ package io.airlift.tpch;
 import static io.airlift.tpch.GenerateUtils.formatDate;
 import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.DATE;
-import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.DECIMAL;
 import static io.airlift.tpch.TpchColumnTypes.INTEGER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
@@ -51,7 +51,7 @@ public enum OrderColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    TOTAL_PRICE("o_totalprice", DOUBLE)
+    TOTAL_PRICE("o_totalprice", DECIMAL)
             {
                 public double getDouble(Order order)
                 {

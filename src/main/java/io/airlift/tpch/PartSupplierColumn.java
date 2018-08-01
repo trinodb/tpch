@@ -14,7 +14,7 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
-import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.DECIMAL;
 import static io.airlift.tpch.TpchColumnTypes.INTEGER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
@@ -49,7 +49,7 @@ public enum PartSupplierColumn
             },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLY_COST("ps_supplycost", DOUBLE)
+    SUPPLY_COST("ps_supplycost", DECIMAL)
             {
                 public double getDouble(PartSupplier partSupplier)
                 {
