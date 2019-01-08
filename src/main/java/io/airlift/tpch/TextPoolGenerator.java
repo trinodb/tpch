@@ -43,6 +43,7 @@ public class TextPoolGenerator
     {
         this(size, distributions, new TextGenerationProgressMonitor()
         {
+            @Override
             public void updateProgress(double progress)
             {
             }

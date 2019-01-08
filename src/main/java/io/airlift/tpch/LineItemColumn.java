@@ -23,32 +23,32 @@ import static io.airlift.tpch.TpchColumnTypes.varchar;
 public enum LineItemColumn
         implements TpchColumn<LineItem>
 {
-    @SuppressWarnings("SpellCheckingInspection")
     ORDER_KEY("l_orderkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(LineItem lineItem)
         {
             return lineItem.getOrderKey();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     PART_KEY("l_partkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(LineItem lineItem)
         {
             return lineItem.getPartKey();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     SUPPLIER_KEY("l_suppkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(LineItem lineItem)
         {
             return lineItem.getSupplierKey();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     LINE_NUMBER("l_linenumber", INTEGER) {
+        @Override
         public int getInteger(LineItem lineItem)
         {
             return lineItem.getLineNumber();
@@ -56,24 +56,27 @@ public enum LineItemColumn
     },
 
     QUANTITY("l_quantity", DOUBLE) {
+        @Override
         public double getDouble(LineItem lineItem)
         {
             return lineItem.getQuantity();
         }
 
+        @Override
         public long getIdentifier(LineItem lineItem)
         {
             return lineItem.getQuantity() * 100;
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     EXTENDED_PRICE("l_extendedprice", DOUBLE) {
+        @Override
         public double getDouble(LineItem lineItem)
         {
             return lineItem.getExtendedPrice();
         }
 
+        @Override
         public long getIdentifier(LineItem lineItem)
         {
             return lineItem.getExtendedPriceInCents();
@@ -81,11 +84,13 @@ public enum LineItemColumn
     },
 
     DISCOUNT("l_discount", DOUBLE) {
+        @Override
         public double getDouble(LineItem lineItem)
         {
             return lineItem.getDiscount();
         }
 
+        @Override
         public long getIdentifier(LineItem lineItem)
         {
             return lineItem.getDiscountPercent();
@@ -93,19 +98,21 @@ public enum LineItemColumn
     },
 
     TAX("l_tax", DOUBLE) {
+        @Override
         public double getDouble(LineItem lineItem)
         {
             return lineItem.getTax();
         }
 
+        @Override
         public long getIdentifier(LineItem lineItem)
         {
             return lineItem.getTaxPercent();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     RETURN_FLAG("l_returnflag", varchar(1)) {
+        @Override
         public String getString(LineItem lineItem)
         {
             return lineItem.getReturnFlag();
@@ -113,40 +120,43 @@ public enum LineItemColumn
     },
 
     STATUS("l_linestatus", varchar(1)) {
+        @Override
         public String getString(LineItem lineItem)
         {
             return lineItem.getStatus();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     SHIP_DATE("l_shipdate", DATE) {
+        @Override
         public String getString(LineItem lineItem)
         {
             return formatDate(getDate(lineItem));
         }
 
+        @Override
         public int getDate(LineItem lineItem)
         {
             return lineItem.getShipDate();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     COMMIT_DATE("l_commitdate", DATE) {
+        @Override
         public String getString(LineItem lineItem)
         {
             return formatDate(getDate(lineItem));
         }
 
+        @Override
         public int getDate(LineItem lineItem)
         {
             return lineItem.getCommitDate();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     RECEIPT_DATE("l_receiptdate", DATE) {
+        @Override
         public String getString(LineItem lineItem)
         {
             return formatDate(getDate(lineItem));
@@ -159,16 +169,16 @@ public enum LineItemColumn
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     SHIP_INSTRUCTIONS("l_shipinstruct", varchar(25)) {
+        @Override
         public String getString(LineItem lineItem)
         {
             return lineItem.getShipInstructions();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     SHIP_MODE("l_shipmode", varchar(10)) {
+        @Override
         public String getString(LineItem lineItem)
         {
             return lineItem.getShipMode();
@@ -176,6 +186,7 @@ public enum LineItemColumn
     },
 
     COMMENT("l_comment", varchar(44)) {
+        @Override
         public String getString(LineItem lineItem)
         {
             return lineItem.getComment();

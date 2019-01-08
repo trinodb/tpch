@@ -40,6 +40,7 @@ public class TextPool
     {
         this(size, distributions, new TextGenerationProgressMonitor()
         {
+            @Override
             public void updateProgress(double progress)
             {
             }
@@ -192,10 +193,10 @@ public class TextPool
             this.bytes = new byte[size];
         }
 
+        @SuppressWarnings("deprecation")
         public void append(String string)
         {
             // This is safe because the data is ASCII
-            //noinspection deprecation
             string.getBytes(0, string.length(), bytes, length);
             length += string.length();
         }

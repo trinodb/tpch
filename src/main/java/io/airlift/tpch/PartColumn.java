@@ -21,8 +21,8 @@ import static io.airlift.tpch.TpchColumnTypes.varchar;
 public enum PartColumn
         implements TpchColumn<Part>
 {
-    @SuppressWarnings("SpellCheckingInspection")
     PART_KEY("p_partkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(Part part)
         {
             return part.getPartKey();
@@ -30,6 +30,7 @@ public enum PartColumn
     },
 
     NAME("p_name", varchar(55)) {
+        @Override
         public String getString(Part part)
         {
             return part.getName();
@@ -37,6 +38,7 @@ public enum PartColumn
     },
 
     MANUFACTURER("p_mfgr", varchar(25)) {
+        @Override
         public String getString(Part part)
         {
             return part.getManufacturer();
@@ -44,6 +46,7 @@ public enum PartColumn
     },
 
     BRAND("p_brand", varchar(10)) {
+        @Override
         public String getString(Part part)
         {
             return part.getBrand();
@@ -51,6 +54,7 @@ public enum PartColumn
     },
 
     TYPE("p_type", varchar(25)) {
+        @Override
         public String getString(Part part)
         {
             return part.getType();
@@ -58,6 +62,7 @@ public enum PartColumn
     },
 
     SIZE("p_size", INTEGER) {
+        @Override
         public int getInteger(Part part)
         {
             return part.getSize();
@@ -65,19 +70,21 @@ public enum PartColumn
     },
 
     CONTAINER("p_container", varchar(10)) {
+        @Override
         public String getString(Part part)
         {
             return part.getContainer();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     RETAIL_PRICE("p_retailprice", DOUBLE) {
+        @Override
         public double getDouble(Part part)
         {
             return part.getRetailPrice();
         }
 
+        @Override
         public long getIdentifier(Part part)
         {
             return part.getRetailPriceInCents();
@@ -85,6 +92,7 @@ public enum PartColumn
     },
 
     COMMENT("p_comment", varchar(23)) {
+        @Override
         public String getString(Part part)
         {
             return part.getComment();
