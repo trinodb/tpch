@@ -13,35 +13,39 @@
  */
 package io.airlift.tpch;
 
-import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URL;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkState;
+import static com.google.common.base.Suppliers.memoize;
 import static io.airlift.tpch.DistributionLoader.loadDistribution;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Distributions
 {
-    private static Distributions DEFAULT_DISTRIBUTIONS;
+    private static final Supplier<Distributions> DEFAULT_DISTRIBUTIONS = memoize(Distributions::loadDefaults);
 
-    public static synchronized Distributions getDefaultDistributions()
+    private static Distributions loadDefaults()
     {
-        if (DEFAULT_DISTRIBUTIONS == null) {
-            try {
-                URL resource = Resources.getResource(Distribution.class, "dists.dss");
-                checkState(resource != null, "Distribution file 'dists.dss' not found");
-                DEFAULT_DISTRIBUTIONS = new Distributions(loadDistribution(Resources.asCharSource(resource, Charsets.UTF_8)));
-            }
-            catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
+        try {
+            URL resource = Resources.getResource(Distribution.class, "dists.dss");
+            checkState(resource != null, "Distribution file 'dists.dss' not found");
+            return new Distributions(loadDistribution(Resources.asCharSource(resource, UTF_8)));
         }
-        return DEFAULT_DISTRIBUTIONS;
+        catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    public static Distributions getDefaultDistributions()
+    {
+        return DEFAULT_DISTRIBUTIONS.get();
     }
 
     private final Distribution grammars;

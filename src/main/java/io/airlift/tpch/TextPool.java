@@ -13,8 +13,12 @@
  */
 package io.airlift.tpch;
 
+import java.util.function.Supplier;
+
 import static com.google.common.base.Charsets.US_ASCII;
 import static com.google.common.base.Preconditions.checkState;
+import static com.google.common.base.Suppliers.memoize;
+import static io.airlift.tpch.Distributions.getDefaultDistributions;
 import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 
@@ -23,14 +27,12 @@ public class TextPool
     private static final int DEFAULT_TEXT_POOL_SIZE = 300 * 1024 * 1024;
     private static final int MAX_SENTENCE_LENGTH = 256;
 
-    private static TextPool DEFAULT_TEXT_POOL;
+    private static final Supplier<TextPool> DEFAULT_TEXT_POOL = memoize(() ->
+            new TextPool(DEFAULT_TEXT_POOL_SIZE, getDefaultDistributions()));
 
-    public static synchronized TextPool getDefaultTestPool()
+    public static TextPool getDefaultTestPool()
     {
-        if (DEFAULT_TEXT_POOL == null) {
-            DEFAULT_TEXT_POOL = new TextPool(DEFAULT_TEXT_POOL_SIZE, Distributions.getDefaultDistributions());
-        }
-        return DEFAULT_TEXT_POOL;
+        return DEFAULT_TEXT_POOL.get();
     }
 
     private final byte[] textPool;
