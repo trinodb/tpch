@@ -17,7 +17,7 @@ import com.google.common.base.Splitter;
 
 import java.util.List;
 
-import static com.google.common.base.CharMatcher.WHITESPACE;
+import static com.google.common.base.CharMatcher.whitespace;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TextPoolGenerator
@@ -214,7 +214,7 @@ public class TextPoolGenerator
             bonusText = new String[distribution.size()];
             for (int i = 0; i < distribution.size(); i++) {
 
-                List<String> tokens = Splitter.on(WHITESPACE).splitToList(distribution.getValue(i));
+                List<String> tokens = Splitter.on(whitespace()).splitToList(distribution.getValue(i));
 
                 parsedDistribution[i] = new char[tokens.size()];
                 for (int j = 0; j < parsedDistribution[i].length; j++) {
