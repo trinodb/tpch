@@ -22,7 +22,8 @@ public class TpchColumnTypes
     public static final TpchColumnType DATE = new TpchColumnType(TpchColumnType.Base.DATE);
     public static final TpchColumnType DOUBLE = new TpchColumnType(TpchColumnType.Base.DOUBLE);
 
-    public static TpchColumnType varchar(long precision) {
+    public static TpchColumnType varchar(long precision)
+    {
         return new TpchColumnType(TpchColumnType.Base.VARCHAR, precision);
     }
 }

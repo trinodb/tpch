@@ -66,7 +66,8 @@ public class Distribution
                     this.distribution[index++] = value;
                 }
             }
-        } else {
+        }
+        else {
             this.maxWeight = -1;
             this.distribution = null;
         }

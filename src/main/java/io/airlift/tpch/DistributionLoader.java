@@ -110,7 +110,6 @@ public class DistributionLoader
                 continue;
             }
 
-
             if (parts.get(0).equalsIgnoreCase("BEGIN")) {
                 String name = parts.get(1);
                 Distribution distribution = loadDistribution(lines, name);

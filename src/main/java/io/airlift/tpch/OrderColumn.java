@@ -14,9 +14,9 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.GenerateUtils.formatDate;
-import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.DATE;
 import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.INTEGER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
@@ -24,94 +24,85 @@ public enum OrderColumn
         implements TpchColumn<Order>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_KEY("o_orderkey", IDENTIFIER)
-            {
-                public long getIdentifier(Order order)
-                {
-                    return order.getOrderKey();
-                }
-            },
+    ORDER_KEY("o_orderkey", IDENTIFIER) {
+        public long getIdentifier(Order order)
+        {
+            return order.getOrderKey();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    CUSTOMER_KEY("o_custkey", IDENTIFIER)
-            {
-                public long getIdentifier(Order order)
-                {
-                    return order.getCustomerKey();
-                }
-            },
+    CUSTOMER_KEY("o_custkey", IDENTIFIER) {
+        public long getIdentifier(Order order)
+        {
+            return order.getCustomerKey();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_STATUS("o_orderstatus", varchar(1))
-            {
-                public String getString(Order order)
-                {
-                    return String.valueOf(order.getOrderStatus());
-                }
-            },
+    ORDER_STATUS("o_orderstatus", varchar(1)) {
+        public String getString(Order order)
+        {
+            return String.valueOf(order.getOrderStatus());
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    TOTAL_PRICE("o_totalprice", DOUBLE)
-            {
-                public double getDouble(Order order)
-                {
-                    return order.getTotalPrice();
-                }
+    TOTAL_PRICE("o_totalprice", DOUBLE) {
+        public double getDouble(Order order)
+        {
+            return order.getTotalPrice();
+        }
 
-                public long getIdentifier(Order order)
-                {
-                    return order.getTotalPriceInCents();
-                }
-            },
-
-    @SuppressWarnings("SpellCheckingInspection")
-    ORDER_DATE("o_orderdate", DATE)
-            {
-                @Override
-                public String getString(Order order)
-                {
-                    return formatDate(getDate(order));
-                }
-
-                public int getDate(Order order)
-                {
-                    return order.getOrderDate();
-                }
-            },
+        public long getIdentifier(Order order)
+        {
+            return order.getTotalPriceInCents();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_PRIORITY("o_orderpriority", varchar(15))
-            {
-                public String getString(Order order)
-                {
-                    return order.getOrderPriority();
-                }
-            },
+    ORDER_DATE("o_orderdate", DATE) {
+        @Override
+        public String getString(Order order)
+        {
+            return formatDate(getDate(order));
+        }
 
-    CLERK("o_clerk", varchar(15))
-            {
-                public String getString(Order order)
-                {
-                    return order.getClerk();
-                }
-            },
+        public int getDate(Order order)
+        {
+            return order.getOrderDate();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_PRIORITY("o_shippriority", INTEGER)
-            {
-                public int getInteger(Order order)
-                {
-                    return order.getShipPriority();
-                }
-            },
+    ORDER_PRIORITY("o_orderpriority", varchar(15)) {
+        public String getString(Order order)
+        {
+            return order.getOrderPriority();
+        }
+    },
 
-    COMMENT("o_comment", varchar(79))
-            {
-                public String getString(Order order)
-                {
-                    return order.getComment();
-                }
-            };
+    CLERK("o_clerk", varchar(15)) {
+        public String getString(Order order)
+        {
+            return order.getClerk();
+        }
+    },
+
+    @SuppressWarnings("SpellCheckingInspection")
+    SHIP_PRIORITY("o_shippriority", INTEGER) {
+        public int getInteger(Order order)
+        {
+            return order.getShipPriority();
+        }
+    },
+
+    COMMENT("o_comment", varchar(79)) {
+        public String getString(Order order)
+        {
+            return order.getComment();
+        }
+    };
 
     private final String columnName;
     private final TpchColumnType type;

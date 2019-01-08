@@ -13,81 +13,73 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum CustomerColumn
         implements TpchColumn<Customer>
 {
-    CUSTOMER_KEY("c_custkey", IDENTIFIER)
-            {
-                public long getIdentifier(Customer customer)
-                {
-                    return customer.getCustomerKey();
-                }
-            },
+    CUSTOMER_KEY("c_custkey", IDENTIFIER) {
+        public long getIdentifier(Customer customer)
+        {
+            return customer.getCustomerKey();
+        }
+    },
 
-    NAME("c_name", varchar(25))
-            {
-                public String getString(Customer customer)
-                {
-                    return customer.getName();
-                }
-            },
+    NAME("c_name", varchar(25)) {
+        public String getString(Customer customer)
+        {
+            return customer.getName();
+        }
+    },
 
-    ADDRESS("c_address", varchar(40))
-            {
-                public String getString(Customer customer)
-                {
-                    return customer.getAddress();
-                }
-            },
+    ADDRESS("c_address", varchar(40)) {
+        public String getString(Customer customer)
+        {
+            return customer.getAddress();
+        }
+    },
 
-    NATION_KEY("c_nationkey", IDENTIFIER)
-            {
-                public long getIdentifier(Customer customer)
-                {
-                    return customer.getNationKey();
-                }
-            },
+    NATION_KEY("c_nationkey", IDENTIFIER) {
+        public long getIdentifier(Customer customer)
+        {
+            return customer.getNationKey();
+        }
+    },
 
-    PHONE("c_phone", varchar(15))
-            {
-                public String getString(Customer customer)
-                {
-                    return customer.getPhone();
-                }
-            },
+    PHONE("c_phone", varchar(15)) {
+        public String getString(Customer customer)
+        {
+            return customer.getPhone();
+        }
+    },
 
-    ACCOUNT_BALANCE("c_acctbal", DOUBLE)
-            {
-                public double getDouble(Customer customer)
-                {
-                    return customer.getAccountBalance();
-                }
+    ACCOUNT_BALANCE("c_acctbal", DOUBLE) {
+        public double getDouble(Customer customer)
+        {
+            return customer.getAccountBalance();
+        }
 
-                public long getIdentifier(Customer customer)
-                {
-                    return customer.getAccountBalanceInCents();
-                }
-            },
+        public long getIdentifier(Customer customer)
+        {
+            return customer.getAccountBalanceInCents();
+        }
+    },
 
-    MARKET_SEGMENT("c_mktsegment", varchar(10))
-            {
-                public String getString(Customer customer)
-                {
-                    return customer.getMarketSegment();
-                }
-            },
+    MARKET_SEGMENT("c_mktsegment", varchar(10)) {
+        public String getString(Customer customer)
+        {
+            return customer.getMarketSegment();
+        }
+    },
 
-    COMMENT("c_comment", varchar(117))
-            {
-                public String getString(Customer customer)
-                {
-                    return customer.getComment();
-                }
-            };
+    COMMENT("c_comment", varchar(117)) {
+        public String getString(Customer customer)
+        {
+            return customer.getComment();
+        }
+    };
 
     private final String columnName;
     private final TpchColumnType type;

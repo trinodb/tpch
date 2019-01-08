@@ -14,9 +14,9 @@
 package io.airlift.tpch;
 
 import static io.airlift.tpch.GenerateUtils.formatDate;
-import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.DATE;
 import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.INTEGER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
@@ -24,180 +24,163 @@ public enum LineItemColumn
         implements TpchColumn<LineItem>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    ORDER_KEY("l_orderkey", IDENTIFIER)
-            {
-                public long getIdentifier(LineItem lineItem)
-                {
-                    return lineItem.getOrderKey();
-                }
-            },
+    ORDER_KEY("l_orderkey", IDENTIFIER) {
+        public long getIdentifier(LineItem lineItem)
+        {
+            return lineItem.getOrderKey();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("l_partkey", IDENTIFIER)
-            {
-                public long getIdentifier(LineItem lineItem)
-                {
-                    return lineItem.getPartKey();
-                }
-            },
+    PART_KEY("l_partkey", IDENTIFIER) {
+        public long getIdentifier(LineItem lineItem)
+        {
+            return lineItem.getPartKey();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("l_suppkey", IDENTIFIER)
-            {
-                public long getIdentifier(LineItem lineItem)
-                {
-                    return lineItem.getSupplierKey();
-                }
-            },
+    SUPPLIER_KEY("l_suppkey", IDENTIFIER) {
+        public long getIdentifier(LineItem lineItem)
+        {
+            return lineItem.getSupplierKey();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    LINE_NUMBER("l_linenumber", INTEGER)
-            {
-                public int getInteger(LineItem lineItem)
-                {
-                    return lineItem.getLineNumber();
-                }
-            },
+    LINE_NUMBER("l_linenumber", INTEGER) {
+        public int getInteger(LineItem lineItem)
+        {
+            return lineItem.getLineNumber();
+        }
+    },
 
-    QUANTITY("l_quantity", DOUBLE)
-            {
-                public double getDouble(LineItem lineItem)
-                {
-                    return lineItem.getQuantity();
-                }
+    QUANTITY("l_quantity", DOUBLE) {
+        public double getDouble(LineItem lineItem)
+        {
+            return lineItem.getQuantity();
+        }
 
-                public long getIdentifier(LineItem lineItem)
-                {
-                    return lineItem.getQuantity() * 100;
-                }
-            },
+        public long getIdentifier(LineItem lineItem)
+        {
+            return lineItem.getQuantity() * 100;
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    EXTENDED_PRICE("l_extendedprice", DOUBLE)
-            {
-                public double getDouble(LineItem lineItem)
-                {
-                    return lineItem.getExtendedPrice();
-                }
+    EXTENDED_PRICE("l_extendedprice", DOUBLE) {
+        public double getDouble(LineItem lineItem)
+        {
+            return lineItem.getExtendedPrice();
+        }
 
-                public long getIdentifier(LineItem lineItem)
-                {
-                    return lineItem.getExtendedPriceInCents();
-                }
-            },
+        public long getIdentifier(LineItem lineItem)
+        {
+            return lineItem.getExtendedPriceInCents();
+        }
+    },
 
-    DISCOUNT("l_discount", DOUBLE)
-            {
-                public double getDouble(LineItem lineItem)
-                {
-                    return lineItem.getDiscount();
-                }
+    DISCOUNT("l_discount", DOUBLE) {
+        public double getDouble(LineItem lineItem)
+        {
+            return lineItem.getDiscount();
+        }
 
-                public long getIdentifier(LineItem lineItem)
-                {
-                    return lineItem.getDiscountPercent();
-                }
-            },
+        public long getIdentifier(LineItem lineItem)
+        {
+            return lineItem.getDiscountPercent();
+        }
+    },
 
-    TAX("l_tax", DOUBLE)
-            {
-                public double getDouble(LineItem lineItem)
-                {
-                    return lineItem.getTax();
-                }
+    TAX("l_tax", DOUBLE) {
+        public double getDouble(LineItem lineItem)
+        {
+            return lineItem.getTax();
+        }
 
-                public long getIdentifier(LineItem lineItem)
-                {
-                    return lineItem.getTaxPercent();
-                }
-            },
+        public long getIdentifier(LineItem lineItem)
+        {
+            return lineItem.getTaxPercent();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RETURN_FLAG("l_returnflag", varchar(1))
-            {
-                public String getString(LineItem lineItem)
-                {
-                    return lineItem.getReturnFlag();
-                }
-            },
+    RETURN_FLAG("l_returnflag", varchar(1)) {
+        public String getString(LineItem lineItem)
+        {
+            return lineItem.getReturnFlag();
+        }
+    },
 
-    STATUS("l_linestatus", varchar(1))
-            {
-                public String getString(LineItem lineItem)
-                {
-                    return lineItem.getStatus();
-                }
-            },
+    STATUS("l_linestatus", varchar(1)) {
+        public String getString(LineItem lineItem)
+        {
+            return lineItem.getStatus();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_DATE("l_shipdate", DATE)
-            {
-                public String getString(LineItem lineItem)
-                {
-                    return formatDate(getDate(lineItem));
-                }
+    SHIP_DATE("l_shipdate", DATE) {
+        public String getString(LineItem lineItem)
+        {
+            return formatDate(getDate(lineItem));
+        }
 
-                public int getDate(LineItem lineItem)
-                {
-                    return lineItem.getShipDate();
-                }
-            },
-
-    @SuppressWarnings("SpellCheckingInspection")
-    COMMIT_DATE("l_commitdate", DATE)
-            {
-                public String getString(LineItem lineItem)
-                {
-                    return formatDate(getDate(lineItem));
-                }
-
-                public int getDate(LineItem lineItem)
-                {
-                    return lineItem.getCommitDate();
-                }
-            },
+        public int getDate(LineItem lineItem)
+        {
+            return lineItem.getShipDate();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    RECEIPT_DATE("l_receiptdate", DATE)
-            {
-                public String getString(LineItem lineItem)
-                {
-                    return formatDate(getDate(lineItem));
-                }
+    COMMIT_DATE("l_commitdate", DATE) {
+        public String getString(LineItem lineItem)
+        {
+            return formatDate(getDate(lineItem));
+        }
 
-                @Override
-                public int getDate(LineItem lineItem)
-                {
-                    return lineItem.getReceiptDate();
-                }
-            },
+        public int getDate(LineItem lineItem)
+        {
+            return lineItem.getCommitDate();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_INSTRUCTIONS("l_shipinstruct", varchar(25))
-            {
-                public String getString(LineItem lineItem)
-                {
-                    return lineItem.getShipInstructions();
-                }
-            },
+    RECEIPT_DATE("l_receiptdate", DATE) {
+        public String getString(LineItem lineItem)
+        {
+            return formatDate(getDate(lineItem));
+        }
+
+        @Override
+        public int getDate(LineItem lineItem)
+        {
+            return lineItem.getReceiptDate();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SHIP_MODE("l_shipmode", varchar(10))
-            {
-                public String getString(LineItem lineItem)
-                {
-                    return lineItem.getShipMode();
-                }
-            },
+    SHIP_INSTRUCTIONS("l_shipinstruct", varchar(25)) {
+        public String getString(LineItem lineItem)
+        {
+            return lineItem.getShipInstructions();
+        }
+    },
 
-    COMMENT("l_comment", varchar(44))
-            {
-                public String getString(LineItem lineItem)
-                {
-                    return lineItem.getComment();
-                }
-            };
+    @SuppressWarnings("SpellCheckingInspection")
+    SHIP_MODE("l_shipmode", varchar(10)) {
+        public String getString(LineItem lineItem)
+        {
+            return lineItem.getShipMode();
+        }
+    },
 
+    COMMENT("l_comment", varchar(44)) {
+        public String getString(LineItem lineItem)
+        {
+            return lineItem.getComment();
+        }
+    };
 
     private final String columnName;
     private final TpchColumnType type;

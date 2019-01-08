@@ -61,7 +61,6 @@ public class CustomerGenerator
     @Override
     public Iterator<Customer> iterator()
     {
-
         return new CustomerGeneratorIterator(
                 distributions,
                 textPool,

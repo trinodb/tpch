@@ -128,7 +128,6 @@ public class RandomLong
         seed = seed * aPow + dSum * INCREMENT;
     }
 
-
     private static final long MULTIPLIER_32 = 16807;
     private static final long MODULUS_32 = 2147483647;
 

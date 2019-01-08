@@ -20,38 +20,34 @@ public enum NationColumn
         implements TpchColumn<Nation>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    NATION_KEY("n_nationkey", IDENTIFIER)
-            {
-                public long getIdentifier(Nation nation)
-                {
-                    return nation.getNationKey();
-                }
-            },
+    NATION_KEY("n_nationkey", IDENTIFIER) {
+        public long getIdentifier(Nation nation)
+        {
+            return nation.getNationKey();
+        }
+    },
 
-    NAME("n_name", varchar(25))
-            {
-                public String getString(Nation nation)
-                {
-                    return nation.getName();
-                }
-            },
+    NAME("n_name", varchar(25)) {
+        public String getString(Nation nation)
+        {
+            return nation.getName();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    REGION_KEY("n_regionkey", IDENTIFIER)
-            {
-                public long getIdentifier(Nation nation)
-                {
-                    return nation.getRegionKey();
-                }
-            },
+    REGION_KEY("n_regionkey", IDENTIFIER) {
+        public long getIdentifier(Nation nation)
+        {
+            return nation.getRegionKey();
+        }
+    },
 
-    COMMENT("n_comment", varchar(152))
-            {
-                public String getString(Nation nation)
-                {
-                    return nation.getComment();
-                }
-            };
+    COMMENT("n_comment", varchar(152)) {
+        public String getString(Nation nation)
+        {
+            return nation.getComment();
+        }
+    };
 
     private final String columnName;
     private final TpchColumnType type;
