@@ -48,7 +48,7 @@ public class Distribution
             runningWeight += entry.getValue();
             weights[index] = runningWeight;
 
-            isValidDistribution = isValidDistribution && entry.getValue() > 0;
+            isValidDistribution &= entry.getValue() > 0;
 
             index++;
         }
@@ -63,7 +63,8 @@ public class Distribution
             for (String value : this.values) {
                 int count = distribution.get(value);
                 for (int i = 0; i < count; i++) {
-                    this.distribution[index++] = value;
+                    this.distribution[index] = value;
+                    index++;
                 }
             }
         }

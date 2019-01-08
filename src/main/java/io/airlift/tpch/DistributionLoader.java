@@ -29,8 +29,10 @@ import static com.google.common.base.CharMatcher.whitespace;
 import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.collect.Iterators.filter;
 
-public class DistributionLoader
+public final class DistributionLoader
 {
+    private DistributionLoader() {}
+
     public static <R extends Readable & Closeable> Map<String, Distribution> loadDistribution(CharSource input)
             throws IOException
     {

@@ -13,7 +13,6 @@
  */
 package io.airlift.tpch;
 
-import com.google.common.base.Charsets;
 import com.google.common.io.ByteStreams;
 
 import java.io.IOException;
@@ -24,6 +23,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import static com.google.common.io.BaseEncoding.base16;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.testng.Assert.assertEquals;
 
 public final class GeneratorAssertions
@@ -38,7 +38,7 @@ public final class GeneratorAssertions
             DigestOutputStream out = md5OutputStream(ByteStreams.nullOutputStream());
             // out = md5OutputStream(System.out);
             for (TpchEntity entity : entities) {
-                out.write(entity.toLine().getBytes(Charsets.UTF_8));
+                out.write(entity.toLine().getBytes(UTF_8));
                 out.write('\n');
             }
 

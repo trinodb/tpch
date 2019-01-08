@@ -15,11 +15,11 @@ package io.airlift.tpch;
 
 import java.util.function.Supplier;
 
-import static com.google.common.base.Charsets.US_ASCII;
 import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.base.Suppliers.memoize;
 import static io.airlift.tpch.Distributions.getDefaultDistributions;
 import static java.lang.String.format;
+import static java.nio.charset.StandardCharsets.US_ASCII;
 import static java.util.Objects.requireNonNull;
 
 public class TextPool
