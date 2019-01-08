@@ -13,7 +13,6 @@
  */
 package io.airlift.tpch;
 
-import com.google.common.base.CharMatcher;
 import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
@@ -26,6 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import static com.google.common.base.CharMatcher.whitespace;
 import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.collect.Iterators.filter;
 
@@ -90,7 +90,7 @@ public class DistributionLoader
 
     private static boolean isEnd(String name, String line)
     {
-        List<String> parts = ImmutableList.copyOf(Splitter.on(CharMatcher.WHITESPACE).omitEmptyStrings().split(line));
+        List<String> parts = ImmutableList.copyOf(Splitter.on(whitespace()).omitEmptyStrings().split(line));
         if (parts.get(0).equalsIgnoreCase("END")) {
             checkState(parts.size() == 2 && parts.get(1).equalsIgnoreCase(name),
                     "Expected end statement be 'END %s', but was '%s'", name, line);
@@ -105,7 +105,7 @@ public class DistributionLoader
         while (lines.hasNext()) {
             // advance to "begin"
             String line = lines.next();
-            List<String> parts = ImmutableList.copyOf(Splitter.on(CharMatcher.WHITESPACE).omitEmptyStrings().split(line));
+            List<String> parts = ImmutableList.copyOf(Splitter.on(whitespace()).omitEmptyStrings().split(line));
             if (parts.size() != 2) {
                 continue;
             }

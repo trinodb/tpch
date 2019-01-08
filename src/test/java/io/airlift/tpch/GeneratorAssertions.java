@@ -14,11 +14,11 @@
 package io.airlift.tpch;
 
 import com.google.common.base.Charsets;
-import com.google.common.base.Throwables;
 import com.google.common.io.ByteStreams;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UncheckedIOException;
 import java.security.DigestOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -46,7 +46,7 @@ public final class GeneratorAssertions
             assertEquals(base16().lowerCase().encode(md5Digest), expectedMD5);
         }
         catch (IOException e) {
-            throw Throwables.propagate(e);
+            throw new UncheckedIOException(e);
         }
     }
 
@@ -56,7 +56,7 @@ public final class GeneratorAssertions
             return new DigestOutputStream(out, MessageDigest.getInstance("MD5"));
         }
         catch (NoSuchAlgorithmException e) {
-            throw Throwables.propagate(e);
+            throw new AssertionError(e);
         }
     }
 }

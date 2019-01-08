@@ -14,10 +14,10 @@
 package io.airlift.tpch;
 
 import com.google.common.base.Charsets;
-import com.google.common.base.Throwables;
 import com.google.common.io.Resources;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.URL;
 import java.util.Map;
 
@@ -38,7 +38,7 @@ public class Distributions
                 DEFAULT_DISTRIBUTIONS = new Distributions(loadDistribution(Resources.asCharSource(resource, Charsets.UTF_8)));
             }
             catch (IOException e) {
-                throw Throwables.propagate(e);
+                throw new UncheckedIOException(e);
             }
         }
         return DEFAULT_DISTRIBUTIONS;

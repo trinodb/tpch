@@ -13,13 +13,13 @@
  */
 package io.airlift.tpch;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
@@ -103,7 +103,7 @@ public class Distribution
     @Override
     public String toString()
     {
-        return Objects.toStringHelper(this)
+        return toStringHelper(this)
                 .add("name", name)
                 .toString();
     }
