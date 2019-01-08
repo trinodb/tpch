@@ -134,7 +134,6 @@ public class LineItemGenerator
 
             linePartKeyRandom = createPartKeyRandom(scaleFactor);
 
-
             orderDateRandom.advanceRows(startIndex);
             lineCountRandom.advanceRows(startIndex);
 

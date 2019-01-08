@@ -13,76 +13,69 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
 public enum SupplierColumn
         implements TpchColumn<Supplier>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("s_suppkey", IDENTIFIER)
-            {
-                public long getIdentifier(Supplier supplier)
-                {
-                    return supplier.getSupplierKey();
-                }
-            },
+    SUPPLIER_KEY("s_suppkey", IDENTIFIER) {
+        public long getIdentifier(Supplier supplier)
+        {
+            return supplier.getSupplierKey();
+        }
+    },
 
-    NAME("s_name", varchar(25))
-            {
-                public String getString(Supplier supplier)
-                {
-                    return supplier.getName();
-                }
-            },
+    NAME("s_name", varchar(25)) {
+        public String getString(Supplier supplier)
+        {
+            return supplier.getName();
+        }
+    },
 
-    ADDRESS("s_address", varchar(40))
-            {
-                public String getString(Supplier supplier)
-                {
-                    return supplier.getAddress();
-                }
-            },
+    ADDRESS("s_address", varchar(40)) {
+        public String getString(Supplier supplier)
+        {
+            return supplier.getAddress();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    NATION_KEY("s_nationkey", IDENTIFIER)
-            {
-                public long getIdentifier(Supplier supplier)
-                {
-                    return supplier.getNationKey();
-                }
-            },
+    NATION_KEY("s_nationkey", IDENTIFIER) {
+        public long getIdentifier(Supplier supplier)
+        {
+            return supplier.getNationKey();
+        }
+    },
 
-    PHONE("s_phone", varchar(15))
-            {
-                public String getString(Supplier supplier)
-                {
-                    return supplier.getPhone();
-                }
-            },
+    PHONE("s_phone", varchar(15)) {
+        public String getString(Supplier supplier)
+        {
+            return supplier.getPhone();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    ACCOUNT_BALANCE("s_acctbal", DOUBLE)
-            {
-                public double getDouble(Supplier supplier)
-                {
-                    return supplier.getAccountBalance();
-                }
+    ACCOUNT_BALANCE("s_acctbal", DOUBLE) {
+        public double getDouble(Supplier supplier)
+        {
+            return supplier.getAccountBalance();
+        }
 
-                public long getIdentifier(Supplier supplier)
-                {
-                    return supplier.getAccountBalanceInCents();
-                }
-            },
+        public long getIdentifier(Supplier supplier)
+        {
+            return supplier.getAccountBalanceInCents();
+        }
+    },
 
-    COMMENT("s_comment", varchar(101))
-            {
-                public String getString(Supplier supplier)
-                {
-                    return supplier.getComment();
-                }
-            };
+    COMMENT("s_comment", varchar(101)) {
+        public String getString(Supplier supplier)
+        {
+            return supplier.getComment();
+        }
+    };
 
     private final String columnName;
     private final TpchColumnType type;

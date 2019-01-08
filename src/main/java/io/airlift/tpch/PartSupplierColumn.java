@@ -13,8 +13,8 @@
  */
 package io.airlift.tpch;
 
-import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.DOUBLE;
+import static io.airlift.tpch.TpchColumnTypes.IDENTIFIER;
 import static io.airlift.tpch.TpchColumnTypes.INTEGER;
 import static io.airlift.tpch.TpchColumnTypes.varchar;
 
@@ -22,54 +22,48 @@ public enum PartSupplierColumn
         implements TpchColumn<PartSupplier>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    PART_KEY("ps_partkey", IDENTIFIER)
-            {
-                public long getIdentifier(PartSupplier partSupplier)
-                {
-                    return partSupplier.getPartKey();
-                }
-            },
+    PART_KEY("ps_partkey", IDENTIFIER) {
+        public long getIdentifier(PartSupplier partSupplier)
+        {
+            return partSupplier.getPartKey();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLIER_KEY("ps_suppkey", IDENTIFIER)
-            {
-                public long getIdentifier(PartSupplier partSupplier)
-                {
-                    return partSupplier.getSupplierKey();
-                }
-            },
+    SUPPLIER_KEY("ps_suppkey", IDENTIFIER) {
+        public long getIdentifier(PartSupplier partSupplier)
+        {
+            return partSupplier.getSupplierKey();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    AVAILABLE_QUANTITY("ps_availqty", INTEGER)
-            {
-                public int getInteger(PartSupplier partSupplier)
-                {
-                    return partSupplier.getAvailableQuantity();
-                }
-            },
+    AVAILABLE_QUANTITY("ps_availqty", INTEGER) {
+        public int getInteger(PartSupplier partSupplier)
+        {
+            return partSupplier.getAvailableQuantity();
+        }
+    },
 
     @SuppressWarnings("SpellCheckingInspection")
-    SUPPLY_COST("ps_supplycost", DOUBLE)
-            {
-                public double getDouble(PartSupplier partSupplier)
-                {
-                    return partSupplier.getSupplyCost();
-                }
+    SUPPLY_COST("ps_supplycost", DOUBLE) {
+        public double getDouble(PartSupplier partSupplier)
+        {
+            return partSupplier.getSupplyCost();
+        }
 
-                public long getIdentifier(PartSupplier partSupplier)
-                {
-                    return partSupplier.getSupplyCostInCents();
-                }
-            },
+        public long getIdentifier(PartSupplier partSupplier)
+        {
+            return partSupplier.getSupplyCostInCents();
+        }
+    },
 
-    COMMENT("ps_comment", varchar(199))
-            {
-                public String getString(PartSupplier partSupplier)
-                {
-                    return partSupplier.getComment();
-                }
-            };
-
+    COMMENT("ps_comment", varchar(199)) {
+        public String getString(PartSupplier partSupplier)
+        {
+            return partSupplier.getComment();
+        }
+    };
 
     private final String columnName;
     private final TpchColumnType type;

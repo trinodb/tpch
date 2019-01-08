@@ -20,29 +20,26 @@ public enum RegionColumn
         implements TpchColumn<Region>
 {
     @SuppressWarnings("SpellCheckingInspection")
-    REGION_KEY("r_regionkey", IDENTIFIER)
-            {
-                public long getIdentifier(Region region)
-                {
-                    return region.getRegionKey();
-                }
-            },
+    REGION_KEY("r_regionkey", IDENTIFIER) {
+        public long getIdentifier(Region region)
+        {
+            return region.getRegionKey();
+        }
+    },
 
-    NAME("r_name", varchar(25))
-            {
-                public String getString(Region region)
-                {
-                    return region.getName();
-                }
-            },
+    NAME("r_name", varchar(25)) {
+        public String getString(Region region)
+        {
+            return region.getName();
+        }
+    },
 
-    COMMENT("r_comment", varchar(152))
-            {
-                public String getString(Region region)
-                {
-                    return region.getComment();
-                }
-            };
+    COMMENT("r_comment", varchar(152)) {
+        public String getString(Region region)
+        {
+            return region.getComment();
+        }
+    };
 
     private final String columnName;
     private final TpchColumnType type;

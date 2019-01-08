@@ -58,7 +58,7 @@ public final class GenerateUtils
     private static final int CURRENT_DATE = 95168;
     public static final int TOTAL_DATE_RANGE = 2557;
 
-    private static final int[] MONTH_YEAR_DAY_START = new int[]{
+    private static final int[] MONTH_YEAR_DAY_START = new int[] {
             0,
             31,
             59,

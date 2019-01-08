@@ -13,13 +13,13 @@
  */
 package io.airlift.tpch;
 
-import java.util.Optional;
-
 import java.util.Objects;
+import java.util.Optional;
 
 public class TpchColumnType
 {
-    public enum Base {
+    public enum Base
+    {
         INTEGER,
         IDENTIFIER,
         DATE,

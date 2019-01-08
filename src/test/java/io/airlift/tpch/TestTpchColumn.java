@@ -72,8 +72,7 @@ public class TestTpchColumn
                 PartColumn.class,
                 PartSupplierColumn.class,
                 RegionColumn.class,
-                SupplierColumn.class
-        );
+                SupplierColumn.class);
 
         columnEnums.forEach((Class<? extends TpchColumn> columnEnumClass) -> {
             asList(columnEnumClass.getEnumConstants()).forEach(columnConsumer::accept);

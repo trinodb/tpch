@@ -213,7 +213,6 @@ public class TextPoolGenerator
             parsedDistribution = new char[distribution.size()][];
             bonusText = new String[distribution.size()];
             for (int i = 0; i < distribution.size(); i++) {
-
                 List<String> tokens = Splitter.on(whitespace()).splitToList(distribution.getValue(i));
 
                 parsedDistribution[i] = new char[tokens.size()];
@@ -232,7 +231,6 @@ public class TextPoolGenerator
                 }
                 randomTable[i] = valueIndex;
             }
-
         }
 
         public int getRandomIndex(RandomInt random)

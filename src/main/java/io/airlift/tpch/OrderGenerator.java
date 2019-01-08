@@ -184,7 +184,6 @@ public class OrderGenerator
                 delta *= -1;
             }
 
-
             long totalPrice = 0;
             int shippedCount = 0;
 
