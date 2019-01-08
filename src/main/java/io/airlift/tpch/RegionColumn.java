@@ -19,8 +19,8 @@ import static io.airlift.tpch.TpchColumnTypes.varchar;
 public enum RegionColumn
         implements TpchColumn<Region>
 {
-    @SuppressWarnings("SpellCheckingInspection")
     REGION_KEY("r_regionkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(Region region)
         {
             return region.getRegionKey();
@@ -28,6 +28,7 @@ public enum RegionColumn
     },
 
     NAME("r_name", varchar(25)) {
+        @Override
         public String getString(Region region)
         {
             return region.getName();
@@ -35,6 +36,7 @@ public enum RegionColumn
     },
 
     COMMENT("r_comment", varchar(152)) {
+        @Override
         public String getString(Region region)
         {
             return region.getComment();

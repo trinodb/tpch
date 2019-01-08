@@ -23,44 +23,44 @@ import static io.airlift.tpch.TpchColumnTypes.varchar;
 public enum OrderColumn
         implements TpchColumn<Order>
 {
-    @SuppressWarnings("SpellCheckingInspection")
     ORDER_KEY("o_orderkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(Order order)
         {
             return order.getOrderKey();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     CUSTOMER_KEY("o_custkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(Order order)
         {
             return order.getCustomerKey();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     ORDER_STATUS("o_orderstatus", varchar(1)) {
+        @Override
         public String getString(Order order)
         {
             return String.valueOf(order.getOrderStatus());
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     TOTAL_PRICE("o_totalprice", DOUBLE) {
+        @Override
         public double getDouble(Order order)
         {
             return order.getTotalPrice();
         }
 
+        @Override
         public long getIdentifier(Order order)
         {
             return order.getTotalPriceInCents();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     ORDER_DATE("o_orderdate", DATE) {
         @Override
         public String getString(Order order)
@@ -68,14 +68,15 @@ public enum OrderColumn
             return formatDate(getDate(order));
         }
 
+        @Override
         public int getDate(Order order)
         {
             return order.getOrderDate();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     ORDER_PRIORITY("o_orderpriority", varchar(15)) {
+        @Override
         public String getString(Order order)
         {
             return order.getOrderPriority();
@@ -83,14 +84,15 @@ public enum OrderColumn
     },
 
     CLERK("o_clerk", varchar(15)) {
+        @Override
         public String getString(Order order)
         {
             return order.getClerk();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     SHIP_PRIORITY("o_shippriority", INTEGER) {
+        @Override
         public int getInteger(Order order)
         {
             return order.getShipPriority();
@@ -98,6 +100,7 @@ public enum OrderColumn
     },
 
     COMMENT("o_comment", varchar(79)) {
+        @Override
         public String getString(Order order)
         {
             return order.getComment();

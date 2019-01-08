@@ -21,37 +21,38 @@ import static io.airlift.tpch.TpchColumnTypes.varchar;
 public enum PartSupplierColumn
         implements TpchColumn<PartSupplier>
 {
-    @SuppressWarnings("SpellCheckingInspection")
     PART_KEY("ps_partkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(PartSupplier partSupplier)
         {
             return partSupplier.getPartKey();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     SUPPLIER_KEY("ps_suppkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(PartSupplier partSupplier)
         {
             return partSupplier.getSupplierKey();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     AVAILABLE_QUANTITY("ps_availqty", INTEGER) {
+        @Override
         public int getInteger(PartSupplier partSupplier)
         {
             return partSupplier.getAvailableQuantity();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     SUPPLY_COST("ps_supplycost", DOUBLE) {
+        @Override
         public double getDouble(PartSupplier partSupplier)
         {
             return partSupplier.getSupplyCost();
         }
 
+        @Override
         public long getIdentifier(PartSupplier partSupplier)
         {
             return partSupplier.getSupplyCostInCents();
@@ -59,6 +60,7 @@ public enum PartSupplierColumn
     },
 
     COMMENT("ps_comment", varchar(199)) {
+        @Override
         public String getString(PartSupplier partSupplier)
         {
             return partSupplier.getComment();

@@ -25,6 +25,7 @@ public abstract class TpchTable<E extends TpchEntity>
 {
     public static final TpchTable<Customer> CUSTOMER = new TpchTable<Customer>("customer", CustomerColumn.values())
     {
+        @Override
         public Iterable<Customer> createGenerator(double scaleFactor, int part, int partCount)
         {
             return new CustomerGenerator(scaleFactor, part, partCount);
@@ -33,15 +34,16 @@ public abstract class TpchTable<E extends TpchEntity>
 
     public static final TpchTable<Order> ORDERS = new TpchTable<Order>("orders", OrderColumn.values())
     {
+        @Override
         public Iterable<Order> createGenerator(double scaleFactor, int part, int partCount)
         {
             return new OrderGenerator(scaleFactor, part, partCount);
         }
     };
 
-    @SuppressWarnings("SpellCheckingInspection")
     public static final TpchTable<LineItem> LINE_ITEM = new TpchTable<LineItem>("lineitem", LineItemColumn.values())
     {
+        @Override
         public Iterable<LineItem> createGenerator(double scaleFactor, int part, int partCount)
         {
             return new LineItemGenerator(scaleFactor, part, partCount);
@@ -50,15 +52,16 @@ public abstract class TpchTable<E extends TpchEntity>
 
     public static final TpchTable<Part> PART = new TpchTable<Part>("part", PartColumn.values())
     {
+        @Override
         public Iterable<Part> createGenerator(double scaleFactor, int part, int partCount)
         {
             return new PartGenerator(scaleFactor, part, partCount);
         }
     };
 
-    @SuppressWarnings("SpellCheckingInspection")
     public static final TpchTable<PartSupplier> PART_SUPPLIER = new TpchTable<PartSupplier>("partsupp", PartSupplierColumn.values())
     {
+        @Override
         public Iterable<PartSupplier> createGenerator(double scaleFactor, int part, int partCount)
         {
             return new PartSupplierGenerator(scaleFactor, part, partCount);
@@ -67,6 +70,7 @@ public abstract class TpchTable<E extends TpchEntity>
 
     public static final TpchTable<Supplier> SUPPLIER = new TpchTable<Supplier>("supplier", SupplierColumn.values())
     {
+        @Override
         public Iterable<Supplier> createGenerator(double scaleFactor, int part, int partCount)
         {
             return new SupplierGenerator(scaleFactor, part, partCount);
@@ -75,6 +79,7 @@ public abstract class TpchTable<E extends TpchEntity>
 
     public static final TpchTable<Nation> NATION = new TpchTable<Nation>("nation", NationColumn.values())
     {
+        @Override
         public Iterable<Nation> createGenerator(double scaleFactor, int part, int partCount)
         {
             if (part != 1) {
@@ -86,6 +91,7 @@ public abstract class TpchTable<E extends TpchEntity>
 
     public static final TpchTable<Region> REGION = new TpchTable<Region>("region", RegionColumn.values())
     {
+        @Override
         public Iterable<Region> createGenerator(double scaleFactor, int part, int partCount)
         {
             if (part != 1) {

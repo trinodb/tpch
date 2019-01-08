@@ -20,8 +20,8 @@ import static io.airlift.tpch.TpchColumnTypes.varchar;
 public enum SupplierColumn
         implements TpchColumn<Supplier>
 {
-    @SuppressWarnings("SpellCheckingInspection")
     SUPPLIER_KEY("s_suppkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(Supplier supplier)
         {
             return supplier.getSupplierKey();
@@ -29,6 +29,7 @@ public enum SupplierColumn
     },
 
     NAME("s_name", varchar(25)) {
+        @Override
         public String getString(Supplier supplier)
         {
             return supplier.getName();
@@ -36,14 +37,15 @@ public enum SupplierColumn
     },
 
     ADDRESS("s_address", varchar(40)) {
+        @Override
         public String getString(Supplier supplier)
         {
             return supplier.getAddress();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     NATION_KEY("s_nationkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(Supplier supplier)
         {
             return supplier.getNationKey();
@@ -51,19 +53,21 @@ public enum SupplierColumn
     },
 
     PHONE("s_phone", varchar(15)) {
+        @Override
         public String getString(Supplier supplier)
         {
             return supplier.getPhone();
         }
     },
 
-    @SuppressWarnings("SpellCheckingInspection")
     ACCOUNT_BALANCE("s_acctbal", DOUBLE) {
+        @Override
         public double getDouble(Supplier supplier)
         {
             return supplier.getAccountBalance();
         }
 
+        @Override
         public long getIdentifier(Supplier supplier)
         {
             return supplier.getAccountBalanceInCents();
@@ -71,6 +75,7 @@ public enum SupplierColumn
     },
 
     COMMENT("s_comment", varchar(101)) {
+        @Override
         public String getString(Supplier supplier)
         {
             return supplier.getComment();

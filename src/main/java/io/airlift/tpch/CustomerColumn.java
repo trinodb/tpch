@@ -21,6 +21,7 @@ public enum CustomerColumn
         implements TpchColumn<Customer>
 {
     CUSTOMER_KEY("c_custkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(Customer customer)
         {
             return customer.getCustomerKey();
@@ -28,6 +29,7 @@ public enum CustomerColumn
     },
 
     NAME("c_name", varchar(25)) {
+        @Override
         public String getString(Customer customer)
         {
             return customer.getName();
@@ -35,6 +37,7 @@ public enum CustomerColumn
     },
 
     ADDRESS("c_address", varchar(40)) {
+        @Override
         public String getString(Customer customer)
         {
             return customer.getAddress();
@@ -42,6 +45,7 @@ public enum CustomerColumn
     },
 
     NATION_KEY("c_nationkey", IDENTIFIER) {
+        @Override
         public long getIdentifier(Customer customer)
         {
             return customer.getNationKey();
@@ -49,6 +53,7 @@ public enum CustomerColumn
     },
 
     PHONE("c_phone", varchar(15)) {
+        @Override
         public String getString(Customer customer)
         {
             return customer.getPhone();
@@ -56,11 +61,13 @@ public enum CustomerColumn
     },
 
     ACCOUNT_BALANCE("c_acctbal", DOUBLE) {
+        @Override
         public double getDouble(Customer customer)
         {
             return customer.getAccountBalance();
         }
 
+        @Override
         public long getIdentifier(Customer customer)
         {
             return customer.getAccountBalanceInCents();
@@ -68,6 +75,7 @@ public enum CustomerColumn
     },
 
     MARKET_SEGMENT("c_mktsegment", varchar(10)) {
+        @Override
         public String getString(Customer customer)
         {
             return customer.getMarketSegment();
@@ -75,6 +83,7 @@ public enum CustomerColumn
     },
 
     COMMENT("c_comment", varchar(117)) {
+        @Override
         public String getString(Customer customer)
         {
             return customer.getComment();
