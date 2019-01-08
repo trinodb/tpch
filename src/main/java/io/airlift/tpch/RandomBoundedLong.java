@@ -46,9 +46,7 @@ public class RandomBoundedLong
         if (randomLong != null) {
             return randomLong.nextLong(lowValue, highValue);
         }
-        else {
-            return randomInt.nextInt((int) lowValue, (int) highValue);
-        }
+        return randomInt.nextInt((int) lowValue, (int) highValue);
     }
 
     public void rowFinished()

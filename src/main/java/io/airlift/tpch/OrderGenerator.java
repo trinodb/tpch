@@ -244,13 +244,13 @@ public class OrderGenerator
 
     static long makeOrderKey(long orderIndex)
     {
-        long low_bits = orderIndex & ((1 << ORDER_KEY_SPARSE_KEEP) - 1);
+        long lowBits = orderIndex & ((1 << ORDER_KEY_SPARSE_KEEP) - 1);
 
         long ok = orderIndex;
-        ok = ok >> ORDER_KEY_SPARSE_KEEP;
-        ok = ok << ORDER_KEY_SPARSE_BITS;
-        ok = ok << ORDER_KEY_SPARSE_KEEP;
-        ok += low_bits;
+        ok >>= ORDER_KEY_SPARSE_KEEP;
+        ok <<= ORDER_KEY_SPARSE_BITS;
+        ok <<= ORDER_KEY_SPARSE_KEEP;
+        ok += lowBits;
 
         return ok;
     }

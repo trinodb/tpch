@@ -29,7 +29,7 @@ public abstract class AbstractRandomInt
      * Creates a new random number generator with the specified seed and
      * specified number of random values per row.
      */
-    public AbstractRandomInt(long seed, int expectedUsagePerRow)
+    protected AbstractRandomInt(long seed, int expectedUsagePerRow)
     {
         this.seed = seed;
         this.expectedUsagePerRow = expectedUsagePerRow;
