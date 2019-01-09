@@ -13,7 +13,6 @@
  */
 package io.airlift.tpch;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -24,10 +23,10 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import static com.google.common.base.CharMatcher.whitespace;
 import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.collect.Iterators.filter;
 
 public final class DistributionLoader
 {
@@ -36,17 +35,12 @@ public final class DistributionLoader
     public static <R extends Readable & Closeable> Map<String, Distribution> loadDistribution(CharSource input)
             throws IOException
     {
-        Iterator<String> iterator = filter(input.readLines().iterator(), new Predicate<String>()
-        {
-            @Override
-            public boolean apply(String line)
-            {
-                line = line.trim();
-                return !line.isEmpty() && !line.startsWith("#");
-            }
-        });
-
-        return loadDistributions(iterator);
+        try (Stream<String> lines = input.lines()) {
+            return loadDistributions(lines
+                    .map(String::trim)
+                    .filter(line -> !line.isEmpty() && !line.startsWith("#"))
+                    .iterator());
+        }
     }
 
     private static Distribution loadDistribution(Iterator<String> lines, String name)
