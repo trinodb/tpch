@@ -13,10 +13,10 @@
  */
 package io.airlift.tpch;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.airlift.tpch.GenerateUtils.formatDate;
 import static io.airlift.tpch.GenerateUtils.formatMoney;
 import static java.util.Locale.ENGLISH;
+import static java.util.Objects.requireNonNull;
 
 public class LineItem
         implements TpchEntity
@@ -66,14 +66,14 @@ public class LineItem
         this.extendedPrice = extendedPrice;
         this.discount = discount;
         this.tax = tax;
-        this.returnFlag = checkNotNull(returnFlag, "returnFlag is null");
-        this.status = checkNotNull(status, "status is null");
+        this.returnFlag = requireNonNull(returnFlag, "returnFlag is null");
+        this.status = requireNonNull(status, "status is null");
         this.shipDate = shipDate;
         this.commitDate = commitDate;
         this.receiptDate = receiptDate;
-        this.shipInstructions = checkNotNull(shipInstructions, "shipInstructions is null");
-        this.shipMode = checkNotNull(shipMode, "shipMode is null");
-        this.comment = checkNotNull(comment, "comment is null");
+        this.shipInstructions = requireNonNull(shipInstructions, "shipInstructions is null");
+        this.shipMode = requireNonNull(shipMode, "shipMode is null");
+        this.comment = requireNonNull(comment, "comment is null");
     }
 
     @Override

@@ -18,9 +18,9 @@ import com.google.common.collect.AbstractIterator;
 import java.util.Iterator;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.airlift.tpch.GenerateUtils.calculateRowCount;
 import static io.airlift.tpch.GenerateUtils.calculateStartIndex;
+import static java.util.Objects.requireNonNull;
 
 public class PartSupplierGenerator
         implements Iterable<PartSupplier>
@@ -56,7 +56,7 @@ public class PartSupplierGenerator
         this.part = part;
         this.partCount = partCount;
 
-        this.textPool = checkNotNull(textPool, "textPool is null");
+        this.textPool = requireNonNull(textPool, "textPool is null");
     }
 
     @Override

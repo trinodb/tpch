@@ -13,8 +13,8 @@
  */
 package io.airlift.tpch;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static java.util.Locale.ENGLISH;
+import static java.util.Objects.requireNonNull;
 
 public class Region
         implements TpchEntity
@@ -28,8 +28,8 @@ public class Region
     {
         this.rowNumber = rowNumber;
         this.regionKey = regionKey;
-        this.name = checkNotNull(name, "name is null");
-        this.comment = checkNotNull(comment, "comment is null");
+        this.name = requireNonNull(name, "name is null");
+        this.comment = requireNonNull(comment, "comment is null");
     }
 
     @Override

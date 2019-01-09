@@ -18,10 +18,10 @@ import com.google.common.collect.AbstractIterator;
 import java.util.Iterator;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.airlift.tpch.GenerateUtils.calculateRowCount;
 import static io.airlift.tpch.GenerateUtils.calculateStartIndex;
 import static java.util.Locale.ENGLISH;
+import static java.util.Objects.requireNonNull;
 
 public class CustomerGenerator
         implements Iterable<Customer>
@@ -54,8 +54,8 @@ public class CustomerGenerator
         this.part = part;
         this.partCount = partCount;
 
-        this.distributions = checkNotNull(distributions, "distributions is null");
-        this.textPool = checkNotNull(textPool, "textPool is null");
+        this.distributions = requireNonNull(distributions, "distributions is null");
+        this.textPool = requireNonNull(textPool, "textPool is null");
     }
 
     @Override

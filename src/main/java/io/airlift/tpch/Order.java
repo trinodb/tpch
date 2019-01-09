@@ -13,10 +13,10 @@
  */
 package io.airlift.tpch;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.airlift.tpch.GenerateUtils.formatDate;
 import static io.airlift.tpch.GenerateUtils.formatMoney;
 import static java.util.Locale.ENGLISH;
+import static java.util.Objects.requireNonNull;
 
 public class Order
         implements TpchEntity
@@ -49,10 +49,10 @@ public class Order
         this.orderStatus = orderStatus;
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
-        this.orderPriority = checkNotNull(orderPriority, "orderPriority is null");
-        this.clerk = checkNotNull(clerk, "clerk is null");
+        this.orderPriority = requireNonNull(orderPriority, "orderPriority is null");
+        this.clerk = requireNonNull(clerk, "clerk is null");
         this.shipPriority = shipPriority;
-        this.comment = checkNotNull(comment, "comment is null");
+        this.comment = requireNonNull(comment, "comment is null");
     }
 
     @Override

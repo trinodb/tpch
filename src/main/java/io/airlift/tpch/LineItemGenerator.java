@@ -18,7 +18,6 @@ import com.google.common.collect.AbstractIterator;
 import java.util.Iterator;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.airlift.tpch.GenerateUtils.calculateRowCount;
 import static io.airlift.tpch.GenerateUtils.calculateStartIndex;
 import static io.airlift.tpch.GenerateUtils.toEpochDate;
@@ -27,6 +26,7 @@ import static io.airlift.tpch.OrderGenerator.createLineCountRandom;
 import static io.airlift.tpch.OrderGenerator.createOrderDateRandom;
 import static io.airlift.tpch.OrderGenerator.makeOrderKey;
 import static io.airlift.tpch.PartSupplierGenerator.selectPartSupplier;
+import static java.util.Objects.requireNonNull;
 
 public class LineItemGenerator
         implements Iterable<LineItem>
@@ -72,8 +72,8 @@ public class LineItemGenerator
         this.part = part;
         this.partCount = partCount;
 
-        this.distributions = checkNotNull(distributions, "distributions is null");
-        this.textPool = checkNotNull(textPool, "textPool is null");
+        this.distributions = requireNonNull(distributions, "distributions is null");
+        this.textPool = requireNonNull(textPool, "textPool is null");
     }
 
     @Override

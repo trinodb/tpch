@@ -18,7 +18,7 @@ import com.google.common.base.Splitter;
 import java.util.List;
 
 import static com.google.common.base.CharMatcher.whitespace;
-import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Objects.requireNonNull;
 
 public class TextPoolGenerator
 {
@@ -53,8 +53,8 @@ public class TextPoolGenerator
     public TextPoolGenerator(int size, Distributions distributions, TextGenerationProgressMonitor monitor)
     {
         this.size = size;
-        checkNotNull(distributions, "distributions is null");
-        this.monitor = checkNotNull(monitor, "monitor is null");
+        requireNonNull(distributions, "distributions is null");
+        this.monitor = requireNonNull(monitor, "monitor is null");
 
         this.grammars = new ParsedDistribution(distributions.getGrammars());
         this.nounPhrases = new ParsedDistribution(distributions.getNounPhrase());
