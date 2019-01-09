@@ -160,6 +160,7 @@ public class TextPool
                 case ',':
                     builder.erase(1);
                     builder.append(", ");
+                    continue;
                 case ' ':
                     continue;
                 default:
