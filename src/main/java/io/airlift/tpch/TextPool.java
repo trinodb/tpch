@@ -40,13 +40,7 @@ public class TextPool
 
     public TextPool(int size, Distributions distributions)
     {
-        this(size, distributions, new TextGenerationProgressMonitor()
-        {
-            @Override
-            public void updateProgress(double progress)
-            {
-            }
-        });
+        this(size, distributions, progress -> {});
     }
 
     public TextPool(int size, Distributions distributions, TextGenerationProgressMonitor monitor)
