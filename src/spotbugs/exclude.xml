@@ -1,0 +1,10 @@
+<FindBugsFilter>
+    <!-- TODO: fix for https://github.com/spotbugs/spotbugs/issues/740 -->
+    <Match>
+        <Bug pattern="SE_BAD_FIELD" />
+    </Match>
+    <!-- TODO: fix for https://github.com/spotbugs/spotbugs/issues/756 -->
+    <Match>
+        <Bug pattern="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE" />
+    </Match>
+</FindBugsFilter>
