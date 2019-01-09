@@ -19,11 +19,6 @@
 
     <inceptionYear>2014</inceptionYear>
 
-    <properties>
-        <air.check.skip-extended>true</air.check.skip-extended>
-        <air.check.skip-license>false</air.check.skip-license>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -46,6 +41,14 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration combine.children="append">
                         <argLine>-Xmx2g -Xms2g</argLine>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <configuration>
+                        <excludeFilterFile>${air.main.basedir}/src/spotbugs/exclude.xml</excludeFilterFile>
                     </configuration>
                 </plugin>
             </plugins>
