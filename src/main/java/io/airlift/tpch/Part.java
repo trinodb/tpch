@@ -13,9 +13,9 @@
  */
 package io.airlift.tpch;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static io.airlift.tpch.GenerateUtils.formatMoney;
 import static java.util.Locale.ENGLISH;
+import static java.util.Objects.requireNonNull;
 
 public class Part
         implements TpchEntity
@@ -44,14 +44,14 @@ public class Part
     {
         this.rowNumber = rowNumber;
         this.partKey = partKey;
-        this.name = checkNotNull(name, "name is null");
-        this.manufacturer = checkNotNull(manufacturer, "manufacturer is null");
-        this.brand = checkNotNull(brand, "brand is null");
-        this.type = checkNotNull(type, "type is null");
+        this.name = requireNonNull(name, "name is null");
+        this.manufacturer = requireNonNull(manufacturer, "manufacturer is null");
+        this.brand = requireNonNull(brand, "brand is null");
+        this.type = requireNonNull(type, "type is null");
         this.size = size;
-        this.container = checkNotNull(container, "container is null");
+        this.container = requireNonNull(container, "container is null");
         this.retailPrice = retailPrice;
-        this.comment = checkNotNull(comment, "comment is null");
+        this.comment = requireNonNull(comment, "comment is null");
     }
 
     @Override

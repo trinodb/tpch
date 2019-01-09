@@ -14,9 +14,9 @@
 package io.airlift.tpch;
 
 import static com.google.common.base.Charsets.US_ASCII;
-import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 import static java.lang.String.format;
+import static java.util.Objects.requireNonNull;
 
 public class TextPool
 {
@@ -49,8 +49,8 @@ public class TextPool
 
     public TextPool(int size, Distributions distributions, TextGenerationProgressMonitor monitor)
     {
-        checkNotNull(distributions, "distributions is null");
-        checkNotNull(monitor, "monitor is null");
+        requireNonNull(distributions, "distributions is null");
+        requireNonNull(monitor, "monitor is null");
 
         ByteArrayBuilder output = new ByteArrayBuilder(size + MAX_SENTENCE_LENGTH);
 

@@ -17,7 +17,7 @@ import com.google.common.collect.AbstractIterator;
 
 import java.util.Iterator;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Objects.requireNonNull;
 
 public class NationGenerator
         implements Iterable<Nation>
@@ -34,8 +34,8 @@ public class NationGenerator
 
     public NationGenerator(Distributions distributions, TextPool textPool)
     {
-        this.distributions = checkNotNull(distributions, "distributions is null");
-        this.textPool = checkNotNull(textPool, "textPool is null");
+        this.distributions = requireNonNull(distributions, "distributions is null");
+        this.textPool = requireNonNull(textPool, "textPool is null");
     }
 
     @Override
