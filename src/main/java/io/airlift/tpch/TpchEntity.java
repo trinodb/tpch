@@ -13,7 +13,9 @@
  */
 package io.airlift.tpch;
 
-public interface TpchEntity
+import java.io.Serializable;
+
+public interface TpchEntity extends Serializable
 {
     long getRowNumber();
 
