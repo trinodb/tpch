@@ -2,22 +2,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.airlift.tpch</groupId>
-    <artifactId>tpch</artifactId>
-    <version>0.11-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>tpch</name>
-    <description>Port of TPC-H dbgen to Java</description>
-    <url>https://github.com/airlift/tpch</url>
-
     <parent>
         <groupId>io.airlift</groupId>
         <artifactId>airbase</artifactId>
         <version>90</version>
     </parent>
 
+    <groupId>io.prestosql.tpch</groupId>
+    <artifactId>tpch</artifactId>
+    <version>0.11-SNAPSHOT</version>
+
+    <name>tpch</name>
+    <description>Port of TPC-H dbgen to Java</description>
+    <url>https://github.com/prestosql/tpch</url>
+
     <inceptionYear>2014</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/prestosql/tpch.git</connection>
+        <url>https://github.com/prestosql/tpch</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <dependencies>
         <dependency>
