@@ -10,7 +10,7 @@
 
     <groupId>io.prestosql.tpch</groupId>
     <artifactId>tpch</artifactId>
-    <version>0.11-SNAPSHOT</version>
+    <version>1.0</version>
 
     <name>tpch</name>
     <description>Port of TPC-H dbgen to Java</description>
@@ -29,7 +29,7 @@
     <scm>
         <connection>scm:git:git://github.com/prestosql/tpch.git</connection>
         <url>https://github.com/prestosql/tpch</url>
-        <tag>HEAD</tag>
+        <tag>1.0</tag>
     </scm>
 
     <properties>
