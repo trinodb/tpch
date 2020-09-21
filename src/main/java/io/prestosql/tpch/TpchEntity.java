@@ -13,9 +13,15 @@
  */
 package io.prestosql.tpch;
 
-public interface TpchEntity
+public abstract class TpchEntity
 {
-    long getRowNumber();
+    public abstract long getRowNumber();
 
-    String toLine();
+    public abstract String toLine();
+
+    @Override
+    public String toString()
+    {
+        return toLine();
+    }
 }

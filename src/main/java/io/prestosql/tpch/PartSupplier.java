@@ -18,7 +18,7 @@ import static java.util.Locale.ENGLISH;
 import static java.util.Objects.requireNonNull;
 
 public class PartSupplier
-        implements TpchEntity
+        extends TpchEntity
 {
     private final long rowNumber;
     private final long partKey;
