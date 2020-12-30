@@ -8,13 +8,13 @@
         <version>95</version>
     </parent>
 
-    <groupId>io.prestosql.tpch</groupId>
+    <groupId>io.trino.tpch</groupId>
     <artifactId>tpch</artifactId>
     <version>1.1-SNAPSHOT</version>
 
     <name>tpch</name>
     <description>Port of TPC-H dbgen to Java</description>
-    <url>https://github.com/prestosql/tpch</url>
+    <url>https://github.com/trinodb/tpch</url>
 
     <inceptionYear>2014</inceptionYear>
 
@@ -27,8 +27,8 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/prestosql/tpch.git</connection>
-        <url>https://github.com/prestosql/tpch</url>
+        <connection>scm:git:git://github.com/trinodb/tpch.git</connection>
+        <url>https://github.com/trinodb/tpch</url>
         <tag>HEAD</tag>
     </scm>
 
