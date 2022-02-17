@@ -1,7 +1,9 @@
-name: CI
+name: ci
+
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
 
 jobs:
@@ -17,7 +19,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java-version }}
-      - name: Maven install dependencies
-        run: mvn -B install -DskipTests
-      - name: Maven run tests
+      - name: Install
+        run: mvn install -B -DskipTests
+      - name: Run Tests
         run: mvn -B test
