@@ -20,6 +20,7 @@ jobs:
         java-version:
           - 8
           - 11
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
