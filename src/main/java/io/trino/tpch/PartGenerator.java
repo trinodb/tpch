@@ -46,7 +46,7 @@ public class PartGenerator
 
     public PartGenerator(double scaleFactor, int part, int partCount)
     {
-        this(scaleFactor, part, partCount, Distributions.getDefaultDistributions(), TextPool.getDefaultTestPool());
+        this(scaleFactor, part, partCount, Distributions.getDefaultDistributions(), TextPool.getDefaultTextPool());
     }
 
     public PartGenerator(double scaleFactor, int part, int partCount, Distributions distributions, TextPool textPool)

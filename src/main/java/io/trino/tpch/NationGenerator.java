@@ -29,7 +29,7 @@ public class NationGenerator
 
     public NationGenerator()
     {
-        this(Distributions.getDefaultDistributions(), TextPool.getDefaultTestPool());
+        this(Distributions.getDefaultDistributions(), TextPool.getDefaultTextPool());
     }
 
     public NationGenerator(Distributions distributions, TextPool textPool)
