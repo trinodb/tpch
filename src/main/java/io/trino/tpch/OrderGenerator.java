@@ -16,6 +16,7 @@ package io.trino.tpch;
 import com.google.common.collect.AbstractIterator;
 
 import java.util.Iterator;
+import java.util.function.Supplier;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Strings.padStart;
@@ -58,14 +59,14 @@ public class OrderGenerator
     private final int partCount;
 
     private final Distributions distributions;
-    private final TextPool textPool;
+    private final Supplier<TextPool> textPool;
 
     public OrderGenerator(double scaleFactor, int part, int partCount)
     {
         this(scaleFactor, part, partCount, Distributions.getDefaultDistributions(), TextPool.getDefaultTextPool());
     }
 
-    public OrderGenerator(double scaleFactor, int part, int partCount, Distributions distributions, TextPool textPool)
+    public OrderGenerator(double scaleFactor, int part, int partCount, Distributions distributions, Supplier<TextPool> textPool)
     {
         checkArgument(scaleFactor > 0, "scaleFactor must be greater than 0");
         checkArgument(part >= 1, "part must be at least 1");
@@ -84,7 +85,7 @@ public class OrderGenerator
     {
         return new OrderGeneratorIterator(
                 distributions,
-                textPool,
+                textPool.get(),
                 scaleFactor,
                 calculateStartIndex(SCALE_BASE, scaleFactor, part, partCount),
                 calculateRowCount(SCALE_BASE, scaleFactor, part, partCount));

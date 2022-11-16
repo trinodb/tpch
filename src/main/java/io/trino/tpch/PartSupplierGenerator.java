@@ -16,6 +16,7 @@ package io.trino.tpch;
 import com.google.common.collect.AbstractIterator;
 
 import java.util.Iterator;
+import java.util.function.Supplier;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static io.trino.tpch.GenerateUtils.calculateRowCount;
@@ -39,14 +40,14 @@ public class PartSupplierGenerator
     private final int part;
     private final int partCount;
 
-    private final TextPool textPool;
+    private final Supplier<TextPool> textPool;
 
     public PartSupplierGenerator(double scaleFactor, int part, int partCount)
     {
         this(scaleFactor, part, partCount, TextPool.getDefaultTextPool());
     }
 
-    public PartSupplierGenerator(double scaleFactor, int part, int partCount, TextPool textPool)
+    public PartSupplierGenerator(double scaleFactor, int part, int partCount, Supplier<TextPool> textPool)
     {
         checkArgument(scaleFactor > 0, "scaleFactor must be greater than 0");
         checkArgument(part >= 1, "part must be at least 1");
@@ -63,7 +64,7 @@ public class PartSupplierGenerator
     public Iterator<PartSupplier> iterator()
     {
         return new PartSupplierGeneratorIterator(
-                textPool,
+                textPool.get(),
                 scaleFactor,
                 calculateStartIndex(PartGenerator.SCALE_BASE, scaleFactor, part, partCount),
                 calculateRowCount(PartGenerator.SCALE_BASE, scaleFactor, part, partCount));

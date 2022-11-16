@@ -16,6 +16,7 @@ package io.trino.tpch;
 import com.google.common.collect.AbstractIterator;
 
 import java.util.Iterator;
+import java.util.function.Supplier;
 
 import static java.util.Objects.requireNonNull;
 
@@ -25,14 +26,14 @@ public class RegionGenerator
     private static final int COMMENT_AVERAGE_LENGTH = 72;
 
     private final Distributions distributions;
-    private final TextPool textPool;
+    private final Supplier<TextPool> textPool;
 
     public RegionGenerator()
     {
         this(Distributions.getDefaultDistributions(), TextPool.getDefaultTextPool());
     }
 
-    public RegionGenerator(Distributions distributions, TextPool textPool)
+    public RegionGenerator(Distributions distributions, Supplier<TextPool> textPool)
     {
         this.distributions = requireNonNull(distributions, "distributions is null");
         this.textPool = requireNonNull(textPool, "textPool is null");
@@ -41,7 +42,7 @@ public class RegionGenerator
     @Override
     public Iterator<Region> iterator()
     {
-        return new RegionGeneratorIterator(distributions.getRegions(), textPool);
+        return new RegionGeneratorIterator(distributions.getRegions(), textPool.get());
     }
 
     private static class RegionGeneratorIterator

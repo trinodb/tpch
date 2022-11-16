@@ -45,14 +45,14 @@ public class SupplierGenerator
     private final int partCount;
 
     private final Distributions distributions;
-    private final TextPool textPool;
+    private final java.util.function.Supplier<TextPool> textPool;
 
     public SupplierGenerator(double scaleFactor, int part, int partCount)
     {
         this(scaleFactor, part, partCount, Distributions.getDefaultDistributions(), TextPool.getDefaultTextPool());
     }
 
-    public SupplierGenerator(double scaleFactor, int part, int partCount, Distributions distributions, TextPool textPool)
+    public SupplierGenerator(double scaleFactor, int part, int partCount, Distributions distributions, java.util.function.Supplier<TextPool> textPool)
     {
         checkArgument(scaleFactor > 0, "scaleFactor must be greater than 0");
         checkArgument(part >= 1, "part must be at least 1");
@@ -71,7 +71,7 @@ public class SupplierGenerator
     {
         return new SupplierGeneratorIterator(
                 distributions,
-                textPool,
+                textPool.get(),
                 calculateStartIndex(SCALE_BASE, scaleFactor, part, partCount),
                 calculateRowCount(SCALE_BASE, scaleFactor, part, partCount));
     }
