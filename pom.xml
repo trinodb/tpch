@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.airlift</groupId>
         <artifactId>airbase</artifactId>
-        <version>95</version>
+        <version>130</version>
     </parent>
 
     <groupId>io.trino.tpch</groupId>
@@ -34,6 +34,9 @@
 
     <properties>
         <air.test.jvmsize>2g</air.test.jvmsize>
+        <project.build.targetJdk>17</project.build.targetJdk>
+        <air.java.version>17</air.java.version>
+        <air.modernizer.java-version>8</air.modernizer.java-version>
     </properties>
 
     <dependencies>
