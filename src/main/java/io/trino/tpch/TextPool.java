@@ -13,26 +13,47 @@
  */
 package io.trino.tpch;
 
+import com.google.common.base.Stopwatch;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 
 import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.base.Suppliers.memoize;
 import static io.trino.tpch.Distributions.getDefaultDistributions;
 import static java.lang.String.format;
 import static java.nio.charset.StandardCharsets.US_ASCII;
 import static java.util.Objects.requireNonNull;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class TextPool
 {
+    private static final Logger log = Logger.getLogger(TextPool.class.getName());
+
     private static final int DEFAULT_TEXT_POOL_SIZE = 300 * 1024 * 1024;
     private static final int MAX_SENTENCE_LENGTH = 256;
 
-    private static final Supplier<TextPool> DEFAULT_TEXT_POOL = memoize(() ->
-            new TextPool(DEFAULT_TEXT_POOL_SIZE, getDefaultDistributions()));
+    private static final ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor(
+            new ThreadFactoryBuilder()
+                    .setDaemon(true)
+                    .setNameFormat(TextPool.class.getName() + "-%s")
+                    .build());
 
-    public static TextPool getDefaultTextPool()
+    private static final Supplier<TextPool> DEFAULT_TEXT_POOL = new SharingTextPoolSupplier(EXECUTOR, TextPool::createDefaultTextPool);
+
+    public static Supplier<TextPool> getDefaultTextPool()
     {
-        return DEFAULT_TEXT_POOL.get();
+        return DEFAULT_TEXT_POOL;
+    }
+
+    private static TextPool createDefaultTextPool()
+    {
+        Stopwatch stopwatch = Stopwatch.createStarted();
+        TextPool pool = new TextPool(DEFAULT_TEXT_POOL_SIZE, getDefaultDistributions());
+        log.fine(() -> format("Created new TextPool in %s ms", stopwatch.elapsed(MILLISECONDS)));
+        return pool;
     }
 
     private final byte[] textPool;
