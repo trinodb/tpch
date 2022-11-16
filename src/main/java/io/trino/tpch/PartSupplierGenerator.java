@@ -43,7 +43,7 @@ public class PartSupplierGenerator
 
     public PartSupplierGenerator(double scaleFactor, int part, int partCount)
     {
-        this(scaleFactor, part, partCount, TextPool.getDefaultTestPool());
+        this(scaleFactor, part, partCount, TextPool.getDefaultTextPool());
     }
 
     public PartSupplierGenerator(double scaleFactor, int part, int partCount, TextPool textPool)

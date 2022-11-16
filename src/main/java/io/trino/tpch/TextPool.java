@@ -30,7 +30,7 @@ public class TextPool
     private static final Supplier<TextPool> DEFAULT_TEXT_POOL = memoize(() ->
             new TextPool(DEFAULT_TEXT_POOL_SIZE, getDefaultDistributions()));
 
-    public static TextPool getDefaultTestPool()
+    public static TextPool getDefaultTextPool()
     {
         return DEFAULT_TEXT_POOL.get();
     }

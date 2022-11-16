@@ -29,7 +29,7 @@ public class RegionGenerator
 
     public RegionGenerator()
     {
-        this(Distributions.getDefaultDistributions(), TextPool.getDefaultTestPool());
+        this(Distributions.getDefaultDistributions(), TextPool.getDefaultTextPool());
     }
 
     public RegionGenerator(Distributions distributions, TextPool textPool)

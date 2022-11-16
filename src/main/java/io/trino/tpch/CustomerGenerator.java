@@ -41,7 +41,7 @@ public class CustomerGenerator
 
     public CustomerGenerator(double scaleFactor, int part, int partCount)
     {
-        this(scaleFactor, part, partCount, Distributions.getDefaultDistributions(), TextPool.getDefaultTestPool());
+        this(scaleFactor, part, partCount, Distributions.getDefaultDistributions(), TextPool.getDefaultTextPool());
     }
 
     public CustomerGenerator(double scaleFactor, int part, int partCount, Distributions distributions, TextPool textPool)
