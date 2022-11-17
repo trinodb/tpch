@@ -89,6 +89,18 @@ public abstract class TpchTable<E extends TpchEntity>
         }
     };
 
+    public static final TpchTable<HudiNation> HUDINATION = new TpchTable<HudiNation>("hoodie_nation", HudiNationColumn.values())
+    {
+        @Override
+        public Iterable<HudiNation> createGenerator(double scaleFactor, int part, int partCount)
+        {
+            if (part != 1) {
+                return ImmutableList.of();
+            }
+            return new HudiNationGenerator();
+        }
+    };
+
     public static final TpchTable<Region> REGION = new TpchTable<Region>("region", RegionColumn.values())
     {
         @Override
@@ -105,7 +117,7 @@ public abstract class TpchTable<E extends TpchEntity>
     private static final Map<String, TpchTable<?>> TABLES_BY_NAME;
 
     static {
-        TABLES = ImmutableList.of(CUSTOMER, ORDERS, LINE_ITEM, PART, PART_SUPPLIER, SUPPLIER, NATION, REGION);
+        TABLES = ImmutableList.of(CUSTOMER, ORDERS, LINE_ITEM, PART, PART_SUPPLIER, SUPPLIER, NATION, REGION, HUDINATION);
         TABLES_BY_NAME = Maps.uniqueIndex(TABLES, TpchTable::getTableName);
     }
 
