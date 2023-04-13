@@ -18,6 +18,7 @@ import com.google.common.collect.AbstractIterator;
 import java.util.Iterator;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Strings.padStart;
 import static io.trino.tpch.GenerateUtils.MIN_GENERATE_DATE;
 import static io.trino.tpch.GenerateUtils.TOTAL_DATE_RANGE;
 import static io.trino.tpch.GenerateUtils.calculateRowCount;
@@ -30,7 +31,6 @@ import static io.trino.tpch.LineItemGenerator.createQuantityRandom;
 import static io.trino.tpch.LineItemGenerator.createShipDateRandom;
 import static io.trino.tpch.LineItemGenerator.createTaxRandom;
 import static io.trino.tpch.PartGenerator.calculatePartPrice;
-import static java.util.Locale.ENGLISH;
 import static java.util.Objects.requireNonNull;
 
 public class OrderGenerator
@@ -226,7 +226,7 @@ public class OrderGenerator
                     totalPrice,
                     toEpochDate(orderDate),
                     orderPriorityRandom.nextValue(),
-                    String.format(ENGLISH, "Clerk#%09d", clerkRandom.nextValue()),
+                    "Clerk#" + padStart(Integer.toString(clerkRandom.nextValue()), 9, '0'),
                     0,
                     commentRandom.nextValue());
         }

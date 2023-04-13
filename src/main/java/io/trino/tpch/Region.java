@@ -13,7 +13,7 @@
  */
 package io.trino.tpch;
 
-import static java.util.Locale.ENGLISH;
+import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
 public class Region
@@ -56,6 +56,6 @@ public class Region
     @Override
     public String toLine()
     {
-        return String.format(ENGLISH, "%d|%s|%s|", regionKey, name, comment);
+        return buildLine(regionKey, name, comment);
     }
 }

@@ -14,7 +14,7 @@
 package io.trino.tpch;
 
 import static io.trino.tpch.GenerateUtils.formatMoney;
-import static java.util.Locale.ENGLISH;
+import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
 public class Customer
@@ -97,15 +97,6 @@ public class Customer
     @Override
     public String toLine()
     {
-        return String.format(ENGLISH,
-                "%d|%s|%s|%d|%s|%s|%s|%s|",
-                customerKey,
-                name,
-                address,
-                nationKey,
-                phone,
-                formatMoney(accountBalance),
-                marketSegment,
-                comment);
+        return buildLine(customerKey, name, address, nationKey, phone, formatMoney(accountBalance), marketSegment, comment);
     }
 }

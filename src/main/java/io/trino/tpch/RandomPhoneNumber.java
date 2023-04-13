@@ -13,7 +13,7 @@
  */
 package io.trino.tpch;
 
-import static java.util.Locale.ENGLISH;
+import static io.trino.tpch.StringUtils.padWithZeros;
 
 public class RandomPhoneNumber
         extends AbstractRandomInt
@@ -33,11 +33,9 @@ public class RandomPhoneNumber
 
     public String nextValue(long nationKey)
     {
-        return String.format(ENGLISH,
-                "%02d-%03d-%03d-%04d",
-                (10 + (nationKey % NATIONS_MAX)),
-                nextInt(100, 999),
-                nextInt(100, 999),
-                nextInt(1000, 9999));
+        return padWithZeros(10 + (nationKey % NATIONS_MAX), 2) + '-' +
+                padWithZeros(nextInt(100, 999), 3) + '-' +
+                padWithZeros(nextInt(100, 999), 3) + '-' +
+                padWithZeros(nextInt(1000, 9999), 4);
     }
 }
