@@ -20,7 +20,6 @@ import java.util.Iterator;
 import static com.google.common.base.Preconditions.checkArgument;
 import static io.trino.tpch.GenerateUtils.calculateRowCount;
 import static io.trino.tpch.GenerateUtils.calculateStartIndex;
-import static java.util.Locale.ENGLISH;
 import static java.util.Objects.requireNonNull;
 
 public class PartGenerator
@@ -143,8 +142,8 @@ public class PartGenerator
             return new Part(partKey,
                     partKey,
                     name,
-                    String.format(ENGLISH, "Manufacturer#%d", manufacturer),
-                    String.format(ENGLISH, "Brand#%d", brand),
+                    "Manufacturer#" + manufacturer,
+                    "Brand#" + brand,
                     typeRandom.nextValue(),
                     sizeRandom.nextValue(),
                     containerRandom.nextValue(),

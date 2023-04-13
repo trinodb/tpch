@@ -14,7 +14,7 @@
 package io.trino.tpch;
 
 import static io.trino.tpch.GenerateUtils.formatMoney;
-import static java.util.Locale.ENGLISH;
+import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
 public class Supplier
@@ -90,8 +90,7 @@ public class Supplier
     @Override
     public String toLine()
     {
-        return String.format(ENGLISH,
-                "%d|%s|%s|%d|%s|%s|%s|",
+        return buildLine(
                 supplierKey,
                 name,
                 address,

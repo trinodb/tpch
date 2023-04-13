@@ -15,7 +15,7 @@ package io.trino.tpch;
 
 import static io.trino.tpch.GenerateUtils.formatDate;
 import static io.trino.tpch.GenerateUtils.formatMoney;
-import static java.util.Locale.ENGLISH;
+import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
 public class LineItem
@@ -180,8 +180,7 @@ public class LineItem
     @Override
     public String toLine()
     {
-        return String.format(ENGLISH,
-                "%d|%d|%d|%d|%d|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|",
+        return buildLine(
                 orderKey,
                 partKey,
                 supplierKey,
