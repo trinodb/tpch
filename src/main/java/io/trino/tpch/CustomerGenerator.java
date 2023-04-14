@@ -20,7 +20,7 @@ import java.util.Iterator;
 import static com.google.common.base.Preconditions.checkArgument;
 import static io.trino.tpch.GenerateUtils.calculateRowCount;
 import static io.trino.tpch.GenerateUtils.calculateStartIndex;
-import static java.util.Locale.ENGLISH;
+import static io.trino.tpch.StringUtils.padWithZeros;
 import static java.util.Objects.requireNonNull;
 
 public class CustomerGenerator
@@ -127,7 +127,7 @@ public class CustomerGenerator
 
             return new Customer(customerKey,
                     customerKey,
-                    String.format(ENGLISH, "Customer#%09d", customerKey),
+                    "Customer#" + padWithZeros(customerKey, 9),
                     addressRandom.nextValue(),
                     nationKey,
                     phoneRandom.nextValue(nationKey),

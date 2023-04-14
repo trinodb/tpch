@@ -15,10 +15,12 @@ package io.trino.tpch;
 
 import com.google.common.collect.ImmutableList;
 
-import java.math.BigDecimal;
+import java.time.Year;
 import java.util.List;
 
-import static java.util.Locale.ENGLISH;
+import static com.google.common.base.Preconditions.checkArgument;
+import static io.trino.tpch.StringUtils.padWithZeros;
+import static java.lang.StrictMath.abs;
 
 public final class GenerateUtils
 {
@@ -109,7 +111,7 @@ public final class GenerateUtils
         }
         int dy = d - MONTH_YEAR_DAY_START[m - 1] - ((isLeapYear(y) && m > 2) ? 1 : 0);
 
-        return String.format(ENGLISH, "19%02d-%02d-%02d", y, m, dy);
+        return "19" + padWithZeros(y, 2) + '-' + padWithZeros(m, 2) + '-' + padWithZeros(dy, 2);
     }
 
     private static int leapYearAdjustment(int year, int month)
@@ -142,7 +144,7 @@ public final class GenerateUtils
 
     private static boolean isLeapYear(int year)
     {
-        return year % 4 == 0 && year % 100 != 0;
+        return Year.isLeap(year);
     }
 
     //
@@ -151,7 +153,11 @@ public final class GenerateUtils
 
     public static String formatMoney(long value)
     {
-        // todo there must be a better way to do this
-        return new BigDecimal(value).divide(new BigDecimal(100)).setScale(2).toString();
+        checkArgument(value != Long.MIN_VALUE, "formatMoney(Long.MIN_VALUE) is not supported");
+
+        long unsignedValue = abs(value);
+        long remainder = unsignedValue % 100;
+        long significant = unsignedValue / 100;
+        return (value < 0 ? "-" : "") + significant + "." + padWithZeros(remainder, 2);
     }
 }

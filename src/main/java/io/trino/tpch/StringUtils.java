@@ -19,7 +19,8 @@ import static com.google.common.base.Strings.padStart;
 
 public class StringUtils
 {
-    private static final Joiner LINE_JOINER = Joiner.on('|');
+    private static final Character COLUMN_SEPARATOR = '|';
+    private static final Joiner LINE_JOINER = Joiner.on(COLUMN_SEPARATOR);
 
     private StringUtils() {}
 
@@ -30,6 +31,6 @@ public class StringUtils
 
     public static String buildLine(Object... values)
     {
-        return LINE_JOINER.join(values) + "|";
+        return LINE_JOINER.join(values) + COLUMN_SEPARATOR;
     }
 }
