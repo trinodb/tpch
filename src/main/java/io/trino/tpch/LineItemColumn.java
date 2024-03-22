@@ -87,7 +87,7 @@ public enum LineItemColumn
         @Override
         public double getDouble(LineItem lineItem)
         {
-            return lineItem.discountPercent();
+            return lineItem.discount();
         }
 
         @Override
