@@ -13,8 +13,6 @@
  */
 package io.trino.tpch;
 
-import com.google.common.io.ByteStreams;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UncheckedIOException;
@@ -23,6 +21,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import static com.google.common.io.BaseEncoding.base16;
+import static java.io.OutputStream.nullOutputStream;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.testng.Assert.assertEquals;
 
@@ -35,7 +34,7 @@ public final class GeneratorAssertions
     public static void assertEntityLinesMD5(Iterable<? extends TpchEntity> entities, String expectedMD5)
     {
         try {
-            DigestOutputStream out = md5OutputStream(ByteStreams.nullOutputStream());
+            DigestOutputStream out = md5OutputStream(nullOutputStream());
             // out = md5OutputStream(System.out);
             for (TpchEntity entity : entities) {
                 out.write(entity.toLine().getBytes(UTF_8));

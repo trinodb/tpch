@@ -33,8 +33,12 @@
     </scm>
 
     <properties>
+        <project.build.targetJdk>21</project.build.targetJdk>
+        <air.java.version>21.0.1</air.java.version>
+
         <air.test.jvmsize>2g</air.test.jvmsize>
         <air.check.skip-spotbugs>true</air.check.skip-spotbugs>
+        <air.check.skip-pmd>true</air.check.skip-pmd>
     </properties>
 
     <dependencies>
