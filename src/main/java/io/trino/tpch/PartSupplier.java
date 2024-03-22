@@ -17,65 +17,28 @@ import static io.trino.tpch.GenerateUtils.formatMoney;
 import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
-public class PartSupplier
+public record PartSupplier(
+        long rowNumber,
+        long partKey,
+        long supplierKey,
+        int availableQuantity,
+        long supplyCostInCents,
+        String comment)
         implements TpchEntity
 {
-    private final long rowNumber;
-    private final long partKey;
-    private final long supplierKey;
-    private final int availableQuantity;
-    private final long supplyCost;
-    private final String comment;
-
-    public PartSupplier(long rowNumber, long partKey, long supplierKey, int availableQuantity, long supplyCost, String comment)
+    public PartSupplier
     {
-        this.rowNumber = rowNumber;
-        this.partKey = partKey;
-        this.supplierKey = supplierKey;
-        this.availableQuantity = availableQuantity;
-        this.supplyCost = supplyCost;
-        this.comment = requireNonNull(comment, "comment is null");
-    }
-
-    @Override
-    public long getRowNumber()
-    {
-        return rowNumber;
-    }
-
-    public long getPartKey()
-    {
-        return partKey;
-    }
-
-    public long getSupplierKey()
-    {
-        return supplierKey;
-    }
-
-    public int getAvailableQuantity()
-    {
-        return availableQuantity;
+        requireNonNull(comment, "comment is null");
     }
 
     public double getSupplyCost()
     {
-        return supplyCost / 100.0;
-    }
-
-    public long getSupplyCostInCents()
-    {
-        return supplyCost;
-    }
-
-    public String getComment()
-    {
-        return comment;
+        return supplyCostInCents / 100.0;
     }
 
     @Override
     public String toLine()
     {
-        return buildLine(partKey, supplierKey, availableQuantity, formatMoney(supplyCost), comment);
+        return buildLine(partKey, supplierKey, availableQuantity, formatMoney(supplyCostInCents), comment);
     }
 }

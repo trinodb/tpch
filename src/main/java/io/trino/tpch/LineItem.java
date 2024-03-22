@@ -18,163 +18,48 @@ import static io.trino.tpch.GenerateUtils.formatMoney;
 import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
-public class LineItem
+public record LineItem(
+        long rowNumber,
+        long orderKey,
+        long partKey,
+        long supplierKey,
+        int lineNumber,
+        long quantity,
+        long extendedPriceInCents,
+        long discountPercent,
+        long taxPercent,
+        String returnFlag,
+        String status,
+        int shipDate,
+        int commitDate,
+        int receiptDate,
+        String shipInstructions,
+        String shipMode,
+        String comment)
         implements TpchEntity
 {
-    private final long rowNumber;
-    private final long orderKey;
-    private final long partKey;
-    private final long supplierKey;
-    private final int lineNumber;
-    private final long quantity;
-    private final long extendedPrice;
-    private final long discount;
-    private final long tax;
-    private final String returnFlag;
-    private final String status;
-    private final int shipDate;
-    private final int commitDate;
-    private final int receiptDate;
-    private final String shipInstructions;
-    private final String shipMode;
-    private final String comment;
-
-    public LineItem(long rowNumber,
-            long orderKey,
-            long partKey,
-            long supplierKey,
-            int lineNumber,
-            long quantity,
-            long extendedPrice,
-            long discount,
-            long tax,
-            String returnFlag,
-            String status,
-            int shipDate,
-            int commitDate,
-            int receiptDate,
-            String shipInstructions,
-            String shipMode,
-            String comment)
+    public LineItem
     {
-        this.rowNumber = rowNumber;
-        this.orderKey = orderKey;
-        this.partKey = partKey;
-        this.supplierKey = supplierKey;
-        this.lineNumber = lineNumber;
-        this.quantity = quantity;
-        this.extendedPrice = extendedPrice;
-        this.discount = discount;
-        this.tax = tax;
-        this.returnFlag = requireNonNull(returnFlag, "returnFlag is null");
-        this.status = requireNonNull(status, "status is null");
-        this.shipDate = shipDate;
-        this.commitDate = commitDate;
-        this.receiptDate = receiptDate;
-        this.shipInstructions = requireNonNull(shipInstructions, "shipInstructions is null");
-        this.shipMode = requireNonNull(shipMode, "shipMode is null");
-        this.comment = requireNonNull(comment, "comment is null");
+        requireNonNull(returnFlag, "returnFlag is null");
+        requireNonNull(status, "status is null");
+        requireNonNull(shipInstructions, "shipInstructions is null");
+        requireNonNull(shipMode, "shipMode is null");
+        requireNonNull(comment, "comment is null");
     }
 
-    @Override
-    public long getRowNumber()
+    public double extendedPrice()
     {
-        return rowNumber;
+        return extendedPriceInCents / 100.0;
     }
 
-    public long getOrderKey()
+    public double discount()
     {
-        return orderKey;
+        return discountPercent / 100.0;
     }
 
-    public long getPartKey()
+    public double tax()
     {
-        return partKey;
-    }
-
-    public long getSupplierKey()
-    {
-        return supplierKey;
-    }
-
-    public int getLineNumber()
-    {
-        return lineNumber;
-    }
-
-    public long getQuantity()
-    {
-        return quantity;
-    }
-
-    public double getExtendedPrice()
-    {
-        return extendedPrice / 100.0;
-    }
-
-    public long getExtendedPriceInCents()
-    {
-        return extendedPrice;
-    }
-
-    public double getDiscount()
-    {
-        return discount / 100.0;
-    }
-
-    public long getDiscountPercent()
-    {
-        return discount;
-    }
-
-    public double getTax()
-    {
-        return tax / 100.0;
-    }
-
-    public long getTaxPercent()
-    {
-        return tax;
-    }
-
-    public String getReturnFlag()
-    {
-        return returnFlag;
-    }
-
-    public String getStatus()
-    {
-        return status;
-    }
-
-    public int getShipDate()
-    {
-        return shipDate;
-    }
-
-    public int getCommitDate()
-    {
-        return commitDate;
-    }
-
-    public int getReceiptDate()
-    {
-        return receiptDate;
-    }
-
-    public String getShipInstructions()
-    {
-        return shipInstructions;
-    }
-
-    public String getShipMode()
-    {
-        return shipMode;
-    }
-
-    public String getComment()
-    {
-        return comment;
+        return taxPercent / 100.0;
     }
 
     @Override
@@ -186,9 +71,9 @@ public class LineItem
                 supplierKey,
                 lineNumber,
                 quantity,
-                formatMoney(extendedPrice),
-                formatMoney(discount),
-                formatMoney(tax),
+                formatMoney(extendedPriceInCents),
+                formatMoney(discountPercent),
+                formatMoney(taxPercent),
                 returnFlag,
                 status,
                 formatDate(shipDate),

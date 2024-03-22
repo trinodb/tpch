@@ -13,9 +13,10 @@
  */
 package io.trino.tpch;
 
-public interface TpchEntity
+public sealed interface TpchEntity
+        permits Customer, LineItem, Nation, Order, Part, PartSupplier, Region, Supplier
 {
-    long getRowNumber();
+    long rowNumber();
 
     String toLine();
 }

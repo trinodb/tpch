@@ -17,74 +17,28 @@ import static io.trino.tpch.GenerateUtils.formatMoney;
 import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
-public class Supplier
+public record Supplier(
+        long rowNumber,
+        long supplierKey,
+        String name,
+        String address,
+        long nationKey,
+        String phone,
+        long accountBalanceInCents,
+        String comment)
         implements TpchEntity
 {
-    private final long rowNumber;
-    private final long supplierKey;
-    private final String name;
-    private final String address;
-    private final long nationKey;
-    private final String phone;
-    private final long accountBalance;
-    private final String comment;
-
-    public Supplier(long rowNumber, long supplierKey, String name, String address, long nationKey, String phone, long accountBalance, String comment)
+    public Supplier
     {
-        this.rowNumber = rowNumber;
-        this.supplierKey = supplierKey;
-        this.name = requireNonNull(name, "name is null");
-        this.address = requireNonNull(address, "address is null");
-        this.nationKey = nationKey;
-        this.phone = requireNonNull(phone, "phone is null");
-        this.accountBalance = accountBalance;
-        this.comment = requireNonNull(comment, "comment is null");
-    }
-
-    @Override
-    public long getRowNumber()
-    {
-        return rowNumber;
-    }
-
-    public long getSupplierKey()
-    {
-        return supplierKey;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getAddress()
-    {
-        return address;
-    }
-
-    public long getNationKey()
-    {
-        return nationKey;
-    }
-
-    public String getPhone()
-    {
-        return phone;
+        requireNonNull(name, "name is null");
+        requireNonNull(address, "address is null");
+        requireNonNull(phone, "phone is null");
+        requireNonNull(comment, "comment is null");
     }
 
     public double getAccountBalance()
     {
-        return accountBalance / 100.0;
-    }
-
-    public long getAccountBalanceInCents()
-    {
-        return accountBalance;
-    }
-
-    public String getComment()
-    {
-        return comment;
+        return accountBalanceInCents / 100.0;
     }
 
     @Override
@@ -96,7 +50,7 @@ public class Supplier
                 address,
                 nationKey,
                 phone,
-                formatMoney(accountBalance),
+                formatMoney(accountBalanceInCents),
                 comment);
     }
 }

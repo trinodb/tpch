@@ -27,7 +27,7 @@ public enum OrderColumn
         @Override
         public long getIdentifier(Order order)
         {
-            return order.getOrderKey();
+            return order.orderKey();
         }
     },
 
@@ -35,7 +35,7 @@ public enum OrderColumn
         @Override
         public long getIdentifier(Order order)
         {
-            return order.getCustomerKey();
+            return order.customerKey();
         }
     },
 
@@ -43,7 +43,7 @@ public enum OrderColumn
         @Override
         public String getString(Order order)
         {
-            return String.valueOf(order.getOrderStatus());
+            return String.valueOf(order.orderStatus());
         }
     },
 
@@ -51,13 +51,13 @@ public enum OrderColumn
         @Override
         public double getDouble(Order order)
         {
-            return order.getTotalPrice();
+            return order.totalPrice();
         }
 
         @Override
         public long getIdentifier(Order order)
         {
-            return order.getTotalPriceInCents();
+            return order.totalPriceInCents();
         }
     },
 
@@ -71,7 +71,7 @@ public enum OrderColumn
         @Override
         public int getDate(Order order)
         {
-            return order.getOrderDate();
+            return order.orderDate();
         }
     },
 
@@ -79,7 +79,7 @@ public enum OrderColumn
         @Override
         public String getString(Order order)
         {
-            return order.getOrderPriority();
+            return order.orderPriority();
         }
     },
 
@@ -87,7 +87,7 @@ public enum OrderColumn
         @Override
         public String getString(Order order)
         {
-            return order.getClerk();
+            return order.clerk();
         }
     },
 
@@ -95,7 +95,7 @@ public enum OrderColumn
         @Override
         public int getInteger(Order order)
         {
-            return order.getShipPriority();
+            return order.shipPriority();
         }
     },
 
@@ -103,7 +103,7 @@ public enum OrderColumn
         @Override
         public String getString(Order order)
         {
-            return order.getComment();
+            return order.comment();
         }
     };
 

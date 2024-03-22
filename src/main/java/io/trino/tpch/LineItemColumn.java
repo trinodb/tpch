@@ -27,7 +27,7 @@ public enum LineItemColumn
         @Override
         public long getIdentifier(LineItem lineItem)
         {
-            return lineItem.getOrderKey();
+            return lineItem.orderKey();
         }
     },
 
@@ -35,7 +35,7 @@ public enum LineItemColumn
         @Override
         public long getIdentifier(LineItem lineItem)
         {
-            return lineItem.getPartKey();
+            return lineItem.partKey();
         }
     },
 
@@ -43,7 +43,7 @@ public enum LineItemColumn
         @Override
         public long getIdentifier(LineItem lineItem)
         {
-            return lineItem.getSupplierKey();
+            return lineItem.supplierKey();
         }
     },
 
@@ -51,7 +51,7 @@ public enum LineItemColumn
         @Override
         public int getInteger(LineItem lineItem)
         {
-            return lineItem.getLineNumber();
+            return lineItem.lineNumber();
         }
     },
 
@@ -59,13 +59,13 @@ public enum LineItemColumn
         @Override
         public double getDouble(LineItem lineItem)
         {
-            return lineItem.getQuantity();
+            return lineItem.quantity();
         }
 
         @Override
         public long getIdentifier(LineItem lineItem)
         {
-            return lineItem.getQuantity() * 100;
+            return lineItem.quantity() * 100;
         }
     },
 
@@ -73,13 +73,13 @@ public enum LineItemColumn
         @Override
         public double getDouble(LineItem lineItem)
         {
-            return lineItem.getExtendedPrice();
+            return lineItem.extendedPrice();
         }
 
         @Override
         public long getIdentifier(LineItem lineItem)
         {
-            return lineItem.getExtendedPriceInCents();
+            return lineItem.extendedPriceInCents();
         }
     },
 
@@ -87,13 +87,13 @@ public enum LineItemColumn
         @Override
         public double getDouble(LineItem lineItem)
         {
-            return lineItem.getDiscount();
+            return lineItem.discountPercent();
         }
 
         @Override
         public long getIdentifier(LineItem lineItem)
         {
-            return lineItem.getDiscountPercent();
+            return lineItem.discountPercent();
         }
     },
 
@@ -101,13 +101,13 @@ public enum LineItemColumn
         @Override
         public double getDouble(LineItem lineItem)
         {
-            return lineItem.getTax();
+            return lineItem.tax();
         }
 
         @Override
         public long getIdentifier(LineItem lineItem)
         {
-            return lineItem.getTaxPercent();
+            return lineItem.taxPercent();
         }
     },
 
@@ -115,7 +115,7 @@ public enum LineItemColumn
         @Override
         public String getString(LineItem lineItem)
         {
-            return lineItem.getReturnFlag();
+            return lineItem.returnFlag();
         }
     },
 
@@ -123,7 +123,7 @@ public enum LineItemColumn
         @Override
         public String getString(LineItem lineItem)
         {
-            return lineItem.getStatus();
+            return lineItem.status();
         }
     },
 
@@ -137,7 +137,7 @@ public enum LineItemColumn
         @Override
         public int getDate(LineItem lineItem)
         {
-            return lineItem.getShipDate();
+            return lineItem.shipDate();
         }
     },
 
@@ -151,7 +151,7 @@ public enum LineItemColumn
         @Override
         public int getDate(LineItem lineItem)
         {
-            return lineItem.getCommitDate();
+            return lineItem.commitDate();
         }
     },
 
@@ -165,7 +165,7 @@ public enum LineItemColumn
         @Override
         public int getDate(LineItem lineItem)
         {
-            return lineItem.getReceiptDate();
+            return lineItem.receiptDate();
         }
     },
 
@@ -173,7 +173,7 @@ public enum LineItemColumn
         @Override
         public String getString(LineItem lineItem)
         {
-            return lineItem.getShipInstructions();
+            return lineItem.shipInstructions();
         }
     },
 
@@ -181,7 +181,7 @@ public enum LineItemColumn
         @Override
         public String getString(LineItem lineItem)
         {
-            return lineItem.getShipMode();
+            return lineItem.shipMode();
         }
     },
 
@@ -189,7 +189,7 @@ public enum LineItemColumn
         @Override
         public String getString(LineItem lineItem)
         {
-            return lineItem.getComment();
+            return lineItem.comment();
         }
     };
 
