@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.airlift</groupId>
         <artifactId>airbase</artifactId>
-        <version>95</version>
+        <version>153</version>
     </parent>
 
     <groupId>io.trino.tpch</groupId>
@@ -34,6 +34,7 @@
 
     <properties>
         <air.test.jvmsize>2g</air.test.jvmsize>
+        <air.check.skip-spotbugs>true</air.check.skip-spotbugs>
     </properties>
 
     <dependencies>

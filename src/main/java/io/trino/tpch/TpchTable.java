@@ -13,13 +13,14 @@
  */
 package io.trino.tpch;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
 import java.util.List;
 import java.util.Map;
+
+import static com.google.common.base.Preconditions.checkArgument;
 
 public abstract class TpchTable<E extends TpchEntity>
 {
@@ -117,7 +118,7 @@ public abstract class TpchTable<E extends TpchEntity>
     public static TpchTable<?> getTable(String tableName)
     {
         TpchTable<?> table = TABLES_BY_NAME.get(tableName);
-        Preconditions.checkArgument(table != null, "Table %s not found", tableName);
+        checkArgument(table != null, "Table %s not found", tableName);
         return table;
     }
 
@@ -148,7 +149,7 @@ public abstract class TpchTable<E extends TpchEntity>
     public TpchColumn<E> getColumn(String columnName)
     {
         TpchColumn<E> column = columnsByName.get(columnName);
-        Preconditions.checkArgument(column != null, "Table %s does not have a column %s", tableName, columnName);
+        checkArgument(column != null, "Table %s does not have a column %s", tableName, columnName);
         return column;
     }
 
