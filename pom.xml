@@ -10,7 +10,7 @@
 
     <groupId>io.trino.tpch</groupId>
     <artifactId>tpch</artifactId>
-    <version>1.4</version>
+    <version>1.5-SNAPSHOT</version>
 
     <name>tpch</name>
     <description>Port of TPC-H dbgen to Java</description>
@@ -28,7 +28,7 @@
 
     <scm>
         <connection>scm:git:git://github.com/trinodb/tpch.git</connection>
-        <tag>1.4</tag>
+        <tag>HEAD</tag>
         <url>https://github.com/trinodb/tpch</url>
     </scm>
 
