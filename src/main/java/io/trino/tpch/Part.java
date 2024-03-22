@@ -17,97 +17,32 @@ import static io.trino.tpch.GenerateUtils.formatMoney;
 import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
-public class Part
+public record Part(
+        long rowNumber,
+        long partKey,
+        String name,
+        String manufacturer,
+        String brand,
+        String type,
+        int size,
+        String container,
+        long retailPriceInCents,
+        String comment)
         implements TpchEntity
 {
-    private final long rowNumber;
-    private final long partKey;
-    private final String name;
-    private final String manufacturer;
-    private final String brand;
-    private final String type;
-    private final int size;
-    private final String container;
-    private final long retailPrice;
-    private final String comment;
-
-    public Part(long rowNumber,
-            long partKey,
-            String name,
-            String manufacturer,
-            String brand,
-            String type,
-            int size,
-            String container,
-            long retailPrice,
-            String comment)
+    public Part
     {
-        this.rowNumber = rowNumber;
-        this.partKey = partKey;
-        this.name = requireNonNull(name, "name is null");
-        this.manufacturer = requireNonNull(manufacturer, "manufacturer is null");
-        this.brand = requireNonNull(brand, "brand is null");
-        this.type = requireNonNull(type, "type is null");
-        this.size = size;
-        this.container = requireNonNull(container, "container is null");
-        this.retailPrice = retailPrice;
-        this.comment = requireNonNull(comment, "comment is null");
+        requireNonNull(name, "name is null");
+        requireNonNull(manufacturer, "manufacturer is null");
+        requireNonNull(brand, "brand is null");
+        requireNonNull(type, "type is null");
+        requireNonNull(container, "container is null");
+        requireNonNull(comment, "comment is null");
     }
 
-    @Override
-    public long getRowNumber()
+    public double retailPrice()
     {
-        return rowNumber;
-    }
-
-    public long getPartKey()
-    {
-        return partKey;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getManufacturer()
-    {
-        return manufacturer;
-    }
-
-    public String getBrand()
-    {
-        return brand;
-    }
-
-    public String getType()
-    {
-        return type;
-    }
-
-    public int getSize()
-    {
-        return size;
-    }
-
-    public String getContainer()
-    {
-        return container;
-    }
-
-    public double getRetailPrice()
-    {
-        return retailPrice / 100.0;
-    }
-
-    public long getRetailPriceInCents()
-    {
-        return retailPrice;
-    }
-
-    public String getComment()
-    {
-        return comment;
+        return retailPriceInCents / 100.0;
     }
 
     @Override
@@ -120,7 +55,7 @@ public class Part
                 type,
                 size,
                 container,
-                formatMoney(retailPrice),
+                formatMoney(retailPriceInCents),
                 comment);
     }
 }

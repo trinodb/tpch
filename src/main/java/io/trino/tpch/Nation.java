@@ -16,48 +16,18 @@ package io.trino.tpch;
 import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
-public class Nation
+public record Nation(
+        long rowNumber,
+        long nationKey,
+        String name,
+        long regionKey,
+        String comment)
         implements TpchEntity
 {
-    private final long rowNumber;
-    private final long nationKey;
-    private final String name;
-    private final long regionKey;
-    private final String comment;
-
-    public Nation(long rowNumber, long nationKey, String name, long regionKey, String comment)
+    public Nation
     {
-        this.rowNumber = rowNumber;
-        this.nationKey = nationKey;
-        this.name = requireNonNull(name, "name is null");
-        this.regionKey = regionKey;
-        this.comment = requireNonNull(comment, "comment is null");
-    }
-
-    @Override
-    public long getRowNumber()
-    {
-        return rowNumber;
-    }
-
-    public long getNationKey()
-    {
-        return nationKey;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public long getRegionKey()
-    {
-        return regionKey;
-    }
-
-    public String getComment()
-    {
-        return comment;
+        requireNonNull(name, "name is null");
+        requireNonNull(comment, "comment is null");
     }
 
     @Override

@@ -24,7 +24,7 @@ public enum SupplierColumn
         @Override
         public long getIdentifier(Supplier supplier)
         {
-            return supplier.getSupplierKey();
+            return supplier.supplierKey();
         }
     },
 
@@ -32,7 +32,7 @@ public enum SupplierColumn
         @Override
         public String getString(Supplier supplier)
         {
-            return supplier.getName();
+            return supplier.name();
         }
     },
 
@@ -40,7 +40,7 @@ public enum SupplierColumn
         @Override
         public String getString(Supplier supplier)
         {
-            return supplier.getAddress();
+            return supplier.address();
         }
     },
 
@@ -48,7 +48,7 @@ public enum SupplierColumn
         @Override
         public long getIdentifier(Supplier supplier)
         {
-            return supplier.getNationKey();
+            return supplier.nationKey();
         }
     },
 
@@ -56,7 +56,7 @@ public enum SupplierColumn
         @Override
         public String getString(Supplier supplier)
         {
-            return supplier.getPhone();
+            return supplier.phone();
         }
     },
 
@@ -70,7 +70,7 @@ public enum SupplierColumn
         @Override
         public long getIdentifier(Supplier supplier)
         {
-            return supplier.getAccountBalanceInCents();
+            return supplier.accountBalanceInCents();
         }
     },
 
@@ -78,7 +78,7 @@ public enum SupplierColumn
         @Override
         public String getString(Supplier supplier)
         {
-            return supplier.getComment();
+            return supplier.comment();
         }
     };
 

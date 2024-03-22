@@ -24,7 +24,7 @@ public enum CustomerColumn
         @Override
         public long getIdentifier(Customer customer)
         {
-            return customer.getCustomerKey();
+            return customer.customerKey();
         }
     },
 
@@ -32,7 +32,7 @@ public enum CustomerColumn
         @Override
         public String getString(Customer customer)
         {
-            return customer.getName();
+            return customer.name();
         }
     },
 
@@ -40,7 +40,7 @@ public enum CustomerColumn
         @Override
         public String getString(Customer customer)
         {
-            return customer.getAddress();
+            return customer.address();
         }
     },
 
@@ -48,7 +48,7 @@ public enum CustomerColumn
         @Override
         public long getIdentifier(Customer customer)
         {
-            return customer.getNationKey();
+            return customer.nationKey();
         }
     },
 
@@ -56,7 +56,7 @@ public enum CustomerColumn
         @Override
         public String getString(Customer customer)
         {
-            return customer.getPhone();
+            return customer.phone();
         }
     },
 
@@ -64,13 +64,13 @@ public enum CustomerColumn
         @Override
         public double getDouble(Customer customer)
         {
-            return customer.getAccountBalance();
+            return customer.accountBalance();
         }
 
         @Override
         public long getIdentifier(Customer customer)
         {
-            return customer.getAccountBalanceInCents();
+            return customer.accountBalanceInCents();
         }
     },
 
@@ -78,7 +78,7 @@ public enum CustomerColumn
         @Override
         public String getString(Customer customer)
         {
-            return customer.getMarketSegment();
+            return customer.marketSegment();
         }
     },
 
@@ -86,7 +86,7 @@ public enum CustomerColumn
         @Override
         public String getString(Customer customer)
         {
-            return customer.getComment();
+            return customer.comment();
         }
     };
 

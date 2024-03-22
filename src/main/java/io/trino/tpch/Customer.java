@@ -17,86 +17,35 @@ import static io.trino.tpch.GenerateUtils.formatMoney;
 import static io.trino.tpch.StringUtils.buildLine;
 import static java.util.Objects.requireNonNull;
 
-public class Customer
+public record Customer(
+        long rowNumber,
+        long customerKey,
+        String name,
+        String address,
+        long nationKey,
+        String phone,
+        long accountBalanceInCents,
+        String marketSegment,
+        String comment)
         implements TpchEntity
 {
-    private final long rowNumber;
-    private final long customerKey;
-    private final String name;
-    private final String address;
-    private final long nationKey;
-    private final String phone;
-    private final long accountBalance;
-    private final String marketSegment;
-    private final String comment;
-
-    public Customer(long rowNumber, long customerKey, String name, String address, long nationKey, String phone, long accountBalance, String marketSegment, String comment)
+    public Customer
     {
-        this.rowNumber = rowNumber;
-        this.customerKey = customerKey;
-        this.name = requireNonNull(name, "name is null");
-        this.address = requireNonNull(address, "address is null");
-        this.nationKey = nationKey;
-        this.phone = requireNonNull(phone, "phone is null");
-        this.accountBalance = accountBalance;
-        this.marketSegment = requireNonNull(marketSegment, "marketSegment is null");
-        this.comment = requireNonNull(comment, "comment is null");
+        requireNonNull(name, "name is null");
+        requireNonNull(address, "address is null");
+        requireNonNull(phone, "phone is null");
+        requireNonNull(marketSegment, "marketSegment is null");
+        requireNonNull(comment, "comment is null");
     }
 
-    @Override
-    public long getRowNumber()
+    public double accountBalance()
     {
-        return rowNumber;
-    }
-
-    public long getCustomerKey()
-    {
-        return customerKey;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getAddress()
-    {
-        return address;
-    }
-
-    public long getNationKey()
-    {
-        return nationKey;
-    }
-
-    public String getPhone()
-    {
-        return phone;
-    }
-
-    public double getAccountBalance()
-    {
-        return accountBalance / 100.0;
-    }
-
-    public long getAccountBalanceInCents()
-    {
-        return accountBalance;
-    }
-
-    public String getMarketSegment()
-    {
-        return marketSegment;
-    }
-
-    public String getComment()
-    {
-        return comment;
+        return accountBalanceInCents / 100.0;
     }
 
     @Override
     public String toLine()
     {
-        return buildLine(customerKey, name, address, nationKey, phone, formatMoney(accountBalance), marketSegment, comment);
+        return buildLine(customerKey, name, address, nationKey, phone, formatMoney(accountBalanceInCents), marketSegment, comment);
     }
 }

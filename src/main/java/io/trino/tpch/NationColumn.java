@@ -23,7 +23,7 @@ public enum NationColumn
         @Override
         public long getIdentifier(Nation nation)
         {
-            return nation.getNationKey();
+            return nation.nationKey();
         }
     },
 
@@ -31,7 +31,7 @@ public enum NationColumn
         @Override
         public String getString(Nation nation)
         {
-            return nation.getName();
+            return nation.name();
         }
     },
 
@@ -39,7 +39,7 @@ public enum NationColumn
         @Override
         public long getIdentifier(Nation nation)
         {
-            return nation.getRegionKey();
+            return nation.regionKey();
         }
     },
 
@@ -47,7 +47,7 @@ public enum NationColumn
         @Override
         public String getString(Nation nation)
         {
-            return nation.getComment();
+            return nation.comment();
         }
     };
 

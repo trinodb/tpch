@@ -23,7 +23,7 @@ public enum RegionColumn
         @Override
         public long getIdentifier(Region region)
         {
-            return region.getRegionKey();
+            return region.regionKey();
         }
     },
 
@@ -31,7 +31,7 @@ public enum RegionColumn
         @Override
         public String getString(Region region)
         {
-            return region.getName();
+            return region.name();
         }
     },
 
@@ -39,7 +39,7 @@ public enum RegionColumn
         @Override
         public String getString(Region region)
         {
-            return region.getComment();
+            return region.comment();
         }
     };
 
